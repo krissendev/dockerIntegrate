@@ -4,3 +4,5 @@ steps:
   args: ['build', '-t', 'gcr.io/sodium-platform-420519/github.com/krissendev/dockerintegrate:$SHORT_SHA', '.']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/sodium-platform-420519/github.com/krissendev/dockerintegrate:$SHORT_SHA']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['beta', 'run', 'deploy', 'dockerintegrate', '--region=europe-north1', '--platform=managed','--image=gcr.io/sodium-platform-420519/github.com/krissendev/dockerintegrate:$SHORT_SHA']

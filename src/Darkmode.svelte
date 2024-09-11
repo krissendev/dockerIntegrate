@@ -11,8 +11,8 @@
             setCookieDarkMode(false)
         }
         else{
-            darkModeSwitch();
-            darkModeSwitch();
+            darkMode = getCookieValue("darkMode") === "true";
+            setCanvas(darkMode)  
         }
     }
     function setCookieDarkMode(bool){
@@ -33,7 +33,17 @@
         return null;
     }
 
-    
+    function setCanvas(darkmode){
+
+        if(darkMode){
+            document.body.style.backgroundColor = 'black';
+            document.body.style.color = 'white'; 
+        }
+        else if(!darkMode){
+            document.body.style.backgroundColor = 'white';
+            document.body.style.color = 'black';  
+        }
+    }
 
 
 
@@ -42,19 +52,15 @@
         console.log("darkmode is ", darkMode, "and type of ", typeof(darkMode))
         //change to white
         if(darkMode){
-
+            darkMode = !darkMode;
             setCookieDarkMode(false);
-
-
-            document.body.style.backgroundColor = 'white';
-            document.body.style.color = 'black';    
+            setCanvas(darkMode)  
         }
         //change to dark
         else if(!darkMode){
+            darkMode = !darkMode;
             setCookieDarkMode(true);
-
-            document.body.style.backgroundColor = 'black';
-            document.body.style.color = 'white';  
+            setCanvas(darkMode)  
         }       
     }
 </script>

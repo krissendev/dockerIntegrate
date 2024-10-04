@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "sirv public --no-clear",
+    "dev": "rollup -c -w & node server/server.js",
+    "start": "node server/server.js",
     "preview": "sirv public --single --port 8080 --host 0.0.0.0"
   },
   "devDependencies": {
@@ -21,6 +21,8 @@
     "svelte": "^3.55.0"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.21.0",
     "sirv-cli": "^2.0.0"
   }
 }

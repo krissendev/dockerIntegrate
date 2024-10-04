@@ -7,7 +7,7 @@
     onMount(() => {
         let language = navigator.language;
         console.log(language);
-        if(language ==="no"){
+        if(language === "no" || language === "nb-NO" || language === "nn-NO"){
             greeting = lang_no.greeting;
         }
         else if(language === "en" || language === "en-GB" || language === "en-US"){

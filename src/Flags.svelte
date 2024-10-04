@@ -1,5 +1,7 @@
 <script>
     import { onMount } from 'svelte';
+    // import { createEventDispatcher } from 'svelte';
+    // const dispatch = createEventDispatcher();
 
     const languageCode = navigator.language;
     let selectedLanguageBtn;
@@ -10,6 +12,7 @@
     let selectedLanguageText;
 
     let languageClass=""
+    let setLang;
 
     const languageMap = {
     'en': 'en',
@@ -21,13 +24,17 @@
     'nn-NO': 'no'
     };
 
+    // let value;
+    // $: value = $setLang;
+
     onMount(() => {
         //inline value for button toggle
         selectedLanguageBtn.value = "false";
 
         //default flag selected
-        let setLang = languageMap[languageCode];
-
+        setLang = languageMap[languageCode];
+        
+        //dispatch('update', event.target.value);
 
         languageClass = `flag_icon ${setLang}`
         selectedLanguageText.innerHTML = `${setLang}`
@@ -51,6 +58,11 @@
                 languageList.style.visibility = "hidden";
             }
         })
+
+        // function handleInput(event) {
+        //    const inputValue = event.target.value;  // Get the value from the event
+        //     dispatch('update', inputValue);  // Dispatch the value
+        // }
 
         //List href to local language page
         languageLinkEn.addEventListener('click', ()=>{

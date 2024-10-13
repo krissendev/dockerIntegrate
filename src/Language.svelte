@@ -1,18 +1,22 @@
-<script>
+<script context="module">
     import { onMount } from 'svelte';
 
 
     //Language loader, fetch based json injection
-    let languageKey = "en";
-    onMount(async()=>{
-        getLanguageData(languageKey)
-    })
+    let languageKey = "es";
+    // onMount(async()=>{
+    //     getLanguageData(languageKey, "home")
+    // })
 
-    async function getLanguageData(languageKey){
+    export async function fetchLanguageData(languageKey, page){
         try{
                 const response = await fetch('/api/language',{
                     method:'GET',
-                    headers:{'languagetag':languageKey, 'Content-Type':'application/json'}
+                    headers:{
+                        'languagetag':languageKey, 
+                        'pagetag':page,
+                        'Content-Type':'application/json'
+                    }
                 })
                 const languageData = await response.json();
                 if(languageData){
@@ -26,7 +30,7 @@
     }
 
 
-    async function languageParser(languageData){               
+    export async function languageParser(languageData){               
         //languageData
         const languageProperties = Object.keys(languageData)
         const languageLength = languageProperties.length;
@@ -44,15 +48,5 @@
         })
     }
 
-
-
     
 </script>
-
-<h1>test</h1>
-<h2 id="element1"></h2>
-<h2 id="element2"></h2>
-
-<!-- {#if languageData}
-    <h1>{JSON.stringify(languageData)}</h1>
-{/if} -->

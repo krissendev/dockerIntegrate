@@ -18,31 +18,53 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
 
+//Api endpoint
 app.get('/api/language', (req, res) => {
   const languageCookie = getCookieValue("language", req.cookies);
   const languageHeader = req.headers['accept-language'];
   const languagefromHeader = getLang(languageHeader)
   
+  //from Language.svelte
   const languageCode = req.headers['languagetag'];
-  console.log("content;",languageCode)
-  if(languageCode=="en"){
-    const jayson={
-      "from the server":"here follows an english translation",
-      "element1":"this is a secret"
-
-    }
-    res.json(jayson)
-  }
-  else if(languageCode=="no"){
-      const jayson={"fra serveren":"her kommer en norsk oversettelse"}
-      res.json(jayson)
-  }
-  else{
-      const jayson={"some error":"incorrect key"}
-      res.json(jayson)
-  }
+  const subPage = req.headers['pagetag'];
+  const filePath = path.join(__dirname,'/language/' ,`${languageCode}-${subPage}.json`)
   
+
+    fs.readFile(filePath, 'utf8', (err, jsonData)=>{
+      const content = JSON.parse(jsonData);
+      if(content){
+        res.json(content)
+      }
+      else{
+        res.json(
+          {"error":"json data not found"}
+        )
+      }   
+    })  
+ 
 });
+
+
+// app.get('/:lang/:page',(req,res, next)=>{
+//   const languageEncoding = getLang(req.params.lang.toLowerCase());
+//   const pageEncoding = getLang(req.params.page.toLowerCase());
+//   console.log(languageEncoding)
+//   next();
+// });
+
+
+// app.get('/:lang',(req,res, next)=>{
+//   const languageEncoding = getLang(req.params.lang.toLowerCase());
+//   console.log(languageEncoding)
+//   next();
+// });
+
+
+
+
+
+
+
 
 // For any routes not matched by static files, serve the main index.html
 app.get('/', (req, res) => {
@@ -52,11 +74,7 @@ app.get('/', (req, res) => {
 
 
 
-app.get('/:lang',(req,res, next)=>{
-  const languageEncoding = getLang(req.params.lang.toLowerCase());
-  console.log(languageEncoding)
-  next();
-});
+
 
 
 

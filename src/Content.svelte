@@ -1,22 +1,15 @@
 <script>
-    import { onMount } from 'svelte';
-    import lang_en from './lang-en.json'
-    import lang_no from './lang-no.json'
-    $: greeting = "placeholder"
-    
-    onMount(() => {
-        let language = navigator.language;
-        console.log(language);
-        if(language === "no" || language === "nb-NO" || language === "nn-NO"){
-            greeting = lang_no.greeting;
-        }
-        else if(language === "en" || language === "en-GB" || language === "en-US"){
-            greeting = lang_en.greeting;
-        }
-        else{
-            greeting =="not found"
-        }
-    });
-    
+    //Handle routing
+    import Home from './Home.svelte';
+    import About from './About.svelte';
+
+    let currentRoute = window.location.pathname;
+
 </script>
-<h2>{greeting}</h2>
+{#if currentRoute ==='/' || currentRoute ==='/home'}
+    <Home/>
+{:else if currentRoute === '/about'}
+    <About/>
+{:else}
+    <h1>404 - Page Not Found</h1>
+{/if}

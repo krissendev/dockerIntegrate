@@ -26,7 +26,39 @@ app.use(express.static('public', {
 }));
 
 
+//url language encoded sub
+app.get('/:lang/:suburl',(req,res)=>{
+  const languageEncoding = getLang(req.params.lang);
+  const subdomain = req.params.suburl.toLowerCase();
+  const htmlFilePath = path.join(__dirname, `${subdomain}.html`)
 
+  console.log(`App.get/:lang/:suburl=("${req.params.lang}" , "${req.params.suburl}")=> "${languageEncoding}"`);  
+  
+  fs.readFile(htmlFilePath, 'utf8', (err, htmlData) => {
+    if(err){return res.status(500).send(`Error read ${subdomain}.html`)}
+
+    if(languageEncoding){
+      //get languageEncoding based json
+      const jsonFilePath = path.join(__dirname, `${subdomain}-${languageEncoding}.json`)
+      fs.readFile(jsonFilePath, 'utf8', (err, jsonData) => {
+        if(err){return res.status(500).send(`Error read ${subdomain}-${languageEncoding}.json`)}
+        const content = JSON.parse(jsonData);
+
+
+        //combine html with json
+        let finalHtml = htmlData
+          .replace('<h2 id="title">Title Placeholder</h2>',`<h2 id="title">${content.title}</h2>`)
+          .replace('<p id="description">Content Placeholder</p>',`<p id="description">${content.content.description}</p>`);
+          
+          res.send(finalHtml);
+      });
+      
+    }
+    else{
+      res.send(htmlData)
+    }
+  });
+});
 
 
 //custom middleware
@@ -105,40 +137,7 @@ app.get('/:lang',(req,res)=>{
   //console.log(languageheader);
 });
 
-//url language encoded sub
-app.get('/:lang/:sub',(req,res)=>{
-  const languageEncoding = getLang(req.params.lang);
-  const subdomain = req.params.sub.toLowerCase();
-  const htmlFilePath = path.join(__dirname, `${subdomain}.html`)
 
-  console.log(`App.get/:lang/:sub=("${req.params.lang}" , "${req.params.sub}")=> "${languageEncoding}"`);  
-  
-  fs.readFile(htmlFilePath, 'utf8', (err, htmlData) => {
-    if(err){return res.status(500).send(`Error read ${subdomain}.html`)}
-
-    if(languageEncoding){
-      //get languageEncoding based json
-      const jsonFilePath = path.join(__dirname, `${subdomain}-${languageEncoding}.json`)
-      fs.readFile(jsonFilePath, 'utf8', (err, jsonData) => {
-        if(err){return res.status(500).send(`Error read ${subdomain}-${languageEncoding}.json`)}
-        const content = JSON.parse(jsonData);
-
-
-        //combine html with json
-        let finalHtml = htmlData
-          .replace('<h2 id="title">Title Placeholder</h2>',`<h2 id="title">${content.title}</h2>`)
-          .replace('<p id="description">Content Placeholder</p>',`<p id="description">${content.content.description}</p>`);
-          
-          res.send(finalHtml);
-      });
-      
-    }
-    else{
-      res.send(htmlData)
-    }
-  });
-  
-});
 
 
 //url not language encoded

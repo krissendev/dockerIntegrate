@@ -1,7 +1,11 @@
 <script>
     import { onMount } from 'svelte';
+    import {fetchLanguageData, languageParser} from './Language.svelte'
+
     // import { createEventDispatcher } from 'svelte';
     // const dispatch = createEventDispatcher();
+
+    
 
     const languageCode = navigator.language;
     let selectedLanguageBtn;
@@ -75,6 +79,7 @@
             selectedLanguageBtn.style.backgroundColor = null;
             languageList.style.visibility = "hidden";
             
+            fetchLanguageData("en", "home");
             // const newUrl = `${window.location.pathname}/lang/en`;
             // window.history.pushState(null, '', newUrl);
         })
@@ -88,6 +93,8 @@
             selectedLanguageBtn.style.backgroundColor = null;
             languageList.style.visibility = "hidden";
 
+
+            fetchLanguageData("no", "home");
             // const newUrl = `${window.location.pathname}/lang/no`;
             // window.history.pushState(null, '', newUrl);
 

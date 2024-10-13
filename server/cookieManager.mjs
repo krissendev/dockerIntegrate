@@ -39,7 +39,7 @@ export function getLang(key){
     return undefined;
 }
 
-export function getsubDomain(entry){
+export function getPage(entry){
     entry = entry.toLowerCase()
     const domain = subDomain[entry]
     if(domain){return domain}

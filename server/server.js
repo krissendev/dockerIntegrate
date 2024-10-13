@@ -45,12 +45,38 @@ app.get('/api/language', (req, res) => {
 });
 
 
-// app.get('/:lang/:page',(req,res, next)=>{
-//   const languageEncoding = getLang(req.params.lang.toLowerCase());
-//   const pageEncoding = getLang(req.params.page.toLowerCase());
-//   console.log(languageEncoding)
-//   next();
-// });
+app.get('/:lang/:page',(req,res, next)=>{
+  const languageEncoding = getLang(req.params.lang.toLowerCase());
+  const pageEncoding = getPage(req.params.page.toLowerCase());
+
+  
+  //Fallbacks suggestions 
+	if((!languageEncoding ||!pageEncoding)){
+    const isLangPage = getPage(req.params.lang.toLowerCase());
+    const isPageLang = getLang(req.params.page.toLowerCase());
+    urlFallBack(languageEncoding, pageEncoding, isLangPage, isPageLang);
+  }
+  //Acceptable URL
+  else{
+    const jsonFilePath = path.join(__dirname, `${languageEncoding}-${pageEncoding}.json`)
+    fs.readFile(jsonFilePath, 'utf8', (err, jsonData) => {
+      if(err){return res.status(500).send(`Error read ${subdomain}-${languageEncoding}.json`)}
+      const content = JSON.parse(jsonData);
+
+    })
+  }
+
+
+  next();
+});
+
+
+function urlFallBack(){
+  const defaultLang = "en";
+	const defaultSub = "home";
+  console.log("UrlFallBack")
+  next();
+}
 
 
 // app.get('/:lang',(req,res, next)=>{

@@ -1,2 +1,5 @@
-<h1>Welcome to SvelteKit</h1>
+<script>
+import Nav from './Nav.svelte'
+</script>
+<Nav/>
 

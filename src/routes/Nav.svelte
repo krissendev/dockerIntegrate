@@ -3,6 +3,7 @@
 // I don't need to use onMount in javascript, since its a loaded function this makes it simpler
     import {onMount} from 'svelte';
     import {toggleBurger, initOnMount} from '$lib/layout/nav.js'
+    import Darkmode from './Darkmode.svelte'
     let elMainMenu  ;
     let elLinks;
     let elModal;
@@ -26,6 +27,8 @@
       <a href="#contact">Contact</a>
       <a href="#about">About</a>
     </div>
+    <Darkmode/>
+
     <div class="modal" bind:this={elModal}></div><!--Modal-->
     <button aria-hidden="true" class="burger" on:click={handleToggle} bind:this={elMainMenu}>
         <div></div><div></div>

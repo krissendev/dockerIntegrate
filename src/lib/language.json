@@ -1,0 +1,10 @@
+{
+    "":{"content":"something went wrong..."},
+    "no":{
+        "content":"NORSK Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas sapien turpis, eget egestas arcu finibus vel. Nunc blandit, odio interdum bibendum porta, augue nisl lacinia urna, non pharetra nisi ante quis enim. Donec interdum semper dignissim. Aliquam erat volutpat. Fusce porttitor lacus sed massa sagittis, ut eleifend leo pulvinar. Etiam in posuere nunc. Praesent non ipsum finibus, accumsan odio in, laoreet tellus."
+    },
+    "en":{
+        "content":"ENGLISH Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas sapien turpis, eget egestas arcu finibus vel. Nunc blandit, odio interdum bibendum porta, augue nisl lacinia urna, non pharetra nisi ante quis enim. Donec interdum semper dignissim. Aliquam erat volutpat. Fusce porttitor lacus sed massa sagittis, ut eleifend leo pulvinar. Etiam in posuere nunc. Praesent non ipsum finibus, accumsan odio in, laoreet tellus."
+    }
+    
+}

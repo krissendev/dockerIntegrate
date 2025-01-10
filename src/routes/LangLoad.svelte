@@ -14,6 +14,8 @@
     //En
 
     onMount(async ()=>{
+        
+        //cookie lang
         cookieLang = await initOnMount();
         content =await jsonfile[cookieLang].content;
     })

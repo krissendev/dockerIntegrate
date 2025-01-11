@@ -23,9 +23,11 @@
 
 <div class="topNav"><!--Top Nav-->
     <div class="navLinks" bind:this={elLinks}>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
       <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="/">Aa</a>
     </div>
     <Darkmode/>
 

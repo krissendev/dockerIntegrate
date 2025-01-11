@@ -1,6 +1,6 @@
 <script>
     import {onMount} from 'svelte'
-    import {initOnMount} from '$lib/layout/langLoad.js'
+    import {languageInitOnMount} from '$lib/layout/langLoad.js'
     import jsonfile from '$lib/language.json';
 
     let cookieLang = '';
@@ -13,10 +13,14 @@
     //BrowserSetting
     //En
 
+
+    ///routes/LangLoad.svelte handles "/"
+    ///routes/[...slug]/+page.js handles "/other"
+
     onMount(async ()=>{
         
         //cookie lang
-        cookieLang = await initOnMount();
+        cookieLang = await languageInitOnMount();
         content =await jsonfile[cookieLang].content;
     })
 </script>

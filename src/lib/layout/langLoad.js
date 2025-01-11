@@ -10,6 +10,7 @@ export function languageInitOnMount(){
     document.cookie = "lang=no"
     const cookies = document.cookie.split(';');
     for(let cookie of cookies){
+        //sepparates key-values on "=" and removes any whitespace
         const [cookieName, cookieValue] = cookie.split('=').map((arrElement)=> arrElement.trim());
         if(cookieName==="lang"){
             console.log("returning...", cookieValue)

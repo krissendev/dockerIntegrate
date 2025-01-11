@@ -6,7 +6,6 @@
     }
     
     function cookieInit(){
-        console.log(document.cookie)
         if(!document.cookie){
             setCookieDarkMode(false)
         }
@@ -16,16 +15,15 @@
         }
     }
     function setCookieDarkMode(bool){
-        console.log("the bool is ", bool, "and type of", typeof(bool))
         let cookieDarkMode = `darkMode=${bool};`
-        console.log(cookieDarkMode);
         document.cookie = `${cookieDarkMode} ${cookieBase}`
     }
 
     function getCookieValue(name){
         const cookies = document.cookie.split(';');
         for(let cookie of cookies){
-            const [cookieName, cookieValue] = cookie.split('=');
+            //sepparates key-values on "=" and removes any whitespace
+            const [cookieName, cookieValue] = cookie.split('=').map((arrElement)=> arrElement.trim());
             if(cookieName === name){
                 return cookieValue;
             }
@@ -49,14 +47,13 @@
 
     export function darkModeSwitch(){
         darkMode = getCookieValue("darkMode") === "true";
-        console.log("darkmode is ", darkMode, "and type of ", typeof(darkMode))
-        //change to white
-        if(darkMode){
+        //darkMode true is dark - change to white
+        if(darkMode){ 
             darkMode = !darkMode;
             setCookieDarkMode(false);
             setCanvas(darkMode)  
         }
-        //change to dark
+        //darkMode false is white - change to dark
         else if(!darkMode){
             darkMode = !darkMode;
             setCookieDarkMode(true);

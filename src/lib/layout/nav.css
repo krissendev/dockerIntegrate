@@ -36,7 +36,6 @@ body {
     background-color: black; 
 }
 
-
 .modal{
     z-index: 1;
     display:none;
@@ -70,11 +69,14 @@ body {
         flex-direction: column; 
         justify-content: center;
         align-items:center;   
-        padding:10%; 
     }
-    .navLinks a{
-        padding:10%;
+    .navLinks a, .navLinks button{
+        padding:5%;
     }
+    /* .navLinks button{
+        background-color: transparent;
+        border:none
+    } */
     .modal{
         display:none;
     }

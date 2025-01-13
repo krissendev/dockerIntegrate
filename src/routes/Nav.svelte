@@ -28,8 +28,8 @@
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
       <a href="/">Aa</a>
+      <Darkmode/>
     </div>
-    <Darkmode/>
 
     <div class="modal" bind:this={elModal}></div><!--Modal-->
     <button aria-hidden="true" class="burger" on:click={handleToggle} bind:this={elMainMenu}>

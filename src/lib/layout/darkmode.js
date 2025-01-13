@@ -46,6 +46,7 @@
 
 
     export function darkModeSwitch(){
+
         darkMode = getCookieValue("darkMode") === "true";
         //darkMode true is dark - change to white
         if(darkMode){ 

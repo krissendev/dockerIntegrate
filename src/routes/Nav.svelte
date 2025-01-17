@@ -6,6 +6,7 @@
     import Darkmode from './Darkmode.svelte'
     import SaveCookie from './SaveCookie.svelte'
     import CookieConsent from './CookieConsent.svelte'
+    import Flags from './Flags.svelte'
     let elMainMenu  ;
     let elLinks;
     let elMobileModal;
@@ -32,6 +33,7 @@
       <div class="navDividerLine"></div><!-->Some divider-->
       <a href="/">Aa</a>
       <Darkmode/>
+      <Flags/>
       <SaveCookie/>
     </div>
 

@@ -34,7 +34,7 @@ export function toggleBurger (elLinks, elModal, elMainMenu) {
         
         elMainMenu.classList.toggle('active')
         elLinks.style.display  = "flex";
-        elLinks.style.height = "100vh";
+        // elLinks.style.height = "100vh";
         elModal.style.display  = "block";
         docBody.style.overflow = "hidden";
     }
@@ -48,8 +48,8 @@ function resetNav(elLinks, elMainMenu, elModal){
     toggled = false;
     if(window.innerWidth> 540){
         elMainMenu.classList.remove('active')
-        elLinks.style.display  = "block";
-        elLinks.style.height = "10vh"
+        elLinks.style.display  = "flex";
+        // elLinks.style.height = "10vh"
         elModal.style.display  = "none";
         docBody.style.overflow = "visible"
 

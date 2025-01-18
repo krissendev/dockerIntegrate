@@ -5,17 +5,42 @@ body {
     overflow: visible;
     
 }
-.navLinks, .logo{z-index: 2;}  
-
+/*Containers mainly for desktop*/
 .topNav {
+    display: flex;
+    position:sticky; 
     top:0px;
     background-color: rgba(255, 255, 255, 0.90);
-    position:sticky; 
     z-index: 1;
-    display: flex;
-    min-height:10vh;
+    max-height:5vh;
+}
+.navMenu{
+    display:flex;
+    justify-content:flex-start;
+}
+.navSettings{
+    display:flex;
+    justify-content:flex-end;
+}
+.navMenu a, .navSettings a, .navSettings button{
+    margin:5px;
+}
+.navSettings button, .navSettings a {
+    border:none;
+    background-color:red;
 }
 
+.navLinks, .logo{z-index: 2;}  /*navLinks = elLinks*/
+.navLinks{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:100vw;
+    /* align-self:center; */
+}
+
+
+/*Mobile burger menu*/
 .burger {
     z-index: 2;
     display: none;
@@ -45,7 +70,7 @@ body {
     background-color:#ff0000bd
 }
 .navDividerLine{
-    display:inline-block;
+    display:flex;
     height: 15px;
     margin-top:0px;
     margin-bottom:0px;
@@ -54,6 +79,7 @@ body {
     /* border-top:10px solid blue; */
     border-left: 5px solid blue;
 }
+
 
 @media screen and (max-width: 540px) {
     .topNav{
@@ -80,9 +106,10 @@ body {
         justify-content: center;
         align-items:center;   
     }
-    .navLinks a, .navLinks button{
+    .navSettings, .navDividerLine, .navMenu{display:none;}
+    /* .navLinks a, .navLinks button{
         padding:5%;
-    }
+    } */
     /* .navLinks button{
         background-color: transparent;
         border:none
@@ -99,11 +126,6 @@ body {
         border-left: 200px solid blue;
     }
 }
-
-.content{
-    z-index: 0;
-}
- 
 
 /*Burger transtition animation*/
 @keyframes transitionBurgerTopDown{

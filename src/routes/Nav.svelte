@@ -26,15 +26,19 @@
 
 <div class="topNav"><!--Top Nav-->
     <div class="navLinks" bind:this={elLinks}>
-      <a href="#home">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>    
-      <div class="navDividerLine"></div><!-->Some divider-->
-      <a href="/">Aa</a>
-      <Darkmode/>
-      <Flags/>
-      <SaveCookie/>
+        <div class="navMenu">
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>          
+        </div>
+        <div class="navDividerLine"></div><!-->Some divider-->
+        <div class="navSettings">
+            <a href="/">Aa</a>
+            <Darkmode/>
+            <Flags/>
+            <SaveCookie/>
+        </div>
     </div>
 
     <div name="mobileModal" class="modal" bind:this={elMobileModal}></div><!--Mobile Modal-->

@@ -2,11 +2,10 @@
 <!--Modal for cookie conscent-->
 <div style="display:inline-block;">
   <div class="switch-container">
-      <span class="label-text">Save Cookie</span>
-      <label class="switch">
-        <input type="checkbox">
-        <span class="slider"></span>
-      </label>
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
   </div>
 </div>
 <style>
@@ -16,16 +15,12 @@
       align-items: center; /* Align text and switch vertically */
       margin: 10px;
   }
-  .label-text{
-      vertical-align:middle;
-  }
    /* The switch - the box around the slider */
   .switch {
       vertical-align:middle;
       position: relative;
       display: inline-block;
       width: 60px;
-      height: 34px;
   }
 
   /* Hide default HTML checkbox */
@@ -52,7 +47,7 @@
   .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
+  height: 80%;
   width: 26px;
   left: 4px;
   bottom: 4px;

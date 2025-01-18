@@ -2,6 +2,7 @@
 # Project is setup at gcloud/krissendev/CloudRun/my-cloud-run-app
 
 node_modules
+todolist.txt
 
 # Output
 .output

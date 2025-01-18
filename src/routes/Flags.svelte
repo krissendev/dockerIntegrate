@@ -133,19 +133,21 @@
     #language_selector {
         position: relative;
         display: inline-block;
+        margin:0px;
+        padding:0px;
+        border:0px;
     }
     #language_selected {
         display: flex;
         align-items: center;
         cursor: pointer;
-        padding: 5px 10px;
-        border: 1px solid #000000;
-        border-radius: 5px;
+        /* padding: 5px 10px; */
+        /* border: 1px solid #000000; */
+        /* border-radius: 5px; */
         background-color: #a0a0a0;
-        font-size: 14px;
+        /* font-size: 14px; */
     }
     #language_selected:hover{
-        border: 1px solid #333333;
         background-color: #c1c1c1;
     }
     .arrow-icon {

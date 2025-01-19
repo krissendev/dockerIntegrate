@@ -2,38 +2,46 @@ import { browser } from '$app/environment';
 
 // let elLinks;
 // let toggleBurger;
-// let elMainMenu;
+// let elMobileMenu;
 // let elModal;
 
 let toggled = false;
 let docBody;
 
 // Add resize event listener only in the browser, DOM reference, after SvelteOnMount makes "browser" available
-export function initOnMount(elLinks, elMainMenu, elModal){
+export function initOnMount(elLinks, elNavMenu, elDivider, elSettings,elMobileMenu, elModal){
     if(browser) {
         docBody = document.body;
         window.addEventListener('resize', () => {
             if (browser) {
-                resetNav(elLinks, elMainMenu, elModal);
+                resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elModal);
             }
         });
     }
 }
 
-export function toggleBurger (elLinks, elModal, elMainMenu) {
+export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elModal, elMobileMenu) {
     if(toggled){
         console.log("toggled")
 
-        elMainMenu.classList.remove('active')
         elLinks.style.display  = "none";
+        elNavMenu.style.display  = "none"; 
+        elDivider.style.display  = "none"; 
+        elSettings.style.display  = "none";
+
+        elMobileMenu.classList.remove('active')
         elModal.style.display  = "none";
         docBody.style.overflow = "visible"
     }
     else if(!toggled){
         console.log("not toggled")
         
-        elMainMenu.classList.toggle('active')
         elLinks.style.display  = "flex";
+        elNavMenu.style.display  = "flex"; 
+        elDivider.style.display  = "flex"; 
+        elSettings.style.display  = "flex";
+
+        elMobileMenu.classList.toggle('active')
         // elLinks.style.height = "100vh";
         elModal.style.display  = "block";
         docBody.style.overflow = "hidden";
@@ -42,12 +50,12 @@ export function toggleBurger (elLinks, elModal, elMainMenu) {
 }
 
 let counter = 0;
-function resetNav(elLinks, elMainMenu, elModal){
+function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elModal){
     counter++;
     console.log(`resize ${counter}`)
     toggled = false;
     if(window.innerWidth> 540){
-        elMainMenu.classList.remove('active')
+        elMobileMenu.classList.remove('active')
         elLinks.style.display  = "flex";
         // elLinks.style.height = "10vh"
         elModal.style.display  = "none";
@@ -56,7 +64,7 @@ function resetNav(elLinks, elMainMenu, elModal){
         
     }
     else if(window.innerWidth < 541){
-        elMainMenu.classList.remove('active')
+        elMobileMenu.classList.remove('active')
         console.log("return")
         if(elLinks.style.display=="block"){
             console.log("contains")

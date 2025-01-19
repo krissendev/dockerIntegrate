@@ -101,15 +101,23 @@ body {
     
     .navLinks{
         display:none;
-        width:100vh;
+        position:absolute;
+        /* width:100vw; */
+        height:100vh;
         flex-direction: column; 
         justify-content: center;
         align-items:center;   
     }
-    .navSettings, .navDividerLine, .navMenu{display:none;}
-    /* .navLinks a, .navLinks button{
-        padding:5%;
-    } */
+    .navSettings, .navDividerLine, .navMenu{
+        display:none;
+        flex-direction: column; 
+        font-size:x-large;
+        align-items:center; 
+        padding:10%;
+    }
+    .navLinks a, .navLinks button{
+        padding:10%;
+    } 
     /* .navLinks button{
         background-color: transparent;
         border:none

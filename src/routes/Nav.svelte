@@ -7,33 +7,39 @@
     import SaveCookie from './SaveCookie.svelte'
     import CookieConsent from './CookieConsent.svelte'
     import Flags from './Flags.svelte'
-    let elMainMenu  ;
-    let elLinks;
-    let elMobileModal;
-    let elCookieModal;
+
+    let elLinks;        //Container for Nav content
+    let elNavMenu;      //#home, #about etc...
+    let elDivider;      // dividing graphics
+    let elSettings;     // Aa, Darkmode, Language, cookies
+
+    let elMobileMenu  ; //BurgerMenu
+    let elMobileModal;  //Modal overlay when burger menu toggled
+    let elCookieModal;  //WIP Cookie modal
 
     //nav resize depends on 'browser', which only is available after mount
     onMount(()=>{
-        initOnMount(elLinks, elMainMenu, elMobileModal);
+        initOnMount(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobileModal);
     })
     
 
 
     function handleToggle(){
-        toggleBurger (elLinks, elMobileModal, elMainMenu);
+        toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu);
     }
 </script>
 
 <div class="topNav"><!--Top Nav-->
     <div class="navLinks" bind:this={elLinks}>
-        <div class="navMenu">
+        <div class="navMenu" bind:this={elNavMenu}>
             <a href="#home">Home</a>
             <a href="#projects">Projects</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>          
         </div>
-        <div class="navDividerLine"></div><!-->Some divider-->
-        <div class="navSettings">
+        <!-->Some divider-->
+        <div class="navDividerLine" bind:this={elDivider}></div>
+        <div class="navSettings" bind:this={elSettings}>
             <a href="/">Aa</a>
             <Darkmode/>
             <Flags/>
@@ -45,7 +51,7 @@
     <div name="cookieConsentModal" class="modal" bind:this={elCookieModal}>
         <CookieConsent/>
     </div><!--Cookie Modal-->
-    <button aria-hidden="true" class="burger" on:click={handleToggle} bind:this={elMainMenu}>
+    <button aria-hidden="true" class="burger" on:click={handleToggle} bind:this={elMobileMenu}>
         <div></div><div></div>
         <div></div>
     </button><!--Burger Menu -->

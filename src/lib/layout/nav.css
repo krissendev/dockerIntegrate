@@ -88,14 +88,13 @@ body {
     .burger{
         display:block;        
     }
-
-    :global(.burger.active) div:nth-child(1){
+    .burger.active div:nth-child(1){
         animation: transitionBurgerTopDown 0.05s linear 1 normal forwards;
     }
-    :global(.burger.active) div:nth-child(2){
-        
-        display:none;    }
-        :global(.burger.active) div:nth-child(3){
+    .burger.active div:nth-child(2){    
+        display:none;    
+    }
+        .burger.active div:nth-child(3){
         animation: transitionBurgerBottomUp 0.05s linear 1 normal forwards;
     }
     

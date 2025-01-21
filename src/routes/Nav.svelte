@@ -52,7 +52,8 @@
         <CookieConsent/>
     </div><!--Cookie Modal-->
     <button aria-hidden="true" class="burger" on:click={handleToggle} bind:this={elMobileMenu}>
-        <div></div><div></div>
+        <div></div>
+        <div></div>
         <div></div>
     </button><!--Burger Menu -->
  

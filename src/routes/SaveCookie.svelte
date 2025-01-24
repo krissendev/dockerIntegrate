@@ -1,9 +1,15 @@
-<script></script>
+<script>
+  import {cookieConsentVisible } from '$store/store.js';
+
+  function handleToggle(){
+    cookieConsentVisible.update(value => !value);
+  }
+</script>
 <!--Modal for cookie conscent-->
 <div style="display:inline-block;">
   <div class="switch-container">
     <label class="switch">
-      <input type="checkbox">
+      <input type="checkbox"on:click={handleToggle}>
       <span class="slider"></span>
     </label>
   </div>

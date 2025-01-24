@@ -15,18 +15,16 @@
 
     let elMobileMenu  ; //BurgerMenu
     let elMobileModal;  //Modal overlay when burger menu toggled
-    let elCookieModal;  //WIP Cookie modal
 
     //nav resize depends on 'browser', which only is available after mount
     onMount(()=>{
         initOnMount(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobileModal);
     })
-    
-
 
     function handleToggle(){
         toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu);
     }
+    
 </script>
 
 <div class="topNav"><!--Top Nav-->
@@ -47,10 +45,9 @@
         </div>
     </div>
 
+    <CookieConsent/>
     <div name="mobileModal" class="modal" bind:this={elMobileModal}></div><!--Mobile Modal-->
-    <div name="cookieConsentModal" class="modal" bind:this={elCookieModal}>
-        <CookieConsent/>
-    </div><!--Cookie Modal-->
+    <!--Cookie Modal-->
     <button aria-hidden="true" class="burger" on:click={handleToggle} bind:this={elMobileMenu}>
         <div></div>
         <div></div>

@@ -1,14 +1,21 @@
+<script>
+    import { onMount } from 'svelte';
+    import {cookieConsentVisible } from '$store/store.js';
+    $: visibility = $cookieConsentVisible ? 'visible' : 'hidden';
+    function handleToggle(){
+        cookieConsentVisible.update(value => !value);
+    }
+</script>
 
-<div class="cookieModalContent">
-    <button aria-label="Close Modal Window">X</button>
+<div class="cookieModalContent" style="visibility: {visibility};">    
+    <div class="cookieModal"></div>
+    <button aria-label="Close Modal Window" class="exitCookieConsent" on:click={handleToggle}>X</button>
     <div class="cookieModalText">
         <p>We never track cookies, they are only stored on your browser for your convinience to remember the following settings:</p>    
-
     </div>
 </div>
 
 
-<div class="cookieModal"></div>
 
 <style>
 .cookieModalText{
@@ -26,12 +33,17 @@
     background-color:white;
     
 }
+.exitCookieConsent{
+    width:40px;
+    height:40px;
+    z-index:3;
+}
 .cookieModalContent{
     position:absolute;
-    z-index: 4;
+    z-index: 2;
 }    
 .cookieModal{
-    z-index: 3;
+    /* z-index: 3; */
     position:absolute;
     left:0;
     top:0;

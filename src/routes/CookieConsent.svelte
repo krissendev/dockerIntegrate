@@ -30,7 +30,7 @@
     <div class="cookieModal"></div>
     <button aria-label="Close Modal Window" class="exitCookieConsent" on:click={handleToggle}>X</button>
     <div class="cookieModalText">
-        <h3>Save preferences with Cookie</h3>
+        <h3>Save preferences with Cookies</h3>
         <p>We respect your data and right to privacy. Our website does not collect nor track your personal data and has no cookies enabled by default.<br>
             All cookies, if enabled by you, are stored on your local device only and are used solely to remember settings of your choosing, enhancing your user experience.<br>
             This website does not track your cookies, nor do any third parties.<br>

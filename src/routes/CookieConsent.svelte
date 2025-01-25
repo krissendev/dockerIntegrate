@@ -1,9 +1,9 @@
 <script>
     import { onMount } from 'svelte';
-    import {cookieConsentVisible } from '$store/store.js';
-  import { darkMode } from '$lib/layout/darkmode';
+    import {cookieConsentVisible, sessionPreferences} from '$store/store.js';
+    import { darkMode } from '$lib/layout/darkmode';
     
-    
+    $:currentSetting="";
 
     $: visibility = $cookieConsentVisible ? 'visible' : 'hidden';
     function handleToggle(){
@@ -22,6 +22,7 @@
     
     $: currentCookieString = ""
     onMount(()=>{
+        currentSetting =  JSON.stringify($sessionPreferences);
         currentCookieString = document.cookie;
     })
 </script>
@@ -37,7 +38,7 @@
             Below, you can view your current cookies, remove them, or choose to enable them. By toggling  cookies, you explicitly consent to the storage and use of cookies on your local device for the stated purposes. <br>
             You can also choose not to enable any cookies.<br>
             Cookies enabled by you will remain on your device for [specify duration], unless removed by you.</p>
-        <p>Your Current unsaved Settings:</p>    
+        <p>Your Current unsaved Settings: " {currentSetting} "</p>    
         <p>Your Current Cookies: " {currentCookieString} "<br>
             <button class="btnDelete" on:click={deleteCookies}>Delete All Cookies</button>
         </p>

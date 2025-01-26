@@ -1,13 +1,21 @@
 <script>
     import { onMount } from 'svelte';
-    import {cookieConsentVisible, sessionPreferences} from '$store/store.js';
+    import { get } from 'svelte/store';
+    import {cookieConsentVisible, sessionPreferences, cookieConsent, cookieState} from '$store/store.js';
     import { darkMode } from '$lib/layout/darkmode';
     
-    $:currentSetting="";
+    
 
     $: visibility = $cookieConsentVisible ? 'visible' : 'hidden';
     function handleToggle(){
         cookieConsentVisible.update(value => !value);
+    }
+    
+    //$: currentConsent=get(cookieConsent);
+    function consentToCookie(){
+        cookieConsent.update(value => {return true});
+        //currentConsent=get(cookieConsent);  
+        //console.log(currentConsent)
     }
 
     export const cookieBase = "SameSite=Strict;path=/;";
@@ -17,13 +25,14 @@
         for(let i=0;i<CookieTable.length; i++){
             document.cookie=`${CookieTable[i]}='';${expirationValue} ${cookieBase}`
         }
-        currentCookieString = document.cookie;
+        cookieState.set(document.cookie);
+        cookieConsent.update(value => {return false});
+        //currentConsent=get(cookieConsent);  
     }
-    
-    $: currentCookieString = ""
+    console.log($sessionPreferences)
     onMount(()=>{
-        currentSetting =  JSON.stringify($sessionPreferences);
-        currentCookieString = document.cookie;
+        cookieState.set(document.cookie);
+        console.log($sessionPreferences)
     })
 </script>
 
@@ -38,14 +47,15 @@
             Below, you can view your current cookies, remove them, or choose to enable them. By toggling  cookies, you explicitly consent to the storage and use of cookies on your local device for the stated purposes. <br>
             You can also choose not to enable any cookies.<br>
             Cookies enabled by you will remain on your device for [specify duration], unless removed by you.</p>
-        <p>Your Current unsaved Settings: " {currentSetting} "</p>    
-        <p>Your Current Cookies: " {currentCookieString} "<br>
-            <button class="btnDelete" on:click={deleteCookies}>Delete All Cookies</button>
+        <p>Your Current unsaved Settings: " {JSON.stringify($sessionPreferences)} "</p>    
+        <p>Your Current Cookies: " {$cookieState} "<br>
+            <button class="btnDelete" on:click={deleteCookies}>Disagree & Delete Cookies</button>
         </p>
+        <!-- <p>Are you consenting?;{currentConsent}</p> -->
         <br>
 
         <div>
-            <button class="btnAccept">Accept & Enable Cookies</button> <button on:click={handleToggle}>Close</button><br><br>
+            <button class="btnAccept" on:click={consentToCookie}>Accept & Enable Cookies</button> <button on:click={handleToggle}>Close</button><br><br>
             By clicking Accept Your browser will remember your current settings, language and darkmode-lightmode styling.
         </div>
     </div>

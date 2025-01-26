@@ -6,3 +6,5 @@ export const sessionPreferences = writable({
     darkMode:false,
     lang:"en"
 });
+export const cookieConsent = writable(false);
+export const cookieState = writable(''); //document.cookie

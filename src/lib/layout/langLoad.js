@@ -7,7 +7,6 @@
 
 //await browser for cookies
 export function languageInitOnMount(){
-    document.cookie = "lang=no"
     const cookies = document.cookie.split(';');
     for(let cookie of cookies){
         //sepparates key-values on "=" and removes any whitespace

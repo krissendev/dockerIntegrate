@@ -1,5 +1,5 @@
 import { get } from 'svelte/store';
-import {sessionPreferences} from '$store/store.js';
+import {sessionPreferences, cookieConsent, cookieState} from '$store/store.js';
 /*cookieConsentVisible.update(value => !value);*/
 export const cookieBase = "SameSite=Strict;path=/;";   
 export let darkMode=false; //false means white, true means dark
@@ -8,9 +8,24 @@ export function initOnMount(){
 }
 
 function cookieInit(){
+    console.log("init")
     if(!document.cookie){
-        //setCookieDarkMode(false)
-        setSessiontDarkMode(false);
+        const cookieEnabled = get(cookieConsent); 
+        console.log("Reactive enabled?", cookieEnabled)
+        if(cookieEnabled){
+            //cookie initiliazation
+            setCookieDarkMode(false)
+            const preference = get(sessionPreferences);
+            const currentDarkModePref = preference["darkMode"]  
+            console.log("enabled:",currentDarkModePref )
+            setSessiontDarkMode(currentDarkModePref);
+            setCookieDarkMode(currentDarkModePref)
+            cookieState.set(document.cookie)
+        }
+        else{
+            //default initial, no cookie consent
+            setSessiontDarkMode(false);
+        }
     }
     else{
         darkMode = getCookieValue("darkMode") === "true";
@@ -59,19 +74,26 @@ function setCanvas(darkmode){
 
 export function darkModeSwitch(){
     //darkMode = getCookieValue("darkMode") === "true";
+    const cookieEnabled = get(cookieConsent); 
     darkMode = getSessionValue("darkMode");
     //darkMode true is dark - change to white
     if(darkMode){ 
         darkMode = !darkMode;
-        //setCookieDarkMode(false);
         setSessiontDarkMode(false);
-        setCanvas(darkMode)  
+        setCanvas(darkMode)
+        if(cookieEnabled){
+            setCookieDarkMode(false);
+            cookieState.set(document.cookie)
+        }
     }
     //darkMode false is white - change to dark
     else if(!darkMode){
         darkMode = !darkMode;
-        //setCookieDarkMode(true);
         setSessiontDarkMode(true);
-        setCanvas(darkMode)  
+        setCanvas(darkMode)
+        if(cookieEnabled){
+            setCookieDarkMode(true);
+            cookieState.set(document.cookie)
+        }  
     }       
 }

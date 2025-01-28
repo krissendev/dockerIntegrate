@@ -25,4 +25,4 @@
     })
 </script>
 <h3>Lang</h3>
-<h3>{content}</h3>
+<h3>{$content}</h3>

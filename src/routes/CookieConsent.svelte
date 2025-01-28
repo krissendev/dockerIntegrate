@@ -29,10 +29,9 @@
         cookieConsent.update(value => {return false});
         //currentConsent=get(cookieConsent);  
     }
-    console.log($sessionPreferences)
+
     onMount(()=>{
         cookieState.set(document.cookie);
-        console.log($sessionPreferences)
     })
 </script>
 

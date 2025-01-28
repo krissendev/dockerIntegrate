@@ -3,28 +3,35 @@ import {sessionPreferences, cookieConsent, cookieState} from '$store/store.js';
 /*cookieConsentVisible.update(value => !value);*/
 export const cookieBase = "SameSite=Strict;path=/;";   
 export let darkMode=false; //false means white, true means dark
-export function initOnMount(){
-    cookieInit();
-}
 
-function cookieInit(){
+
+export function initOnMount(){
     console.log("init")
     if(!document.cookie){
+
+        //Match "store" darkmode setting with browser darkmode setting
+        const browserDarkmode = window.matchMedia("(prefers-color-scheme:dark)").matches;
+        
+        sessionPreferences.set({ ...sessionPreferences, darkMode: browserDarkmode});
+        
+
+        console.log(browserDarkmode);
+        
         const cookieEnabled = get(cookieConsent); 
         console.log("Reactive enabled?", cookieEnabled)
         if(cookieEnabled){
             //cookie initiliazation
-            setCookieDarkMode(false)
-            const preference = get(sessionPreferences);
-            const currentDarkModePref = preference["darkMode"]  
-            console.log("enabled:",currentDarkModePref )
-            setSessiontDarkMode(currentDarkModePref);
-            setCookieDarkMode(currentDarkModePref)
+            setCookieDarkMode(browserDarkmode)
+            
+            setSessiontDarkMode(browserDarkmode);
+            setCookieDarkMode(browserDarkmode)
             cookieState.set(document.cookie)
+            setCanvas(browserDarkmode)
         }
         else{
             //default initial, no cookie consent
-            setSessiontDarkMode(false);
+            setSessiontDarkMode(browserDarkmode);
+            setCanvas(browserDarkmode)
         }
     }
     else{
@@ -58,13 +65,12 @@ function getSessionValue(name){
     return preferences[name];
 }
 
-function setCanvas(darkmode){
-
-    if(darkMode){
+function setCanvas(darkmodeValue){
+    if(darkmodeValue){
         document.body.style.backgroundColor = 'black';
         document.body.style.color = 'white'; 
     }
-    else if(!darkMode){
+    else if(!darkmodeValue){
         document.body.style.backgroundColor = 'white';
         document.body.style.color = 'black';  
     }

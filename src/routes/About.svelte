@@ -1,7 +1,3 @@
-<div class="pageSection">
+<div class="pageSection aboutSvelte">
     <h3 id="about">This is About</h3>
 </div>
-<style>
-    @import '$lib/layout/page.css';
-    .pageSection{background-color: green;}
-</style>

@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import { get } from 'svelte/store';
-    import {cookieConsentVisible, sessionPreferences, cookieConsent, cookieState} from '$store/store.js';
+    import {cookieConsentVisible, sessionPreferences, cookieConsent, cookieState, cssModal} from '$store/store.js';
     import { darkMode } from '$lib/layout/darkmode';
     
     
@@ -35,8 +35,8 @@
     })
 </script>
 
-<div class="cookieModalContent" style="visibility: {visibility};">    
-    <div class="cookieModal"></div>
+<div class="cookieModalContent"  style="visibility: {visibility};">    
+    <div class={`${$cssModal} cookieModal`}></div>
     <button aria-label="Close Modal Window" class="exitCookieConsent" on:click={handleToggle}>X</button>
     <div class="cookieModalText">
         <h3>Save preferences with Cookies</h3>
@@ -70,7 +70,6 @@
     font-size: larger;
     padding:20px;
     margin:20px;
-    background-color:white;
 }
 
 .exitCookieConsent{
@@ -93,8 +92,6 @@
     top:0;
     width:100vw;
     height:100vh;
-    background-color: blue;
-    opacity:90%;
 }
 button{
     padding: 10px 20px;

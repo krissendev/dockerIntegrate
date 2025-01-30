@@ -1,4 +1,4 @@
-<div class="pageSection">
+<div class="pageSection contactSvelte">
     <h3 id="contact">This is Contact</h3>    
     <form>
         <input type="text" placeholder="name" required>
@@ -7,7 +7,3 @@
         <button>Send</button>
     </form>
 </div>
-<style>
-    @import '$lib/layout/page.css';
-    .pageSection{background-color: yellow;}
-</style>

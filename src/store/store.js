@@ -7,4 +7,6 @@ export const sessionPreferences = writable({
     lang:"en"
 });
 export const cookieConsent = writable(false);
-export const cookieState = writable(''); //document.cookie
+export const cookieState = writable(''); //document.
+
+export const cssModal = writable('whiteModal'); //whiteModal , darkModal

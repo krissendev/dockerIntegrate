@@ -33,6 +33,8 @@
     onMount(()=>{
         cookieState.set(document.cookie);
     })
+
+
 </script>
 
 <div class="cookieModalContent"  style="visibility: {visibility};">    
@@ -98,4 +100,8 @@ button{
 }
 .btnDelete{background-color:red;}
 .btnAccept{background-color:lightgreen;}
+
+/**/
+@media screen and (max-width: 540px) {
+}
 </style>

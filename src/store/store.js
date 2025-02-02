@@ -10,3 +10,4 @@ export const cookieConsent = writable(false);
 export const cookieState = writable(''); //document.
 
 export const cssModal = writable('whiteModal'); //whiteModal , darkModal
+export const isMobile = writable('') //BOOL, nav.css max-width: 540px, nav.js

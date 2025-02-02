@@ -2,6 +2,7 @@
 
 // I don't need to use onMount in javascript, since its a loaded function this makes it simpler
     import {onMount} from 'svelte';
+    import {isMobile} from '$store/store.js';
     import {toggleBurger, initOnMount} from '$lib/layout/nav.js'
     import Darkmode from './Darkmode.svelte'
     import SaveCookie from './SaveCookie.svelte'
@@ -18,6 +19,8 @@
 
     //nav resize depends on 'browser', which only is available after mount
     onMount(()=>{
+        isMobile.set(window.screen.width>=540 ? false:true)
+        //window.screen.width;
         initOnMount(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobileModal);
     })
 
@@ -42,10 +45,10 @@
             <Darkmode/>
             <Flags/>
             <SaveCookie/>
+            <CookieConsent/>
         </div>
     </div>
 
-    <CookieConsent/>
     <div name="mobileModal" class="modal" bind:this={elMobileModal}></div><!--Mobile Modal-->
     <!--Cookie Modal-->
     <button aria-hidden="true" class="burger" on:click={handleToggle} bind:this={elMobileMenu}>

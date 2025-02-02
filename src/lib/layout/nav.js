@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-
+import { isMobile } from '$store/store';
 // let elLinks;
 // let toggleBurger;
 // let elMobileMenu;
@@ -55,6 +55,7 @@ function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elModa
     console.log(`resize ${counter}`)
     toggled = false;
     if(window.innerWidth> 540){
+        isMobile.set(false)
         elMobileMenu.classList.remove('active')
         elLinks.style.display  = "flex";
         // elLinks.style.height = "10vh"
@@ -64,6 +65,7 @@ function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elModa
         
     }
     else if(window.innerWidth < 541){
+        isMobile.set(true)
         elMobileMenu.classList.remove('active')
         console.log("return")
         if(elLinks.style.display=="block"){

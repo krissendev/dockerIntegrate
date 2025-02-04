@@ -1,9 +1,22 @@
 <script>
   import {cookieConsentVisible } from '$store/store.js';
-
+  import { get } from 'svelte/store';
   function handleToggle(){
-    cookieConsentVisible.update(value => !value);
+    cookieConsentVisible.update(value => {
+      
+      //when clicked (cookieConsentVisible) !modal -> modal 
+      // which means original modal state or "value" = toggle value as they are opposite to disable scroll when active and enable when modal is turned off
+      toggleBodyScrollable(value);
+      
+      return!value});
+    console.log("toggle: ", get(cookieConsentVisible))
   }
+
+  function toggleBodyScrollable(toggle){
+    //if true enable, else disable. Scroll ability overflow on body
+    document.body.style.overflow = toggle ? 'visible':'hidden';
+  }
+
 </script>
 <!--Modal for cookie conscent-->
 <div style="display:inline-block;">

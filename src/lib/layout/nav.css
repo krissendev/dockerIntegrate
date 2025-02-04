@@ -67,7 +67,7 @@ body {
     position: absolute;
     width:100vh;
     height:100vh;
-    background-color:#ff0000bd
+    /* background-color:#ff0000bd */
 }
 .navDividerLine{
     display:flex;
@@ -102,7 +102,7 @@ body {
         display:none;
         position:absolute;
         /* width:100vw; */
-        height:100vh;
+        height: min-content;
         flex-direction: column; 
         justify-content: center;
         align-items:center;   
@@ -114,9 +114,14 @@ body {
         align-items:center; 
         padding:10%;
     }
+    /* .navMenu{
+         height:100vh; 
+         max-height:100vh; 
+    }  */
     .navLinks a, .navLinks button{
         padding:10%;
     } 
+
     /* .navLinks button{
         background-color: transparent;
         border:none

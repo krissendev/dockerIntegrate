@@ -1,14 +1,17 @@
 <script>
     import { onMount } from 'svelte';
     import { get } from 'svelte/store';
-    import {cookieConsentVisible, sessionPreferences, cookieConsent, cookieState, cssModal} from '$store/store.js';
+    import {cookieConsentVisible, sessionPreferences, cookieConsent, cookieState, cssDarkmodeModal,isMobile} from '$store/store.js';
     import { darkMode } from '$lib/layout/darkmode';
     
     
-
-    $: visibility = $cookieConsentVisible ? 'visible' : 'hidden';
+    // $: modalVisibility= get(isMobile) ? 'hidden':($cookieConsentVisible ? 'visible' : 'hidden'); //modal visible if desktop and consent button toggled
+    $: modalVisibility = $cookieConsentVisible ? 'visible' : 'hidden';
     function handleToggle(){
-        cookieConsentVisible.update(value => !value);
+        cookieConsentVisible.update(value => {
+            toggleBodyScrollable(value);
+            return !value
+        });
     }
     
     //$: currentConsent=get(cookieConsent);
@@ -31,14 +34,26 @@
     }
 
     onMount(()=>{
-        cookieState.set(document.cookie);
+        cookieState.set(document.cookie);        
     })
+
+
+    function toggleBodyScrollable(toggle){
+        //if true enable, else disable. Scroll ability overflow on body
+        document.body.style.overflow = toggle ? 'visible':'hidden';
+    }
 
 
 </script>
 
-<div class="cookieModalContent"  style="visibility: {visibility};">    
-    <div class={`${$cssModal} cookieModal`}></div>
+<!--Desktop | Fill page as a modal-->
+<!-- {#if get(isMobile)}
+
+{:else}
+{/if} -->
+<!--Mobile | Scroll inside navLinks on "second page"-->
+<div class="cookieModalContent"  style="visibility: {modalVisibility};">    
+    <div class={`${$cssDarkmodeModal} cookieModal`}></div>
     <button aria-label="Close Modal Window" class="exitCookieConsent" on:click={handleToggle}>X</button>
     <div class="cookieModalText">
         <h3>Save preferences with Cookies</h3>
@@ -67,6 +82,8 @@
 <style>
 .cookieModalText{
     position:fixed;
+    overflow-y:auto;
+    height:100vh;
     top:50px;
     left:0;
     font-size: larger;
@@ -86,6 +103,7 @@
 .cookieModalContent{
     position:absolute;
     z-index: 2;
+    background-color: rgba(255,0,0,1);
 }    
 .cookieModal{
     /* z-index: 3; */
@@ -101,7 +119,12 @@ button{
 .btnDelete{background-color:red;}
 .btnAccept{background-color:lightgreen;}
 
-/**/
+
 @media screen and (max-width: 540px) {
+    .cookieModalContent{
+        display:flex;
+        background-color: none;
+    }
+    /* .cookieModal{display:none;} */
 }
 </style>

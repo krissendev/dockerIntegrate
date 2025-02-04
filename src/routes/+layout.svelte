@@ -37,7 +37,13 @@
   :global(.projectSvelte){background-color: rgba(0,0,255,0.5);}
   :global(.aboutSvelte){background-color: rgba(0,255,0,0.5);}
   :global(.contactSvelte){background-color: rgba(255,255,0,0.5);}
-  :global(.whiteModal){background-color: rgba(192, 216, 255, 0.95);}
-  :global(.darkModal){background-color: rgba(33, 58, 98, 0.95);}
+  :global(.whiteModal,.whiteModal a,.whiteModal button){
+    color:black;
+    background-color: rgba(192, 216, 255, 0.95);
+  }
+  :global(.darkModal,.darkModal a,.darkModal button){
+    color:white;
+    background-color: rgba(33, 58, 98, 0.95);
+    }
 </style>
 <slot />

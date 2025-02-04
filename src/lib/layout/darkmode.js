@@ -1,5 +1,5 @@
 import { get } from 'svelte/store';
-import {sessionPreferences, cookieConsent, cookieState, cssModal} from '$store/store.js';
+import {sessionPreferences, cookieConsent, cookieState, cssDarkmodeModal} from '$store/store.js';
 /*cookieConsentVisible.update(value => !value);*/
 export const cookieBase = "SameSite=Strict;path=/;";   
 export let darkMode=false; //false means white, true means dark
@@ -69,13 +69,13 @@ function setCanvas(darkmodeValue){
     if(darkmodeValue){
         document.body.style.backgroundColor = 'black';
         document.body.style.color = 'white'; 
-        //cssModal.update(current => current === 'whiteModal' ? 'darkModal' : 'whiteModal');
-        cssModal.set('darkModal');
+        //cssDarkmodeModal.update(current => current === 'whiteModal' ? 'darkModal' : 'whiteModal');
+        cssDarkmodeModal.set('darkModal');
     }
     else if(!darkmodeValue){
         document.body.style.backgroundColor = 'white';
         document.body.style.color = 'black';
-        cssModal.set('whiteModal');
+        cssDarkmodeModal.set('whiteModal');
         
     }
 }

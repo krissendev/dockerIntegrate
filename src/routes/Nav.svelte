@@ -2,7 +2,7 @@
 
 // I don't need to use onMount in javascript, since its a loaded function this makes it simpler
     import {onMount} from 'svelte';
-    import {isMobile} from '$store/store.js';
+    import {isMobile,cssDarkmodeModal} from '$store/store.js';
     import {toggleBurger, initOnMount} from '$lib/layout/nav.js'
     import Darkmode from './Darkmode.svelte'
     import SaveCookie from './SaveCookie.svelte'
@@ -24,6 +24,7 @@
         initOnMount(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobileModal);
     })
 
+    //Burger toggle on mobile only
     function handleToggle(){
         toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu);
     }
@@ -31,25 +32,27 @@
 </script>
 
 <div class="topNav"><!--Top Nav-->
-    <div class="navLinks" bind:this={elLinks}>
+    <!--class={`${$cssDarkmodeModal} navLinks`}-->
+    <div class={`${$cssDarkmodeModal} navLinks`} bind:this={elLinks}>
         <div class="navMenu" bind:this={elNavMenu}>
             <a href="#home">Home</a>
             <a href="#projects">Projects</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>          
+            <!-->Some divider-->
+            <div class="navDividerLine" bind:this={elDivider}></div>
+            <div class="navSettings" bind:this={elSettings}>
+                <a href="/">Aa</a>
+                <Darkmode/>
+                <Flags/>
+                <SaveCookie/>
+            </div>
         </div>
-        <!-->Some divider-->
-        <div class="navDividerLine" bind:this={elDivider}></div>
-        <div class="navSettings" bind:this={elSettings}>
-            <a href="/">Aa</a>
-            <Darkmode/>
-            <Flags/>
-            <SaveCookie/>
-            <CookieConsent/>
-        </div>
+        <CookieConsent/>
     </div>
 
-    <div name="mobileModal" class="modal" bind:this={elMobileModal}></div><!--Mobile Modal-->
+    <!--class={`${$cssDarkmodeModal} modal`}-->
+    <div name="mobileModal" class={`${$cssDarkmodeModal} modal`} bind:this={elMobileModal}></div> <!--Mobile Modal-->
     <!--Cookie Modal-->
     <button aria-hidden="true" class="burger" on:click={handleToggle} bind:this={elMobileMenu}>
         <div></div>

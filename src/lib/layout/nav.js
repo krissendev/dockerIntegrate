@@ -36,7 +36,8 @@ export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elModal,
     else if(!toggled){
         console.log("not toggled")
         
-        elLinks.style.display  = "flex";
+        elLinks.style.display  = "block";
+        
         elNavMenu.style.display  = "flex"; 
         elDivider.style.display  = "flex"; 
         elSettings.style.display  = "flex";

@@ -39,8 +39,11 @@
 
 
     function toggleBodyScrollable(toggle){
-        //if true enable, else disable. Scroll ability overflow on body
-        document.body.style.overflow = toggle ? 'visible':'hidden';
+        //only toggle when in desktop not on mobile
+        if(window.innerWidth < 541){
+            //if true enable, else disable. Scroll ability overflow on body
+            document.body.style.overflow = toggle ? 'visible':'hidden';
+        }
     }
 
 
@@ -81,7 +84,7 @@
 
 <style>
 .cookieModalText{
-    position:fixed;
+     position:fixed; 
     overflow-y:auto;
     height:100vh;
     top:50px;
@@ -124,6 +127,12 @@ button{
     .cookieModalContent{
         display:flex;
         background-color: none;
+    }
+    .cookieModal{
+        height:auto;
+    }
+    .cookieModalText{
+        position:static;
     }
     /* .cookieModal{display:none;} */
 }

@@ -2,7 +2,7 @@
 
 // I don't need to use onMount in javascript, since its a loaded function this makes it simpler
     import {onMount} from 'svelte';
-    import {isMobile,cssDarkmodeModal} from '$store/store.js';
+    import {isMobile,cssDarkmodeModal,cookieModalOverflow} from '$store/store.js';
     import {toggleBurger, initOnMount} from '$lib/layout/nav.js'
     import Darkmode from './Darkmode.svelte'
     import SaveCookie from './SaveCookie.svelte'
@@ -48,12 +48,15 @@
                 <SaveCookie/>
             </div>
         </div>
+        <!--Cookie Modal-->
         <CookieConsent/>
     </div>
 
     <!--class={`${$cssDarkmodeModal} modal`}-->
-    <div name="mobileModal" class={`${$cssDarkmodeModal} modal`} bind:this={elMobileModal}></div> <!--Mobile Modal-->
-    <!--Cookie Modal-->
+    <!--Mobile Modal-->
+    <div name="mobileModal" class={`${$cssDarkmodeModal} modal`} style={`display:${$cookieModalOverflow}`} bind:this={elMobileModal}></div> 
+
+    
     <button aria-hidden="true" class="burger" on:click={handleToggle} bind:this={elMobileMenu}>
         <div></div>
         <div></div>

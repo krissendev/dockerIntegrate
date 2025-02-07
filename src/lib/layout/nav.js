@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import { isMobile } from '$store/store';
+import { isMobile, cookieModalOverflow, cookieConsentVisible } from '$store/store';
 // let elLinks;
 // let toggleBurger;
 // let elMobileMenu;
@@ -57,6 +57,11 @@ function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elModa
     toggled = false;
     if(window.innerWidth> 540){
         isMobile.set(false)
+        
+        cookieModalOverflow.set('none')
+        cookieConsentVisible.set(false)
+        document.body.style.overflow = 'visible'
+        
         elMobileMenu.classList.remove('active')
         elLinks.style.display  = "flex";
         // elLinks.style.height = "10vh"
@@ -67,13 +72,22 @@ function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elModa
     }
     else if(window.innerWidth < 541){
         isMobile.set(true)
+
+        cookieModalOverflow.set('none')
+        cookieConsentVisible.set(false)
+        document.body.style.overflow = 'visible'
+
         elMobileMenu.classList.remove('active')
         console.log("return")
-        if(elLinks.style.display=="block"){
-            console.log("contains")
-            elLinks.style.display= '';
-            elLinks.style.display  = "hidden";
-        }
+        elLinks.style.display  = "none";
+        elNavMenu.style.display  = "none"; 
+        elDivider.style.display  = "none"; 
+        elSettings.style.display  = "none";
+
+        elMobileMenu.classList.remove('active')
+        elModal.style.display  = "none";
+        docBody.style.overflow = "visible"
+        
         
     }     
 }

@@ -1,14 +1,21 @@
 <script>
     import { onMount } from 'svelte';
     import { get } from 'svelte/store';
-    import {cookieConsentVisible, sessionPreferences, cookieConsent, cookieState, cssDarkmodeModal,isMobile} from '$store/store.js';
+    import {cookieConsentVisible, sessionPreferences, cookieConsent, 
+            cookieState, cssDarkmodeModal,isMobile, cookieModalOverflow} 
+            from '$store/store.js';
+
     import { darkMode } from '$lib/layout/darkmode';
     
     
     // $: modalVisibility= get(isMobile) ? 'hidden':($cookieConsentVisible ? 'visible' : 'hidden'); //modal visible if desktop and consent button toggled
-    $: modalVisibility = $cookieConsentVisible ? 'visible' : 'hidden';
+    
+    
+
+    $: modalVisibility = $cookieConsentVisible ? 'visible' : 'none';
     function handleToggle(){
         cookieConsentVisible.update(value => {
+            console.log("cookieconsent:", value)
             toggleBodyScrollable(value);
             return !value
         });
@@ -33,18 +40,34 @@
         //currentConsent=get(cookieConsent);  
     }
 
+    
     onMount(()=>{
         cookieState.set(document.cookie);        
     })
 
 
-    function toggleBodyScrollable(toggle){
-        //only toggle when in desktop not on mobile
-        if(window.innerWidth < 541){
-            //if true enable, else disable. Scroll ability overflow on body
-            document.body.style.overflow = toggle ? 'visible':'hidden';
-        }
+  function toggleBodyScrollable(toggle){
+    //only toggle when in desktop not on mobile
+    if(window.innerWidth > 540){
+      //if true enable, else disable. Scroll ability overflow on body
+      document.body.style.overflow = toggle ? 'visible':'hidden';
     }
+
+    //Bad workaround css hack to fix scroll bleed inside mobile burgermenu, Find better fix later?!!
+    //if modalVisibility is true(actually false as it's switching from true->false) set mobileModal.position=fixed
+    else if(modalVisibility){
+        console.log("modal visible")
+        cookieModalOverflow.set("none")
+    }
+    //else if modalVisibility is false(actually true as it's switching from false->true) set mobileModal.position=absolute
+    else if(!modalVisibility){
+        console.log("modal NOT visible")
+      cookieModalOverflow.set("block")
+    }
+    
+    console.log("modal visible", modalVisibility)
+
+  }
 
 
 </script>
@@ -55,10 +78,15 @@
 {:else}
 {/if} -->
 <!--Mobile | Scroll inside navLinks on "second page"-->
-<div class="cookieModalContent"  style="visibility: {modalVisibility};">    
+<div class="cookieModalContent"  style="display: {modalVisibility};">    
     <div class={`${$cssDarkmodeModal} cookieModal`}></div>
+    {#if !$isMobile}
+    <p>Is mobile exit?</p>
     <button aria-label="Close Modal Window" class="exitCookieConsent" on:click={handleToggle}>X</button>
+    {/if}
     <div class="cookieModalText">
+        <p>modal visibility; {$cookieConsentVisible}</p>
+        <p>is Mobile ? {$isMobile}</p>
         <h3>Save preferences with Cookies</h3>
         <p>We respect your data and right to privacy. Our website does not collect nor track your personal data and has no cookies enabled by default.<br>
             All cookies, if enabled by you, are stored on your local device only and are used solely to remember settings of your choosing, enhancing your user experience.<br>
@@ -117,6 +145,7 @@
     height:100vh;
 }
 button{
+    z-index:3;
     padding: 10px 20px;
 }
 .btnDelete{background-color:red;}

@@ -8,24 +8,16 @@
     import { darkMode } from '$lib/layout/darkmode';
     
     
-    // $: modalVisibility= get(isMobile) ? 'hidden':($cookieConsentVisible ? 'visible' : 'hidden'); //modal visible if desktop and consent button toggled
-    
-    
-
     $: modalVisibility = $cookieConsentVisible ? 'visible' : 'none';
     function handleToggle(){
         cookieConsentVisible.update(value => {
-            console.log("cookieconsent:", value)
             toggleBodyScrollable(value);
             return !value
         });
     }
     
-    //$: currentConsent=get(cookieConsent);
     function consentToCookie(){
         cookieConsent.update(value => {return true});
-        //currentConsent=get(cookieConsent);  
-        //console.log(currentConsent)
     }
 
     export const cookieBase = "SameSite=Strict;path=/;";
@@ -56,37 +48,26 @@
     //Bad workaround css hack to fix scroll bleed inside mobile burgermenu, Find better fix later?!!
     //if modalVisibility is true(actually false as it's switching from true->false) set mobileModal.position=fixed
     else if(modalVisibility){
-        console.log("modal visible")
         cookieModalOverflow.set("none")
     }
     //else if modalVisibility is false(actually true as it's switching from false->true) set mobileModal.position=absolute
     else if(!modalVisibility){
-        console.log("modal NOT visible")
-      cookieModalOverflow.set("block")
+        console.log("cookieModalOverflow")
+        cookieModalOverflow.set("block")
     }
-    
-    console.log("modal visible", modalVisibility)
-
   }
 
 
 </script>
 
-<!--Desktop | Fill page as a modal-->
-<!-- {#if get(isMobile)}
 
-{:else}
-{/if} -->
 <!--Mobile | Scroll inside navLinks on "second page"-->
 <div class="cookieModalContent"  style="display: {modalVisibility};">    
     <div class={`${$cssDarkmodeModal} cookieModal`}></div>
     {#if !$isMobile}
-    <p>Is mobile exit?</p>
-    <button aria-label="Close Modal Window" class="exitCookieConsent" on:click={handleToggle}>X</button>
+        <button aria-label="Close Modal Window" class="exitCookieConsent" on:click={handleToggle}>X</button>
     {/if}
     <div class="cookieModalText">
-        <p>modal visibility; {$cookieConsentVisible}</p>
-        <p>is Mobile ? {$isMobile}</p>
         <h3>Save preferences with Cookies</h3>
         <p>We respect your data and right to privacy. Our website does not collect nor track your personal data and has no cookies enabled by default.<br>
             All cookies, if enabled by you, are stored on your local device only and are used solely to remember settings of your choosing, enhancing your user experience.<br>
@@ -112,8 +93,8 @@
 
 <style>
 .cookieModalText{
-     position:fixed; 
-    overflow-y:auto;
+    position:fixed; 
+    /* overflow-y:auto; */
     height:100vh;
     top:50px;
     left:0;

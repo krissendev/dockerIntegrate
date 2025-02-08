@@ -3,26 +3,26 @@ import { isMobile, cookieModalOverflow, cookieConsentVisible } from '$store/stor
 // let elLinks;
 // let toggleBurger;
 // let elMobileMenu;
-// let elModal;
+// let elMobileModal;
 
 let toggled = false;
 let docBody;
 
 // Add resize event listener only in the browser, DOM reference, after SvelteOnMount makes "browser" available
-export function initOnMount(elLinks, elNavMenu, elDivider, elSettings,elMobileMenu, elModal){
+
+export function initOnMount(elLinks, elNavMenu, elDivider, elSettings,elMobileMenu, elMobileModal){
     if(browser) {
         docBody = document.body;
         window.addEventListener('resize', () => {
             if (browser) {
-                resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elModal);
+                resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobileModal);
             }
         });
     }
 }
 
-export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elModal, elMobileMenu) {
+export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu) {
     if(toggled){
-        console.log("toggled")
 
         elLinks.style.display  = "none";
         elNavMenu.style.display  = "none"; 
@@ -30,11 +30,10 @@ export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elModal,
         elSettings.style.display  = "none";
 
         elMobileMenu.classList.remove('active')
-        elModal.style.display  = "none";
+        elMobileModal.style.display  = "none";
         docBody.style.overflow = "visible"
     }
     else if(!toggled){
-        console.log("not toggled")
         
         elLinks.style.display  = "block";
         
@@ -44,16 +43,16 @@ export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elModal,
 
         elMobileMenu.classList.toggle('active')
         // elLinks.style.height = "100vh";
-        elModal.style.display  = "block";
+        elMobileModal.style.display  = "none";
         docBody.style.overflow = "hidden";
     }
     toggled=!toggled
 }
 
 let counter = 0;
-function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elModal){
+function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobileModal){
     counter++;
-    console.log(`resize ${counter}`)
+    // console.log(`resize ${counter}`)
     toggled = false;
     if(window.innerWidth> 540){
         isMobile.set(false)
@@ -65,7 +64,7 @@ function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elModa
         elMobileMenu.classList.remove('active')
         elLinks.style.display  = "flex";
         // elLinks.style.height = "10vh"
-        elModal.style.display  = "none";
+        elMobileModal.style.display  = "none";
         docBody.style.overflow = "visible"
 
         
@@ -78,14 +77,13 @@ function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elModa
         document.body.style.overflow = 'visible'
 
         elMobileMenu.classList.remove('active')
-        console.log("return")
         elLinks.style.display  = "none";
         elNavMenu.style.display  = "none"; 
         elDivider.style.display  = "none"; 
         elSettings.style.display  = "none";
 
         elMobileMenu.classList.remove('active')
-        elModal.style.display  = "none";
+        elMobileModal.style.display  = "none";
         docBody.style.overflow = "visible"
         
         
@@ -98,7 +96,3 @@ function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elModa
    
 
 
-
-export function testfunc(){
-    console.log("hello from nav.js")
-}

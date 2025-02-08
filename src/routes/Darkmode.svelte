@@ -6,7 +6,7 @@
     //DELETE THIS!!! Experimental
     let isVisited = false
     
-    $: if($cookieConsent){
+    $: if($cookieConsent===true){
         initOnMount();
     }
     

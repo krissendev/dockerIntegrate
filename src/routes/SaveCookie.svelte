@@ -1,15 +1,16 @@
 <script>
-  import {cookieConsentVisible, cookieModalOverflow } from '$store/store.js';
+  import {cookieConsentVisible, cookieModalOverflow, cookieConsent } from '$store/store.js';
   import { get } from 'svelte/store';
-  function handleToggle(){
+  
+  function handleToggle(event){
+    //Prevents default input css check, so that check is driven by /store/cookieConsent
+    event.preventDefault();
     cookieConsentVisible.update(value => {
-      
       //when clicked (cookieConsentVisible) !modal -> modal 
       // which means original modal state or "value" = toggle value as they are opposite to disable scroll when active and enable when modal is turned off
       toggleBodyScrollable(value);
       
       return!value});
-    console.log("toggle: ", get(cookieConsentVisible))
   }
 
   $: modalVisibility = $cookieConsentVisible
@@ -24,25 +25,21 @@
     //Bad workaround css hack to fix scroll bleed inside mobile burgermenu, Find better fix later?!!
     //if modalVisibility is true(actually false as it's switching from true->false) set mobileModal.position=fixed
     else if(modalVisibility){
-      console.log("modal visible")
       cookieModalOverflow.set("none")
     }
     //else if modalVisibility is false(actually true as it's switching from false->true) set mobileModal.position=absolute
     else if(!modalVisibility){
-      console.log("modal NOT visible")
+      console.log("cookieModalOverflow")
       cookieModalOverflow.set("block")
     }
-    
-    console.log("modal visible", modalVisibility)
-
-  }
+}
 
 </script>
 <!--Modal for cookie conscent-->
 <div style="display:inline-block;">
   <div class="switch-container">
     <label class="switch">
-      <input type="checkbox"on:click={handleToggle}>
+      <input type="checkbox" class="sliderChecked" checked={$cookieConsent} on:click={handleToggle}>
       <span class="slider"></span>
     </label>
   </div>

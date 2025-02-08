@@ -6,7 +6,6 @@ export let darkMode=false; //false means white, true means dark
 
 
 export function initOnMount(){
-    console.log("init")
     if(!document.cookie){
 
         //Match "store" darkmode setting with browser darkmode setting
@@ -14,11 +13,7 @@ export function initOnMount(){
         
         sessionPreferences.set({ ...sessionPreferences, darkMode: browserDarkmode});
         
-
-        console.log(browserDarkmode);
-        
         const cookieEnabled = get(cookieConsent); 
-        console.log("Reactive enabled?", cookieEnabled)
         if(cookieEnabled){
             //cookie initiliazation
             setCookieDarkMode(browserDarkmode)

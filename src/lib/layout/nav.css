@@ -103,6 +103,7 @@ body {
         position:absolute;
         /* width:100vw; */
         height: min-content;
+        overflow-y:auto;
         flex-direction: column; 
         justify-content: center;
         align-items:center;   

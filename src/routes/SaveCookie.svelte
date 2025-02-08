@@ -1,5 +1,6 @@
 <script>
   import {cookieConsentVisible, cookieModalOverflow, cookieConsent } from '$store/store.js';
+  import {modalToggleBodyScroll} from '$lib/layout/modal.js'
   import { get } from 'svelte/store';
   
   function handleToggle(event){
@@ -8,31 +9,32 @@
     cookieConsentVisible.update(value => {
       //when clicked (cookieConsentVisible) !modal -> modal 
       // which means original modal state or "value" = toggle value as they are opposite to disable scroll when active and enable when modal is turned off
-      toggleBodyScrollable(value);
+      // toggleBodyScrollable(value);
+      modalToggleBodyScroll(value, modalVisibility);
       
       return!value});
   }
 
   $: modalVisibility = $cookieConsentVisible
 
-  function toggleBodyScrollable(toggle){
-    //only toggle when in desktop not on mobile
-    if(window.innerWidth > 540){
-      //if true enable, else disable. Scroll ability overflow on body
-      document.body.style.overflow = toggle ? 'visible':'hidden';
-    }
+//   function toggleBodyScrollable(toggle){
+//     //only toggle when in desktop not on mobile
+//     if(window.innerWidth > 540){
+//       //if true enable, else disable. Scroll ability overflow on body
+//       document.body.style.overflow = toggle ? 'visible':'hidden';
+//     }
 
-    //Bad workaround css hack to fix scroll bleed inside mobile burgermenu, Find better fix later?!!
-    //if modalVisibility is true(actually false as it's switching from true->false) set mobileModal.position=fixed
-    else if(modalVisibility){
-      cookieModalOverflow.set("none")
-    }
-    //else if modalVisibility is false(actually true as it's switching from false->true) set mobileModal.position=absolute
-    else if(!modalVisibility){
-      console.log("cookieModalOverflow")
-      cookieModalOverflow.set("block")
-    }
-}
+//     //Bad workaround css hack to fix scroll bleed inside mobile burgermenu, Find better fix later?!!
+//     //if modalVisibility is true(actually false as it's switching from true->false) set mobileModal.position=fixed
+//     else if(modalVisibility){
+//       cookieModalOverflow.set("none")
+//     }
+//     //else if modalVisibility is false(actually true as it's switching from false->true) set mobileModal.position=absolute
+//     else if(!modalVisibility){
+//       console.log("cookieModalOverflow")
+//       cookieModalOverflow.set("block")
+//     }
+// }
 
 </script>
 <!--Modal for cookie conscent-->

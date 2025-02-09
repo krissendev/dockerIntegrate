@@ -99,17 +99,15 @@ body {
     }
     
     .navLinks{
-        display:none;
         position:absolute;
-        /* width:100vw; */
         height: min-content;
         overflow-y:auto;
         flex-direction: column; 
         justify-content: center;
         align-items:center;   
     }
+    .navMenu{display:none;}
     .navSettings, .navDividerLine, .navMenu{
-        display:none;
         flex-direction: column; 
         font-size:x-large;
         align-items:center; 

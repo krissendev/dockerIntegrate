@@ -26,9 +26,6 @@ export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobile
 
         elLinks.style.display  = "none";
         elNavMenu.style.display  = "none"; 
-        elDivider.style.display  = "none"; 
-        elSettings.style.display  = "none";
-
         elMobileMenu.classList.remove('active')
         elMobileModal.style.display  = "none";
         docBody.style.overflow = "visible"
@@ -38,8 +35,8 @@ export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobile
         elLinks.style.display  = "block";
         
         elNavMenu.style.display  = "flex"; 
-        elDivider.style.display  = "flex"; 
-        elSettings.style.display  = "flex";
+        // elDivider.style.display  = "flex"; 
+        // elSettings.style.display  = "flex";
 
         elMobileMenu.classList.toggle('active')
         // elLinks.style.height = "100vh";
@@ -60,10 +57,9 @@ function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobi
         cookieModalOverflow.set('none')
         cookieConsentVisible.set(false)
         document.body.style.overflow = 'visible'
-        
+        elNavMenu.style.display='flex'
         elMobileMenu.classList.remove('active')
         elLinks.style.display  = "flex";
-        // elLinks.style.height = "10vh"
         elMobileModal.style.display  = "none";
         docBody.style.overflow = "visible"
 
@@ -79,9 +75,6 @@ function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobi
         elMobileMenu.classList.remove('active')
         elLinks.style.display  = "none";
         elNavMenu.style.display  = "none"; 
-        elDivider.style.display  = "none"; 
-        elSettings.style.display  = "none";
-
         elMobileMenu.classList.remove('active')
         elMobileModal.style.display  = "none";
         docBody.style.overflow = "visible"

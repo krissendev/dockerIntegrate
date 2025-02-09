@@ -5,7 +5,7 @@
 
     let cookieLang = '';
     let content;
-
+    console.log("#1 typeof: cookieLang - ", typeof(cookieLang))
 
     //Language Priority
     //URL
@@ -18,10 +18,12 @@
     ///routes/[...slug]/+page.js handles "/other"
 
     onMount(async ()=>{
-        
-        //cookie lang
         cookieLang = await languageInitOnMount();
-        content =await jsonfile[cookieLang].content;
+        
+        //if cookieLang has value "lang"
+        if(cookieLang){
+            content =await jsonfile[cookieLang].content;
+        }
     })
 </script>
 <h3>Lang</h3>

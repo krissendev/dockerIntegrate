@@ -9,7 +9,6 @@
     cookieConsentVisible.update(value => {
       //when clicked (cookieConsentVisible) !modal -> modal 
       // which means original modal state or "value" = toggle value as they are opposite to disable scroll when active and enable when modal is turned off
-      // toggleBodyScrollable(value);
       modalToggleBodyScroll(value, modalVisibility);
       
       return!value});

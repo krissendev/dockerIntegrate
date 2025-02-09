@@ -8,9 +8,10 @@
     import { darkMode } from '$lib/layout/darkmode';
     
     
-    $: modalVisibility = $cookieConsentVisible ? 'visible' : 'none';
+    $: modalVisibility = $cookieConsentVisible ? 'flex' : 'none';
     function handleToggle(){
         cookieConsentVisible.update(value => {
+            //overflow
             modalToggleBodyScroll(value, modalVisibility);
             return !value
         });
@@ -62,8 +63,8 @@
 
 
 <!--Mobile | Scroll inside navLinks on "second page"-->
-<div class="cookieModalContent"  style="display: {modalVisibility};">    
-    <div class={`${$cssDarkmodeModal} cookieModal`}></div>
+<div class={`${$cssDarkmodeModal} cookieModalContent`}  style="display: {modalVisibility};">    
+    <div class={` cookieModal`}></div>
     {#if !$isMobile}
         <button aria-label="Close Modal Window" class="exitCookieConsent" on:click={handleToggle}>X</button>
     {/if}
@@ -94,7 +95,6 @@
 <style>
 .cookieModalText{
     position:fixed; 
-    /* overflow-y:auto; */
     height:100vh;
     top:50px;
     left:0;
@@ -108,14 +108,11 @@
     position:fixed;
     right:0;
     margin: 5px;
-    /* width:40px;
-    height:40px; */
     z-index:3;
 }
 .cookieModalContent{
     position:absolute;
     z-index: 2;
-    background-color: rgba(255,0,0,1);
 }    
 .cookieModal{
     /* z-index: 3; */
@@ -144,6 +141,5 @@ button{
     .cookieModalText{
         position:static;
     }
-    /* .cookieModal{display:none;} */
 }
 </style>

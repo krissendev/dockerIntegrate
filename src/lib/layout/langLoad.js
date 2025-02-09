@@ -8,6 +8,7 @@
 //await browser for cookies
 export function languageInitOnMount(){
     const cookies = document.cookie.split(';');
+    console.log(cookies)
     for(let cookie of cookies){
         //sepparates key-values on "=" and removes any whitespace
         const [cookieName, cookieValue] = cookie.split('=').map((arrElement)=> arrElement.trim());
@@ -16,6 +17,7 @@ export function languageInitOnMount(){
             return cookieValue;
         }
     }
+    return undefined;
 }
 const browserLangMap={
     "no":"no","nb":"no","nn":"no","se-NO":"no","sv-SE":"no", "da-DK":"no", "fi-FI":"no",

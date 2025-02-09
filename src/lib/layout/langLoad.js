@@ -8,7 +8,6 @@
 //await browser for cookies
 export function languageInitOnMount(){
     const cookies = document.cookie.split(';');
-    console.log(cookies)
     for(let cookie of cookies){
         //sepparates key-values on "=" and removes any whitespace
         const [cookieName, cookieValue] = cookie.split('=').map((arrElement)=> arrElement.trim());
@@ -43,9 +42,11 @@ export function parseLangAndPath(url){
         else if(urlRouteLangMap[segment && !path]){
             lang=segment;
         }
-        if(lang && path)break;
-        if (!lang) lang = "en"; // Default language
-        if (!path) path = "home"; // Default route
+        console.log("segment:", segment)
+        if(lang && path){console.log("#1");break};
+        if (!lang) {console.log("#2");lang = "en";} // Default language
+        if (!path){console.log("#3"); path = "home";} // Default route
+        console.log("#4");
         return [lang, path];
     }
     console.log(`loaded:${url}`, urlString.length)

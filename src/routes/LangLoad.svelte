@@ -5,7 +5,6 @@
 
     let cookieLang = '';
     let content;
-    console.log("#1 typeof: cookieLang - ", typeof(cookieLang))
 
     //Language Priority
     //URL

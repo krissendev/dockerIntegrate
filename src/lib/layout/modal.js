@@ -11,5 +11,3 @@ export function modalToggleBodyScroll(toggle, modalVisibility){
       cookieModalOverflow.set("block")
     }
 }
-
-export function test(){console.log("hello")}

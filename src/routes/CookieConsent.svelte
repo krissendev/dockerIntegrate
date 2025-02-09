@@ -63,8 +63,8 @@
 
 
 <!--Mobile | Scroll inside navLinks on "second page"-->
-<div class={`${$cssDarkmodeModal} cookieModalContent`}  style="display: {modalVisibility};">    
-    <div class={` cookieModal`}></div>
+<div class={` cookieModalContent`}  style="display: {modalVisibility};">    
+    <div class={`${$cssDarkmodeModal} cookieModal`}></div>
     {#if !$isMobile}
         <button aria-label="Close Modal Window" class="exitCookieConsent" on:click={handleToggle}>X</button>
     {/if}

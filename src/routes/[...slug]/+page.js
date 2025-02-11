@@ -12,7 +12,7 @@ export function load({params}){
     }
         return {
 			title: 'Hello world!',
-			content: `Current route does not exist: ${url}`
+			content: `Current route does not exist: ${url}, path: /${lang}/${path}`
 		};
 
 }

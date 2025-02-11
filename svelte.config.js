@@ -8,7 +8,8 @@ const config = {
 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 		adapter: adapter(),
 		alias:{
-			$store: path.resolve('./src/store')
+			$store: path.resolve('./src/store'), 
+			$styles: path.resolve('./src/styles')
 		}
 	}
 };

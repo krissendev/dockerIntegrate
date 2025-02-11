@@ -21,6 +21,7 @@
         
         //if cookieLang has value "lang"
         if(cookieLang){
+            console.log("cookie lang:", cookielang)
             content =await jsonfile[cookieLang].content;
         }
     })

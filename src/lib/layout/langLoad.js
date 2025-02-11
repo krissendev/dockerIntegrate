@@ -35,20 +35,21 @@ export function parseLangAndPath(url){
     const urlSegments = url.split("/");
     let lang=''
     let path=''
+    console.log(urlSegments);
     for (const segment of urlSegments){
+        console.log("current segment; ", segment)
         if(urlRoutePathMap[segment && !lang]){
+            console.log("urlRoutePathMap ", segment)
             path=segment;
         }
         else if(urlRouteLangMap[segment && !path]){
+            console.log("urlRouteLangMap ", segment)
             lang=segment;
         }
-        console.log("segment:", segment)
-        if(lang && path){console.log("#1");break};
-        if (!lang) {console.log("#2");lang = "en";} // Default language
-        if (!path){console.log("#3"); path = "home";} // Default route
-        console.log("#4");
-        return [lang, path];
+
     }
-    console.log(`loaded:${url}`, urlString.length)
-    return null;
+    if(lang && path){console.log("#1");return [lang, path];};
+    if (!lang) {console.log("#2");return ["en", path];} // Default language
+    if (!path){console.log("#3"); return [lang, "home"];} // Default route
+    else{return ["en", "home"];}
 }

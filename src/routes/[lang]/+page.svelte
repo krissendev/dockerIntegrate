@@ -1,1 +1,4 @@
-<h3>LANG</h3>
+<script>
+    import Page from '$pages/+page.svelte'
+</script>
+<Page/>

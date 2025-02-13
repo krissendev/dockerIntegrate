@@ -9,7 +9,8 @@ const config = {
 		adapter: adapter(),
 		alias:{
 			$store: path.resolve('./src/store'), 
-			$styles: path.resolve('./src/styles')
+			$styles: path.resolve('./src/styles'),
+			$pages: path.resolve('./src/lib/pages')
 		}
 	}
 };

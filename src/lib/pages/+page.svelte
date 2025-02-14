@@ -1,13 +1,18 @@
 <script>
-import Nav from './Nav.svelte'
-import LangLoad from './LangLoad.svelte'
+    import Nav from './Nav.svelte'
+    import LangLoad from './LangLoad.svelte'
 
-import Home from './Home.svelte'
-import Projects from './Projects.svelte'
-import About from './About.svelte'
-import Contact from './Contact.svelte'
+    import Home from './Home.svelte'
+    import Projects from './Projects.svelte'
+    import About from './About.svelte'
+    import Contact from './Contact.svelte'
+    import { page } from '$app/state';
+
+    export let prop;
 
 </script>
+<div>+page.svelte Component, language URL; {prop}</div>
+
 <Nav/>
 <LangLoad />
 <Home id="home"/>

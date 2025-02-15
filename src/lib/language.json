@@ -1,10 +1,25 @@
 {
     "":{"content":"something went wrong..."},
     "no":{
-        "content":"NORSK Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas sapien turpis, eget egestas arcu finibus vel. Nunc blandit, odio interdum bibendum porta, augue nisl lacinia urna, non pharetra nisi ante quis enim. Donec interdum semper dignissim. Aliquam erat volutpat. Fusce porttitor lacus sed massa sagittis, ut eleifend leo pulvinar. Etiam in posuere nunc. Praesent non ipsum finibus, accumsan odio in, laoreet tellus."
+        "content":"NORSK Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas sapien turpis, eget egestas arcu finibus vel. Nunc blandit, odio interdum bibendum porta, augue nisl lacinia urna, non pharetra nisi ante quis enim. Donec interdum semper dignissim. Aliquam erat volutpat. Fusce porttitor lacus sed massa sagittis, ut eleifend leo pulvinar. Etiam in posuere nunc. Praesent non ipsum finibus, accumsan odio in, laoreet tellus.",
+        "home":"Hjem innhold",
+        "about":"Om innhold",
+        "project": "Prosjekt innhold",
+        "contact":"Kontakt innhold"
     },
     "en":{
-        "content":"ENGLISH Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas sapien turpis, eget egestas arcu finibus vel. Nunc blandit, odio interdum bibendum porta, augue nisl lacinia urna, non pharetra nisi ante quis enim. Donec interdum semper dignissim. Aliquam erat volutpat. Fusce porttitor lacus sed massa sagittis, ut eleifend leo pulvinar. Etiam in posuere nunc. Praesent non ipsum finibus, accumsan odio in, laoreet tellus."
+        "content":"ENGLISH Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas sapien turpis, eget egestas arcu finibus vel. Nunc blandit, odio interdum bibendum porta, augue nisl lacinia urna, non pharetra nisi ante quis enim. Donec interdum semper dignissim. Aliquam erat volutpat. Fusce porttitor lacus sed massa sagittis, ut eleifend leo pulvinar. Etiam in posuere nunc. Praesent non ipsum finibus, accumsan odio in, laoreet tellus.",
+        "home":"Home content",
+        "about":"About content",
+        "project": "Project content",
+        "contact":"Contact content"
+    },
+    "de":{
+        "content":"ENGLISH Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas sapien turpis, eget egestas arcu finibus vel. Nunc blandit, odio interdum bibendum porta, augue nisl lacinia urna, non pharetra nisi ante quis enim. Donec interdum semper dignissim. Aliquam erat volutpat. Fusce porttitor lacus sed massa sagittis, ut eleifend leo pulvinar. Etiam in posuere nunc. Praesent non ipsum finibus, accumsan odio in, laoreet tellus.",
+        "home":"Zuhause inhalt",
+        "about":"Über mich inhalt",
+        "project": " Projekt inhalt",
+        "contact":"Kontakt inhalt"
     }
     
 }

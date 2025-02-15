@@ -11,8 +11,11 @@ export function initOnMount(){
         //Match "store" darkmode setting with browser darkmode setting
         const browserDarkmode = window.matchMedia("(prefers-color-scheme:dark)").matches;
         
-        sessionPreferences.set({ ...sessionPreferences, darkMode: browserDarkmode});
         
+        sessionPreferences.update(value=>{
+            return{...value, darkMode:browserDarkmode}
+        });
+
         const cookieEnabled = get(cookieConsent); 
         if(cookieEnabled){
             //cookie initiliazation

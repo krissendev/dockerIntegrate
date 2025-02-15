@@ -8,6 +8,7 @@
     import Contact from './Contact.svelte'
     import { page } from '$app/state';
 
+    //From routing
     export let prop;
 
 </script>
@@ -15,6 +16,9 @@
 
 <Nav/>
 <LangLoad />
+
+<!--<Page prop={data.lang}/>-->
+
 <Home id="home"/>
 <Projects id="projects"/>
 <About id="about"/>

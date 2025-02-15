@@ -15,3 +15,11 @@ export const isMobile = writable(false) //BOOL, nav.css max-width: 540px, nav.js
 
 //prevent burgermenu scroll bleed/overflow, toggles Nav/mobileModal.display(none|block)
 export const cookieModalOverflow = writable('none')
+
+
+//TODO Create lazy loading for language data?
+export const langdataHome =writable('')
+export const langdataHome1 =writable('')
+export const langdataAbout =writable('')
+export const langdataProject =writable('')
+export const langdataContact =writable('')

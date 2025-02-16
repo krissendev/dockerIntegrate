@@ -1,5 +1,8 @@
 <script>
     import { onMount } from 'svelte';
+    import { goto } from '$app/navigation';
+    import {sessionPreferences} from '$store/store.js';
+    import { loadLanguage} from '$lib/layout/langLoad.js'
     // import { createEventDispatcher } from 'svelte';
     // const dispatch = createEventDispatcher();
 
@@ -13,7 +16,7 @@
     let selectedLanguageText;
 
     let languageClass=""
-    let setLang;
+    let language;
 
     const languageMap = {
     'en': 'en',
@@ -26,19 +29,19 @@
     };
 
     // let value;
-    // $: value = $setLang;
+    // $: value = $language;
 
     onMount(() => {
         //inline value for button toggle
         selectedLanguageBtn.value = "false";
 
         //default flag selected
-        setLang = languageMap[languageCode];
+        language = languageMap[languageCode];
         
         //dispatch('update', event.target.value);
 
-        languageClass = `flag_icon ${setLang}`
-        selectedLanguageText.innerHTML = `${setLang}`
+        languageClass = `flag_icon ${language}`
+        selectedLanguageText.innerHTML = `${language}`
 
 
         selectedLanguageBtn.addEventListener('click', ()=>{
@@ -69,25 +72,31 @@
         languageLinkEn.addEventListener('click', ()=>{
             languageClass = `flag_icon en`;
             selectedLanguageText.innerHTML = `en`;
-            setLang = `en`;
+            language = `en`;
 
             //deselect dropdown
             selectedLanguageBtn.value = false;
             selectedLanguageBtn.style.backgroundColor = null;
             languageList.style.visibility = "hidden";
             
+            //update content
+            setLanguage(language)
+
             // const newUrl = `${window.location.pathname}/lang/en`;
             // window.history.pushState(null, '', newUrl);
         })
         languageLinkNo.addEventListener('click', ()=>{
             languageClass = `flag_icon no`;
             selectedLanguageText.innerHTML = `no`;
-            setLang = `no`;
+            language = `no`;
 
             //deselect dropdown
             selectedLanguageBtn.value = false;
             selectedLanguageBtn.style.backgroundColor = null;
             languageList.style.visibility = "hidden";
+
+            //update content
+            setLanguage(language)
 
             // const newUrl = `${window.location.pathname}/lang/no`;
             // window.history.pushState(null, '', newUrl);
@@ -98,6 +107,21 @@
         })
 
     })
+
+    function setLanguage(language){
+        //update url
+        sessionPreferences.update(value=>{
+                return{...value, lang:language}
+            });
+        
+        //update store data
+        loadLanguage();
+
+        //placeholder /en /no , get url and map #, /[...slug], /[lang] etc afterwards
+        goto(`/${language}`);
+    }
+
+
 </script>
 <!-- <textarea bind:value={language}></textarea> -->
 

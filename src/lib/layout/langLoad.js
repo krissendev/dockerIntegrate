@@ -4,6 +4,9 @@
 //Cookie
 //BrowserSetting
 //En
+import jsonfile from '$lib/language.json';
+import {langdataHome, langdataHome1, langdataAbout, langdataProject, langdataContact, sessionPreferences} from '$store/store.js';
+import {get} from 'svelte/store';
 
 //await browser for cookies
 export function languageInitOnMount(){
@@ -18,6 +21,39 @@ export function languageInitOnMount(){
     }
     return undefined;
 }
+
+let language;
+let languageContent;
+export async function loadLanguage(){
+    
+    language = get(sessionPreferences).lang;
+    console.log("loadLang;", language)
+    //cookieLang = await languageInitOnMount();
+    //cookieLang="no";//
+    //if cookieLang has value "lang"
+    if(language){
+        console.log("cookie lang:", language)
+        languageContent =await jsonfile[language].content;
+        
+        //length iterator into store ?
+        const langContentHome1 = await jsonfile[language].home;
+        const langContentAbout = await jsonfile[language].about;
+        const langContentProject = await jsonfile[language].project;
+        const langContentContact = await jsonfile[language].contact;
+
+        console.log(langContentAbout)
+
+        langdataHome1.set(langContentHome1)
+        langdataAbout.set(langContentAbout) 
+        langdataProject.set(langContentProject)
+        langdataContact.set(langContentContact)
+
+        langdataHome.set(languageContent)
+    }
+}
+
+
+
 const browserLangMap={
     "no":"no","nb":"no","nn":"no","se-NO":"no","sv-SE":"no", "da-DK":"no", "fi-FI":"no",
     "sv-FI":"no","se-FI":"no","en":"en","en-US":"en", "en-GB":"en","en-Ca":"en",

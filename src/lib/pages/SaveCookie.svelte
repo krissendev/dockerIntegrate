@@ -1,17 +1,15 @@
 <script>
   import {cookieConsentVisible, cookieModalOverflow, cookieConsent } from '$store/store.js';
+  import {updateStoreBoolToggle, storeMap}from '$lib/routing/storeHandler.js'
   import {modalToggleBodyScroll} from '$lib/layout/modal.js'
   import { get } from 'svelte/store';
   
   function handleToggle(event){
     //Prevents default input css check, so that check is driven by /store/cookieConsent
     event.preventDefault();
-    cookieConsentVisible.update(value => {
-      //when clicked (cookieConsentVisible) !modal -> modal 
-      // which means original modal state or "value" = toggle value as they are opposite to disable scroll when active and enable when modal is turned off
-      modalToggleBodyScroll(value, modalVisibility);
-      
-      return!value});
+    modalToggleBodyScroll($cookieConsentVisible, modalVisibility);
+    updateStoreBoolToggle(storeMap.cookieConsentVisible)
+
   }
 
   $: modalVisibility = $cookieConsentVisible

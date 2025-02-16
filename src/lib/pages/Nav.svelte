@@ -3,6 +3,7 @@
 // I don't need to use onMount in javascript, since its a loaded function this makes it simpler
     import {onMount} from 'svelte';
     import {isMobile,cssDarkmodeModal,cookieModalOverflow} from '$store/store.js';
+    import {updateStorePrimitive, storeMap}from '$lib/routing/storeHandler.js'
     import {toggleBurger, initOnMount} from '$lib/layout/nav.js'
     import Darkmode from './Darkmode.svelte'
     import SaveCookie from './SaveCookie.svelte'
@@ -19,7 +20,7 @@
 
     //nav resize depends on 'browser', which only is available after mount
     onMount(()=>{
-        isMobile.set(window.screen.width>=540 ? false:true)
+        updateStorePrimitive(storeMap.isMobile, window.screen.width < 540)
         //window.screen.width;
         initOnMount(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobileModal);
     })

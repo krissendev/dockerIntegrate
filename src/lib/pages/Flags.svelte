@@ -2,7 +2,9 @@
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
     import {sessionPreferences} from '$store/store.js';
-    import { loadLanguage} from '$lib/layout/langLoad.js'
+    import {updateStoreObject, storeMap}from '$lib/routing/storeHandler.js'
+    import { loadLanguage} from '$lib/routing/loadLangData.js' 
+    import {getCookieValue} from '$lib/layout/darkmode.js'//temporary darkmode for getCookieValue
     // import { createEventDispatcher } from 'svelte';
     // const dispatch = createEventDispatcher();
 
@@ -32,12 +34,17 @@
     // $: value = $language;
 
     onMount(() => {
+        checkForCookie();
+
+
         //inline value for button toggle
         selectedLanguageBtn.value = "false";
 
         //default flag selected
         language = languageMap[languageCode];
         
+        setLanguage(languageCode)
+
         //dispatch('update', event.target.value);
 
         languageClass = `flag_icon ${language}`
@@ -110,9 +117,7 @@
 
     function setLanguage(language){
         //update url
-        sessionPreferences.update(value=>{
-                return{...value, lang:language}
-            });
+        updateStoreObject(storeMap.sessionPreferences, "lang", language)
         
         //update store data
         loadLanguage();
@@ -122,6 +127,13 @@
     }
 
 
+    //Temporary solution, refactor getCookieValue out from darkmode.js
+    function checkForCookie(){
+        const cookieLang = getCookieValue("lang")
+
+        console.log("CookieLang;", cookieLang)
+        updateStoreObject(storeMap.sessionPreferences, "lang", cookieLang)
+    }
 </script>
 <!-- <textarea bind:value={language}></textarea> -->
 

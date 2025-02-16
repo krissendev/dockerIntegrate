@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import { get } from 'svelte/store';
+    import {updateStorePrimitive, updateStoreObject,updateStoreBoolToggle, storeMap}from '$lib/routing/storeHandler.js'
     import {cookieConsentVisible, sessionPreferences, cookieConsent, 
             cookieState, cssDarkmodeModal,isMobile, cookieModalOverflow} 
             from '$store/store.js';
@@ -10,15 +11,14 @@
     
     $: modalVisibility = $cookieConsentVisible ? 'flex' : 'none';
     function handleToggle(){
-        cookieConsentVisible.update(value => {
-            //overflow
-            modalToggleBodyScroll(value, modalVisibility);
-            return !value
-        });
+        updateStoreObject(storeMap.cookieConsentVisible, )
+        modalToggleBodyScroll($cookieConsentVisible, modalVisibility)
+        updateStoreBoolToggle(storeMap.cookieConsentVisible);
+
     }
     
     function consentToCookie(){
-        cookieConsent.update(value => {return true});
+        updateStorePrimitive(storeMap.cookieConsent, true)
     }
 
     export const cookieBase = "SameSite=Strict;path=/;";
@@ -28,14 +28,14 @@
         for(let i=0;i<CookieTable.length; i++){
             document.cookie=`${CookieTable[i]}='';${expirationValue} ${cookieBase}`
         }
-        cookieState.set(document.cookie);
-        cookieConsent.update(value => {return false});
+        updateStorePrimitive(storeMap.cookieState, document.cookie)
+        updateStorePrimitive(storeMap.cookieConsent, false)
         //currentConsent=get(cookieConsent);  
     }
 
     
     onMount(()=>{
-        cookieState.set(document.cookie);        
+        updateStorePrimitive(storeMap.cookieState, document.cookie)
     })
 
 

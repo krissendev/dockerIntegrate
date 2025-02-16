@@ -1,4 +1,6 @@
 import { get } from 'svelte/store';
+import {updateStorePrimitive, updateStoreObject, storeMap}from '$lib/routing/storeHandler.js'
+
 import {sessionPreferences, cookieConsent, cookieState, cssDarkmodeModal} from '$store/store.js';
 /*cookieConsentVisible.update(value => !value);*/
 export const cookieBase = "SameSite=Strict;path=/;";   
@@ -11,10 +13,7 @@ export function initOnMount(){
         //Match "store" darkmode setting with browser darkmode setting
         const browserDarkmode = window.matchMedia("(prefers-color-scheme:dark)").matches;
         
-        
-        sessionPreferences.update(value=>{
-            return{...value, darkMode:browserDarkmode}
-        });
+        updateStoreObject(storeMap.sessionPreferences, "darkMode", browserDarkmode)
 
         const cookieEnabled = get(cookieConsent); 
         if(cookieEnabled){
@@ -23,7 +22,8 @@ export function initOnMount(){
             
             setSessiontDarkMode(browserDarkmode);
             setCookieDarkMode(browserDarkmode)
-            cookieState.set(document.cookie)
+            updateStorePrimitive(storeMap.cookieState ,document.cookie)
+            
             setCanvas(browserDarkmode)
         }
         else{
@@ -42,12 +42,10 @@ function setCookieDarkMode(bool){
     document.cookie = `${cookieDarkMode} ${cookieBase}`
 }
 function setSessiontDarkMode(bool){
-    sessionPreferences.update(value=>{
-        return{...value, darkMode:bool}
-    });
+    updateStoreObject(storeMap.sessionPreferences, "darkMode", bool)
 }
 
-function getCookieValue(name){
+export function getCookieValue(name){
     const cookies = document.cookie.split(';');
     for(let cookie of cookies){
         //sepparates key-values on "=" and removes any whitespace
@@ -68,13 +66,12 @@ function setCanvas(darkmodeValue){
         document.body.style.backgroundColor = 'black';
         document.body.style.color = 'white'; 
         //cssDarkmodeModal.update(current => current === 'whiteModal' ? 'darkModal' : 'whiteModal');
-        cssDarkmodeModal.set('darkModal');
+        updateStorePrimitive(storeMap.cssDarkmodeModal, "darkModal");
     }
     else if(!darkmodeValue){
         document.body.style.backgroundColor = 'white';
         document.body.style.color = 'black';
-        cssDarkmodeModal.set('whiteModal');
-        
+        updateStorePrimitive(storeMap.cssDarkmodeModal, "whiteModal");       
     }
 }
 
@@ -91,7 +88,7 @@ export function darkModeSwitch(){
         setCanvas(darkMode)
         if(cookieEnabled){
             setCookieDarkMode(false);
-            cookieState.set(document.cookie)
+            updateStorePrimitive(storeMap.cookieState, document.cookie);       
         }
     }
     //darkMode false is white - change to dark
@@ -101,7 +98,7 @@ export function darkModeSwitch(){
         setCanvas(darkMode)
         if(cookieEnabled){
             setCookieDarkMode(true);
-            cookieState.set(document.cookie)
+            updateStorePrimitive(storeMap.cookieState, document.cookie)
         }  
     }       
 }

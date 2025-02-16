@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
 import { isMobile, cookieModalOverflow, cookieConsentVisible } from '$store/store';
+import {updateStorePrimitive, storeMap}from '$lib/routing/storeHandler.js'
 // let elLinks;
 // let toggleBurger;
 // let elMobileMenu;
@@ -52,10 +53,9 @@ function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobi
     // console.log(`resize ${counter}`)
     toggled = false;
     if(window.innerWidth> 540){
-        isMobile.set(false)
-        
-        cookieModalOverflow.set('none')
-        cookieConsentVisible.set(false)
+        updateStorePrimitive(storeMap.isMobile, false)        
+        updateStorePrimitive(storeMap.cookieModalOverflow, "none")        
+        updateStorePrimitive(storeMap.cookieConsentVisible, false)        
         document.body.style.overflow = 'visible'
         elNavMenu.style.display='flex'
         elMobileMenu.classList.remove('active')
@@ -66,10 +66,10 @@ function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobi
         
     }
     else if(window.innerWidth < 541){
-        isMobile.set(true)
+        updateStorePrimitive(storeMap.isMobile, true)        
+        updateStorePrimitive(storeMap.cookieModalOverflow, "none")        
+        updateStorePrimitive(storeMap.cookieConsentVisible, false)    
 
-        cookieModalOverflow.set('none')
-        cookieConsentVisible.set(false)
         document.body.style.overflow = 'visible'
 
         elMobileMenu.classList.remove('active')

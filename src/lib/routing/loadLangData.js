@@ -5,8 +5,10 @@
 //BrowserSetting
 //En
 import jsonfile from '$lib/language.json';
-import {langdataHome, langdataHome1, langdataAbout, langdataProject, langdataContact, sessionPreferences} from '$store/store.js';
+import {langdataHome, langdataAbout, langdataProject, langdataContact, sessionPreferences} from '$store/store.js';
+import {updateStorePrimitive, storeMap}from '$lib/routing/storeHandler.js'
 import {get} from 'svelte/store';
+
 
 //await browser for cookies
 export function languageInitOnMount(){
@@ -36,19 +38,18 @@ export async function loadLanguage(){
         languageContent =await jsonfile[language].content;
         
         //length iterator into store ?
-        const langContentHome1 = await jsonfile[language].home;
+        const langContentHome = await jsonfile[language].home;
         const langContentAbout = await jsonfile[language].about;
         const langContentProject = await jsonfile[language].project;
         const langContentContact = await jsonfile[language].contact;
 
         console.log(langContentAbout)
 
-        langdataHome1.set(langContentHome1)
-        langdataAbout.set(langContentAbout) 
-        langdataProject.set(langContentProject)
-        langdataContact.set(langContentContact)
+        updateStorePrimitive(storeMap.langdataHome, langContentHome)
+        updateStorePrimitive(storeMap.langdataAbout, langContentAbout)
+        updateStorePrimitive(storeMap.langdataProject, langContentProject)
+        updateStorePrimitive(storeMap.langdataContact, langContentContact)
 
-        langdataHome.set(languageContent)
     }
 }
 
@@ -69,8 +70,8 @@ const urlRoutePathMap = new Set(["home", "about", "contact"]);
 
 export function parseLangAndPath(url){
     const urlSegments = url.split("/");
-    let lang=''
-    let path=''
+    let lang=undefined
+    let path=undefined
     
     for (const segment of urlSegments){
         if(urlRoutePathMap.has(segment)){
@@ -82,8 +83,10 @@ export function parseLangAndPath(url){
         }
 
     }
-    if(lang && path){return [lang, path];};
-    if (!lang) {return ["en", path];} // Default language
-    if (!path){return [lang, "home"];} // Default route
-    else{return ["en", "home"];}
+    return[lang, path]
+    //lang = lang?lang:undefined;
+    //if(lang && path){return [lang, path];};
+    //if (!lang) {return ["en", path];} // Default language
+    //if (!path){return [lang, "home"];} // Default route
+    //else{return ["en", "home"];}
 }

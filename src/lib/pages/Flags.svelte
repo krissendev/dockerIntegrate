@@ -3,8 +3,9 @@
     import { goto } from '$app/navigation';
     import {sessionPreferences} from '$store/store.js';
     import {updateStoreObject, storeMap}from '$lib/routing/storeHandler.js'
+    import {getCookieValue} from '$lib/routing/cookieHandler.js'
     import { loadLanguage} from '$lib/routing/loadLangData.js' 
-    import {getCookieValue} from '$lib/layout/darkmode.js'//temporary darkmode for getCookieValue
+    //import {getCookieValue} from '$lib/layout/darkmode.js'//temporary darkmode for getCookieValue
     // import { createEventDispatcher } from 'svelte';
     // const dispatch = createEventDispatcher();
 

@@ -5,6 +5,7 @@
     import {cookieConsentVisible, sessionPreferences, cookieConsent, 
             cookieState, cssDarkmodeModal,isMobile, cookieModalOverflow} 
             from '$store/store.js';
+    import {deleteCookies} from '$lib/routing/cookieHandler.js'
     import {modalToggleBodyScroll} from '$lib/layout/modal.js'
     import { darkMode } from '$lib/layout/darkmode';
     
@@ -19,18 +20,6 @@
     
     function consentToCookie(){
         updateStorePrimitive(storeMap.cookieConsent, true)
-    }
-
-    export const cookieBase = "SameSite=Strict;path=/;";
-    const expirationValue = "expires=Thu, 01 Jan 1970 00:00:00; GMT;Max-Age=0;"
-    const CookieTable=['darkMode', 'lang']
-    function deleteCookies(){
-        for(let i=0;i<CookieTable.length; i++){
-            document.cookie=`${CookieTable[i]}='';${expirationValue} ${cookieBase}`
-        }
-        updateStorePrimitive(storeMap.cookieState, document.cookie)
-        updateStorePrimitive(storeMap.cookieConsent, false)
-        //currentConsent=get(cookieConsent);  
     }
 
     

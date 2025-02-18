@@ -1,6 +1,6 @@
 import { get } from 'svelte/store';
 import {updateStorePrimitive, updateStoreObject, storeMap}from '$lib/routing/storeHandler.js'
-
+import {getCookieValue} from '$lib/routing/cookieHandler.js'
 import {sessionPreferences, cookieConsent, cookieState, cssDarkmodeModal} from '$store/store.js';
 /*cookieConsentVisible.update(value => !value);*/
 export const cookieBase = "SameSite=Strict;path=/;";   
@@ -45,17 +45,6 @@ function setSessiontDarkMode(bool){
     updateStoreObject(storeMap.sessionPreferences, "darkMode", bool)
 }
 
-export function getCookieValue(name){
-    const cookies = document.cookie.split(';');
-    for(let cookie of cookies){
-        //sepparates key-values on "=" and removes any whitespace
-        const [cookieName, cookieValue] = cookie.split('=').map((arrElement)=> arrElement.trim());
-        if(cookieName === name){
-            return cookieValue;
-        }
-    }
-    return null;
-}
 function getSessionValue(name){
     const preferences = get(sessionPreferences); 
     return preferences[name];

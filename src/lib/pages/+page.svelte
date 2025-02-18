@@ -12,7 +12,7 @@
     export let prop;
 
 </script>
-<div>+page.svelte Component, language URL; {prop}</div>
+<!-- <div>+page.svelte Component, language URL; {prop}</div> -->
 
 <Nav/>
 <LangLoad />

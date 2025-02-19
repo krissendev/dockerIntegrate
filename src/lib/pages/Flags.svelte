@@ -5,10 +5,8 @@
     import {updateStoreObject, storeMap}from '$lib/routing/storeHandler.js'
     import {getCookieValue} from '$lib/routing/cookieHandler.js'
     import { loadLanguage} from '$lib/routing/loadLangData.js' 
-    //import {getCookieValue} from '$lib/layout/darkmode.js'//temporary darkmode for getCookieValue
-    // import { createEventDispatcher } from 'svelte';
-    // const dispatch = createEventDispatcher();
 
+    
     //const languageCode = navigator.language; //FIX post onMount
     const languageCode = "en"
     let selectedLanguageBtn;
@@ -71,11 +69,6 @@
             }
         })
 
-        // function handleInput(event) {
-        //    const inputValue = event.target.value;  // Get the value from the event
-        //     dispatch('update', inputValue);  // Dispatch the value
-        // }
-
         //List href to local language page
         languageLinkEn.addEventListener('click', ()=>{
             languageClass = `flag_icon en`;
@@ -120,7 +113,7 @@
         //update url
         updateStoreObject(storeMap.sessionPreferences, "lang", language)
         
-        //update store data
+        //update store data $lib/routing/loadLangData.js
         loadLanguage();
 
         //placeholder /en /no , get url and map #, /[...slug], /[lang] etc afterwards
@@ -131,8 +124,6 @@
     //Temporary solution, refactor getCookieValue out from darkmode.js
     function checkForCookie(){
         const cookieLang = getCookieValue("lang")
-
-        console.log("CookieLang;", cookieLang)
         updateStoreObject(storeMap.sessionPreferences, "lang", cookieLang)
     }
 </script>

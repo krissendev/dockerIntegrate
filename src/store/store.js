@@ -8,7 +8,7 @@ export const sessionPreferences = writable({
     lang:"en"
 });
 export const cookieConsent = writable(false); //init av darkMode, IS THIS UNNECESSARY DELETE?
-export const cookieState = writable('');      //document.cookie, IS THIS UNNECESSARY DELETE?
+export const cookieState = writable('');      //String only used to display current cookie in UI
 
 export const cssDarkmodeModal = writable('whiteModal'); //whiteModal , darkModal
 export const isMobile = writable(false) //BOOL, nav.css max-width: 540px, nav.js

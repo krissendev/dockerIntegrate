@@ -20,33 +20,16 @@
     
     function consentToCookie(){
         updateStorePrimitive(storeMap.cookieConsent, true)
+        
+        //cookieConsent must be reacted to $cookieConsent for cookie to be updated before cookieState can update
+        setTimeout( ()=>{
+            updateStorePrimitive(storeMap.cookieState, document.cookie)
+        },100);
     }
-
     
     onMount(()=>{
         updateStorePrimitive(storeMap.cookieState, document.cookie)
     })
-
-
-//   function toggleBodyScrollable(toggle){
-//     //only toggle when in desktop not on mobile
-//     if(window.innerWidth > 540){
-//       //if true enable, else disable. Scroll ability overflow on body
-//       document.body.style.overflow = toggle ? 'visible':'hidden';
-//     }
-
-//     //Bad workaround css hack to fix scroll bleed inside mobile burgermenu, Find better fix later?!!
-//     //if modalVisibility is true(actually false as it's switching from true->false) set mobileModal.position=fixed
-//     else if(modalVisibility){
-//         cookieModalOverflow.set("none")
-//     }
-//     //else if modalVisibility is false(actually true as it's switching from false->true) set mobileModal.position=absolute
-//     else if(!modalVisibility){
-//         console.log("cookieModalOverflow")
-//         cookieModalOverflow.set("block")
-//     }
-//   }
-
 
 </script>
 

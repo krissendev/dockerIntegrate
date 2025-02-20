@@ -1,5 +1,5 @@
 import { get } from 'svelte/store';
-import {updateStorePrimitive, updateStoreObject, storeMap}from '$lib/routing/storeHandler.js'
+import {updateStorePrimitive, updateStoreObject, storeMap, getStoreValue}from '$lib/routing/storeHandler.js'
 import {getCookieValue, documentSetCookie} from '$lib/routing/cookieHandler.js'
 import {sessionPreferences, cookieConsent, cookieState, cssDarkmodeModal} from '$store/store.js';
 
@@ -22,7 +22,7 @@ export function initOnMount(){
 }
 
 export function cookieConsentDarkmode(){
-        darkMode = getSessionValue("darkMode");
+        darkMode = getStoreValue(storeMap.sessionPreferences)["darkMode"] //storeMap "typed prop" compromise due to sveltekit reactive store value
         documentSetCookie("darkMode", darkMode)
 }
 
@@ -30,11 +30,6 @@ export function cookieConsentDarkmode(){
 
 function setSessiontDarkMode(bool){
     updateStoreObject(storeMap.sessionPreferences, "darkMode", bool)
-}
-
-function getSessionValue(name){
-    const preferences = get(sessionPreferences); 
-    return preferences[name];
 }
 
 function setCanvas(darkmodeValue){
@@ -56,7 +51,8 @@ function setCanvas(darkmodeValue){
 export function darkModeSwitch(){
     //darkMode = getCookieValue("darkMode") === "true";
     const cookieEnabled = get(cookieConsent); 
-    darkMode = getSessionValue("darkMode");
+    darkMode = getStoreValue(storeMap.sessionPreferences)["darkMode"]; //storeMap "typed prop" compromise due to sveltekit reactive store value
+
     //darkMode true is dark - change to white
     if(darkMode){ 
         darkMode = !darkMode;

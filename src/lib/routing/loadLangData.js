@@ -6,8 +6,9 @@
 //En
 import jsonfile from '$lib/language.json';
 import {langdataHome, langdataAbout, langdataProject, langdataContact, sessionPreferences} from '$store/store.js';
-import {updateStorePrimitive, storeMap}from '$lib/routing/storeHandler.js'
+import {updateStorePrimitive, storeMap, getStoreValue}from '$lib/routing/storeHandler.js'
 import {get} from 'svelte/store';
+import { documentSetCookie } from './cookieHandler';
 
 
 //await browser for cookies
@@ -28,6 +29,8 @@ let language;
 let languageContent;
 export async function loadLanguage(){
     
+    //######### PRIORITIZE URL
+
     language = get(sessionPreferences).lang;
     console.log("loadLang;", language)
     //cookieLang = await languageInitOnMount();
@@ -89,4 +92,9 @@ export function parseLangAndPath(url){
     //if (!lang) {return ["en", path];} // Default language
     //if (!path){return [lang, "home"];} // Default route
     //else{return ["en", "home"];}
+}
+
+export function cookieConsentLanguage(){
+    language = getStoreValue(storeMap.sessionPreferences)["lang"];
+    documentSetCookie("lang", language);
 }

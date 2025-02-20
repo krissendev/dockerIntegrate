@@ -41,3 +41,9 @@ export function updateStoreBoolToggle(storeMapEntry){
         return !value
     })
 }
+
+export function getStoreValue(storeMapEntry){
+    const storevalue = get(storeMapEntry)
+    console.log("currentStoreValue;", storevalue)
+    return storevalue;
+}

@@ -20,6 +20,7 @@ export function storeSetCookieState(){
 }
 
 export function getCookieValue(name){
+    console.log("getCookieValue;", name)
     const cookies = document.cookie.split(';');
     for(let cookie of cookies){
         //sepparates key-values on "=" and removes any whitespace

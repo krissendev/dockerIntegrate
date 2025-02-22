@@ -5,7 +5,7 @@ import { createDebugStore } from './storeDebugger.js';// export const cookieCons
 export const cookieConsentVisible = writable(false); //modal window for cookie
 export const sessionPreferences = writable({
     darkMode:false,
-    lang:"en"
+    lang: undefined
 });
 export const cookieConsent = writable(false); //init av darkMode, IS THIS UNNECESSARY DELETE?
 export const cookieState = writable('');      //String only used to display current cookie in UI

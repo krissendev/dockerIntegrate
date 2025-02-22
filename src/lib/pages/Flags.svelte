@@ -8,7 +8,7 @@
 
     
     //const languageCode = navigator.language; //FIX post onMount
-    const languageCode = "en"
+    // const languageCode = "en"
     let selectedLanguageBtn;
     let languageList;
     let languageLinkEn;
@@ -17,7 +17,7 @@
     let selectedLanguageText;
 
     let languageClass=""
-    let language;
+    
 
     const languageMap = {
     'en': 'en',
@@ -32,19 +32,16 @@
     // let value;
     // $: value = $language;
 
+    $: language = $sessionPreferences.lang;
     onMount(() => {
+
         checkForCookie();
 
+        setLanguage(language)
+        
 
         //inline value for button toggle
         selectedLanguageBtn.value = "false";
-
-        //default flag selected
-        language = languageMap[languageCode];
-        
-        setLanguage(languageCode)
-
-        //dispatch('update', event.target.value);
 
         languageClass = `flag_icon ${language}`
         selectedLanguageText.innerHTML = `${language}`

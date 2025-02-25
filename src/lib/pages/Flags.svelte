@@ -114,7 +114,10 @@
         loadLanguage();
 
         //placeholder /en /no , get url and map #, /[...slug], /[lang] etc afterwards
-        goto(`/${language}`);
+        console.log("Flags onMount url calling goto()", language)
+        if(language){
+            goto(`/${language}`);
+        }
     }
 
 

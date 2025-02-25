@@ -8,12 +8,20 @@
     import Contact from './Contact.svelte'
     import { page } from '$app/state';
 
-    //From routing
+    import {updateStoreObject, storeMap}from '$lib/routing/storeHandler.js'
+
+    //From routing +page.server.js load function into & from /lib/routesRouting.js
     export let prop;
+    const lang = prop.lang;
+    const path = prop.path;
+    updateStoreObject(storeMap.sessionPreferences, "lang", lang)
+    updateStoreObject(storeMap.sessionPreferences, "path", path)
+
+    
+
 
 </script>
 <!-- <div>+page.svelte Component, language URL; {prop}</div> -->
-
 <Nav/>
 <LangLoad />
 

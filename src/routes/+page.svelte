@@ -4,4 +4,4 @@
 </script>
 <!-- <h1>SLUG {data.title}, {data.path}, {data.lang} </h1>
 <div>{@html data.content}</div> -->
-<Page prop={data.lang}/>
+<Page prop={data}/>

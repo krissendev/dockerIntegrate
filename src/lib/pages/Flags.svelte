@@ -1,9 +1,9 @@
 <script>
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
-    import {sessionPreferences} from '$store/store.js';
-    import {updateStoreObject, storeMap}from '$lib/routing/storeHandler.js'
-    import {getCookieValue} from '$lib/routing/cookieHandler.js'
+    import {sessionPreferences, cookieConsent, cookieState} from '$store/store.js';
+    import {updateStoreObject, storeMap,updateStorePrimitive}from '$lib/routing/storeHandler.js'
+    import {getCookieValue, documentSetCookie} from '$lib/routing/cookieHandler.js'
     import { loadLanguage} from '$lib/routing/loadLangData.js' 
 
     
@@ -82,6 +82,13 @@
 
             // const newUrl = `${window.location.pathname}/lang/en`;
             // window.history.pushState(null, '', newUrl);
+
+            console.log("?cookieConsent", $cookieConsent)
+            if($cookieConsent){
+                console.log("setting cookie...", language)
+                documentSetCookie("lang", language)
+                updateStorePrimitive(storeMap.cookieState, document.cookie)
+            }
         })
         languageLinkNo.addEventListener('click', ()=>{
             languageClass = `flag_icon no`;
@@ -101,7 +108,12 @@
 
             // const urlParams = new URLSearchParams(window.location.search);
             // const lang = urlParams.get('lang'); // returns 'en'
-
+            console.log("?cookieConsent", $cookieConsent)
+            if($cookieConsent){
+                
+                // documentSetCookie("lang", language)
+                updateStorePrimitive(storeMap.cookieState, document.cookie)
+            }
         })
 
     })

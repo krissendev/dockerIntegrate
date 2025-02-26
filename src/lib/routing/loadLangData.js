@@ -98,3 +98,8 @@ export function cookieConsentLanguage(){
     language = getStoreValue(storeMap.sessionPreferences)["lang"];
     documentSetCookie("lang", language);
 }
+
+export function cookieConsentLang(){
+    const lang = getStoreValue(storeMap.sessionPreferences)["lang"] //storeMap "typed prop" compromise due to sveltekit reactive store value
+    documentSetCookie("lang", lang)
+}

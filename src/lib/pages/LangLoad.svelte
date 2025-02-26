@@ -5,10 +5,6 @@
     import jsonfile from '$lib/language.json';
     import {langdataHome, langdataAbout, langdataProject, langdataContact, sessionPreferences, cookieConsent} from '$store/store.js';
 
-    $: if($cookieConsent===true){
-        console.log("$cookieConsent/lang")
-        cookieConsentLanguage();
-    }
 
     onMount(()=>{
         loadLanguage();

@@ -8,7 +8,7 @@
     import {deleteCookies} from '$lib/routing/cookieHandler.js'
     import {modalToggleBodyScroll} from '$lib/layout/modal.js'
     import { darkMode } from '$lib/layout/darkmode';
-    
+    import {cookieConsentLang} from '$lib/routing/loadLangData.js'
     
     $: modalVisibility = $cookieConsentVisible ? 'flex' : 'none';
     function handleToggle(){
@@ -21,6 +21,11 @@
     function consentToCookie(){
         updateStorePrimitive(storeMap.cookieConsent, true)
         
+        //Unique case
+        ///store/sessionPreference."darkMode" is reactive as seen with Darkmode.svelte  "$: if($cookieConsent===true){" 
+        // /store/sessionPreference."lang is not reactive because URL shall respect session and not override lang cookie
+        cookieConsentLang();
+
         //cookieConsent must be reacted to $cookieConsent for cookie to be updated before cookieState can update
         setTimeout( ()=>{
             updateStorePrimitive(storeMap.cookieState, document.cookie)
@@ -29,6 +34,8 @@
     
     onMount(()=>{
         updateStorePrimitive(storeMap.cookieState, document.cookie)
+        if(document.cookie){updateStorePrimitive(storeMap.cookieConsent, true)}
+        
     })
 
 </script>

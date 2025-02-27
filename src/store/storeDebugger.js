@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store';
+import { writable }                         from 'svelte/store';
 
 export function createDebugStore(initialValue, name = 'store') {
     const { subscribe, set, update } = writable(initialValue);

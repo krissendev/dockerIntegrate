@@ -1,5 +1,5 @@
 <script>
-    import {langdataProject } from '$store/store.js';
+    import {langdataProject }               from '$store/store.js';
 </script>
 <div class="pageSection projectSvelte">
     <h3 id="projects">This is Projects</h3>

@@ -1,6 +1,5 @@
-
-import {cookieState, cookieConsent} from '$store/store.js';
-import {updateStorePrimitive, storeMap} from '$lib/routing/storeHandler.js'
+import {cookieState, cookieConsent}         from '$store/store.js';
+import {updateStorePrimitive, storeMap}     from '$lib/routing/storeHandler.js'
 
 export const cookieBase = "SameSite=Strict;path=/";
 const expirationValueDELETE = "expires=Thu, 01 Jan 1970 00:00:00; GMT;Max-Age=0"

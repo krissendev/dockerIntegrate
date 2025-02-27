@@ -1,7 +1,9 @@
-import { get } from 'svelte/store';
-import {updateStorePrimitive, updateStoreObject, storeMap, getStoreValue}from '$lib/routing/storeHandler.js'
-import {getCookieValue, documentSetCookie} from '$lib/routing/cookieHandler.js'
-import {sessionPreferences, cookieConsent, cookieState, cssDarkmodeModal} from '$store/store.js';
+import { get }                              from 'svelte/store';
+import {updateStorePrimitive, updateStoreObject,
+     storeMap, getStoreValue}               from '$lib/routing/storeHandler.js'
+import {getCookieValue, documentSetCookie}  from '$lib/routing/cookieHandler.js'
+import {sessionPreferences, cookieConsent, 
+    cookieState, cssDarkmodeModal}          from '$store/store.js';
 
 export let darkMode=false; //false means white, true means dark
 

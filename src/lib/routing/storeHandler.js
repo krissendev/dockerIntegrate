@@ -1,4 +1,4 @@
-import { get } from 'svelte/store';
+import { get }                              from 'svelte/store';
 import {cookieConsentVisible, 
     sessionPreferences,
     cookieConsent,
@@ -8,9 +8,7 @@ import {cookieConsentVisible,
     cookieModalOverflow,
     langdataHome,
      langdataAbout,
-      langdataProject,
-       langdataContact,
-    } from '$store/store.js';
+      langdataProject,langdataContact,}     from '$store/store.js';
 
 
 export const storeMap = {

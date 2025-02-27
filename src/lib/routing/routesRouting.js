@@ -1,6 +1,6 @@
-import {parseLangAndPath} from '$lib/routing/loadLangData.js'
-import { redirect } from '@sveltejs/kit';
-import {sessionPreferences} from '$store/store.js';
+import {parseLangAndPath}                   from '$lib/routing/loadLangData.js'
+import { redirect }                         from '@sveltejs/kit';
+import {sessionPreferences}                 from '$store/store.js';
 
 //url handling similar to /routes/[...slug]/+page.js
 export function routing({params, cookies}){

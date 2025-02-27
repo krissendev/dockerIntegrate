@@ -1,14 +1,11 @@
-
-//Language Priority
-//URL
-//Cookie
-//BrowserSetting
-//En
-import jsonfile from '$lib/language.json';
-import {langdataHome, langdataAbout, langdataProject, langdataContact, sessionPreferences} from '$store/store.js';
-import {updateStorePrimitive, storeMap, getStoreValue}from '$lib/routing/storeHandler.js'
-import {get} from 'svelte/store';
-import { documentSetCookie } from './cookieHandler';
+import jsonfile                             from '$lib/language.json';
+import {langdataHome, langdataAbout, 
+    langdataProject, langdataContact, 
+    sessionPreferences}                     from '$store/store.js';
+import {updateStorePrimitive, storeMap, 
+    getStoreValue}                          from '$lib/routing/storeHandler.js'
+import {get}                                from 'svelte/store';
+import { documentSetCookie }                from './cookieHandler';
 
 
 //await browser for cookies

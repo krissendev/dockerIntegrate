@@ -1,5 +1,5 @@
 <script>
-        import {langdataContact } from '$store/store.js';
+        import {langdataContact }           from '$store/store.js';
 </script>
 <div class="pageSection contactSvelte">
     <h3 id="contact">This is Contact</h3>    

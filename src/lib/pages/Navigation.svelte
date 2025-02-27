@@ -1,14 +1,15 @@
 <script>  
 
 // I don't need to use onMount in javascript, since its a loaded function this makes it simpler
-    import {onMount} from 'svelte';
-    import {isMobile,cssDarkmodeModal,cookieModalOverflow} from '$store/store.js';
-    import {updateStorePrimitive, storeMap}from '$lib/routing/storeHandler.js'
-    import {toggleBurger, initOnMount} from '$lib/layout/nav.js'
-    import Darkmode from './Darkmode.svelte'
-    import SaveCookie from './SaveCookie.svelte'
-    import CookieConsent from './CookieConsent.svelte'
-    import Flags from './Flags.svelte'
+    import {onMount}                        from 'svelte';
+    import {isMobile,cssDarkmodeModal,
+            cookieModalOverflow}            from '$store/store.js';
+    import {updateStorePrimitive, storeMap} from '$lib/routing/storeHandler.js'
+    import {toggleBurger, initOnMount}      from '$lib/layout/nav.js'
+    import BtnDarkmode                      from './BtnDarkmode.svelte'
+    import BtnSaveCookie                    from './BtnSaveCookie.svelte'
+    import BtnFlags                         from './BtnFlags.svelte'
+    import ModalCookieConsent               from './ModalCookieConsent.svelte'
 
     let elLinks;        //Container for Nav content
     let elNavMenu;      //#home, #about etc...
@@ -44,13 +45,13 @@
             <div class="navDividerLine" bind:this={elDivider}></div>
             <div class="navSettings" bind:this={elSettings}>
                 <a href="/">Aa</a>
-                <Darkmode/>
-                <Flags/>
-                <SaveCookie/>
+                <BtnDarkmode/>
+                <BtnFlags/>
+                <BtnSaveCookie/>
             </div>
         </div>
         <!--Cookie Modal-->
-        <CookieConsent/>
+        <ModalCookieConsent/>
     </div>
 
     <!--class={`${$cssDarkmodeModal} modal`}-->

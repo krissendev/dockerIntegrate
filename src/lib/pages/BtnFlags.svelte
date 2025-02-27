@@ -1,10 +1,13 @@
 <script>
-    import { onMount } from 'svelte';
-    import { goto } from '$app/navigation';
-    import {sessionPreferences, cookieConsent, cookieState} from '$store/store.js';
-    import {updateStoreObject, storeMap,updateStorePrimitive}from '$lib/routing/storeHandler.js'
-    import {getCookieValue, documentSetCookie} from '$lib/routing/cookieHandler.js'
-    import { loadLanguage} from '$lib/routing/loadLangData.js' 
+    import { onMount }                      from 'svelte';
+    import { goto }                         from '$app/navigation';
+    import {sessionPreferences, 
+        cookieConsent, cookieState}         from '$store/store.js';
+    import {updateStoreObject, storeMap,
+        updateStorePrimitive}               from '$lib/routing/storeHandler.js'
+    import {getCookieValue, 
+        documentSetCookie}                  from '$lib/routing/cookieHandler.js'
+    import { loadLanguage}                  from '$lib/routing/loadLangData.js' 
 
     
     //const languageCode = navigator.language; //FIX post onMount

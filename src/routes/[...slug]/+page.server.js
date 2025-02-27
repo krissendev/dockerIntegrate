@@ -1,4 +1,4 @@
-import {routing} from '$lib/routing/routesRouting.js'
+import {routing}                            from '$lib/routing/routesRouting.js'
 
 export function load({params, cookies}){
     const cookie = cookies.getAll();

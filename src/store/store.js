@@ -1,5 +1,5 @@
-import { writable, derived } from 'svelte/store';
-import { createDebugStore } from './storeDebugger.js';// export const cookieConsent = createLoggedStore(false, 'cookieConsent');
+import { writable, derived }                from 'svelte/store';
+import { createDebugStore }                 from './storeDebugger.js';// export const cookieConsent = createLoggedStore(false, 'cookieConsent');
 
 
 export const cookieConsentVisible = writable(false); //modal window for cookie

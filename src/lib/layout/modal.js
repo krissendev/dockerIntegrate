@@ -1,5 +1,5 @@
-import {cookieModalOverflow} from '$store/store.js';
-import {updateStorePrimitive, storeMap}from '$lib/routing/storeHandler.js'
+import {cookieModalOverflow}                from '$store/store.js';
+import {updateStorePrimitive, storeMap}     from '$lib/routing/storeHandler.js'
 
 export function modalToggleBodyScroll(toggle, modalVisibility){
     if(window.innerWidth > 540){

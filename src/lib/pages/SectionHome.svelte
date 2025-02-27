@@ -1,5 +1,5 @@
 <script>
-    import {langdataHome } from '$store/store.js';
+    import {langdataHome }                  from '$store/store.js';
 
 </script>
 <div class="pageSection homeSvelte">

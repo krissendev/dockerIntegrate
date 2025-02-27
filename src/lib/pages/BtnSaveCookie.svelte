@@ -1,8 +1,9 @@
 <script>
-  import {cookieConsentVisible, cookieModalOverflow, cookieConsent } from '$store/store.js';
-  import {updateStoreBoolToggle, storeMap}from '$lib/routing/storeHandler.js'
-  import {modalToggleBodyScroll} from '$lib/layout/modal.js'
-  import { get } from 'svelte/store';
+  import {cookieConsentVisible, 
+    cookieModalOverflow, cookieConsent }    from '$store/store.js';
+  import {updateStoreBoolToggle, storeMap}  from '$lib/routing/storeHandler.js'
+  import {modalToggleBodyScroll}            from '$lib/layout/modal.js'
+  import { get }                            from 'svelte/store';
   
   function handleToggle(event){
     //Prevents default input css check, so that check is driven by /store/cookieConsent

@@ -1,6 +1,7 @@
-import { browser } from '$app/environment';
-import { isMobile, cookieModalOverflow, cookieConsentVisible } from '$store/store';
-import {updateStorePrimitive, storeMap}from '$lib/routing/storeHandler.js'
+import { browser }                          from '$app/environment';
+import { isMobile, cookieModalOverflow, 
+    cookieConsentVisible }                  from '$store/store';
+import {updateStorePrimitive, storeMap}     from '$lib/routing/storeHandler.js'
 // let elLinks;
 // let toggleBurger;
 // let elMobileMenu;

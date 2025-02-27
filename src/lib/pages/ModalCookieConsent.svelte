@@ -1,14 +1,16 @@
 <script>
-    import { onMount } from 'svelte';
-    import { get } from 'svelte/store';
-    import {updateStorePrimitive, updateStoreObject,updateStoreBoolToggle, storeMap}from '$lib/routing/storeHandler.js'
-    import {cookieConsentVisible, sessionPreferences, cookieConsent, 
-            cookieState, cssDarkmodeModal,isMobile, cookieModalOverflow} 
-            from '$store/store.js';
-    import {deleteCookies} from '$lib/routing/cookieHandler.js'
-    import {modalToggleBodyScroll} from '$lib/layout/modal.js'
-    import { darkMode } from '$lib/layout/darkmode';
-    import {cookieConsentLang} from '$lib/routing/loadLangData.js'
+    import { onMount }                      from 'svelte';
+    import { get }                          from 'svelte/store';
+    import {updateStorePrimitive, updateStoreObject,
+        updateStoreBoolToggle, storeMap}    from '$lib/routing/storeHandler.js'
+    import {cookieConsentVisible, 
+        sessionPreferences, cookieConsent, 
+            cookieState, cssDarkmodeModal,
+            isMobile, cookieModalOverflow}  from '$store/store.js';
+    import {deleteCookies}                  from '$lib/routing/cookieHandler.js'
+    import {modalToggleBodyScroll}          from '$lib/layout/modal.js'
+    import { darkMode }                     from '$lib/layout/darkmode';
+    import {cookieConsentLang}              from '$lib/routing/loadLangData.js'
     
     $: modalVisibility = $cookieConsentVisible ? 'flex' : 'none';
     function handleToggle(){

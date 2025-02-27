@@ -1,5 +1,5 @@
 <script>
-        import {langdataAbout } from '$store/store.js';
+        import {langdataAbout }             from '$store/store.js';
 </script>
 <div class="pageSection aboutSvelte">
     <h3 id="about">This is About</h3>

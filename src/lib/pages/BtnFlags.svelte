@@ -16,6 +16,7 @@
     let languageList;
     let languageLinkEn;
     let languageLinkNo;
+    let languageLinkDe;
     let selectedLanguageFlag;
     let selectedLanguageText;
 
@@ -71,32 +72,19 @@
 
         //List href to local language page
         languageLinkEn.addEventListener('click', ()=>{
-            languageClass = `flag_icon en`;
-            selectedLanguageText.innerHTML = `en`;
-            language = `en`;
-
-            //deselect dropdown
-            selectedLanguageBtn.value = false;
-            selectedLanguageBtn.style.backgroundColor = null;
-            languageList.style.visibility = "hidden";
-            
-            //update content
-            setLanguage(language)
-
-            // const newUrl = `${window.location.pathname}/lang/en`;
-            // window.history.pushState(null, '', newUrl);
-
-            console.log("?cookieConsent", $cookieConsent)
-            if($cookieConsent){
-                console.log("setting cookie...", language)
-                documentSetCookie("lang", language)
-                updateStorePrimitive(storeMap.cookieState, document.cookie)
-            }
+            toggleLanguage("en")
         })
         languageLinkNo.addEventListener('click', ()=>{
-            languageClass = `flag_icon no`;
-            selectedLanguageText.innerHTML = `no`;
-            language = `no`;
+            toggleLanguage("no")
+        })
+        languageLinkDe.addEventListener('click', ()=>{
+            toggleLanguage("de")
+        })
+
+
+        function toggleLanguage(lang){
+            languageClass = `flag_icon ${lang}`;
+            selectedLanguageText.innerHTML = lang;
 
             //deselect dropdown
             selectedLanguageBtn.value = false;
@@ -104,21 +92,13 @@
             languageList.style.visibility = "hidden";
 
             //update content
-            setLanguage(language)
+            setLanguage(lang)
 
-            // const newUrl = `${window.location.pathname}/lang/no`;
-            // window.history.pushState(null, '', newUrl);
-
-            // const urlParams = new URLSearchParams(window.location.search);
-            // const lang = urlParams.get('lang'); // returns 'en'
-            console.log("?cookieConsent", $cookieConsent)
             if($cookieConsent){
-                
-                // documentSetCookie("lang", language)
+                documentSetCookie("lang", lang)
                 updateStorePrimitive(storeMap.cookieState, document.cookie)
             }
-        })
-
+        }
     })
 
     function setLanguage(language){
@@ -158,6 +138,10 @@
         <li data-value="no" bind:this={languageLinkNo}>
             <span class="flag_icon no"></span>
             <span class="language-name">no</span>
+        </li>
+        <li data-value="no" bind:this={languageLinkDe}>
+            <span class="flag_icon de"></span>
+            <span class="language-name">de</span>
         </li>
     </ul>
 </div>
@@ -221,7 +205,9 @@
     .no {
         background-image: url('../flags/flag_no.svg');
     }
-    
+    .de {
+        background-image: url('../flags/flag_de.svg');
+    }
     
     #languageList {
         position: absolute;

@@ -44,7 +44,6 @@
             <!-->Some divider-->
             <div class="navDividerLine" bind:this={elDivider}></div>
             <div class="navSettings" bind:this={elSettings}>
-                <a href="/">Aa</a>
                 <BtnDarkmode/>
                 <BtnFlags/>
                 <BtnSaveCookie/>

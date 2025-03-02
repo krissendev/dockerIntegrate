@@ -11,8 +11,12 @@
     import {modalToggleBodyScroll}          from '$lib/layout/modal.js'
     import { darkMode }                     from '$lib/layout/darkmode';
     import {cookieConsentLang}              from '$lib/routing/loadLangData.js'
+  import { error } from '@sveltejs/kit';
     
     $: modalVisibility = $cookieConsentVisible ? 'flex' : 'none';
+    
+    //checks scroll state at toggling modal on
+    $:{if(modalVisibility==='flex'){handleModalScroll();}}
     function handleToggle(){
         updateStoreObject(storeMap.cookieConsentVisible, )
         modalToggleBodyScroll($cookieConsentVisible, modalVisibility)
@@ -37,8 +41,66 @@
     onMount(()=>{
         updateStorePrimitive(storeMap.cookieState, document.cookie)
         if(document.cookie){updateStorePrimitive(storeMap.cookieConsent, true)}
+
+        //Scroll event for mobile, scrollArrow visibility toggling
+        document.querySelector(".navLinks").addEventListener('scroll', handleModalScroll);
         
     })
+
+    function scrollArrow(state){
+        
+        if(state==="up"){
+            document.querySelector(".navMenu").scrollIntoView({ 
+                behavior: "smooth", 
+                block: "start"
+            });
+        }
+        else if(state==="down"){
+            const currentScroll = document.querySelector(".navLinks").scrollTop;
+            const totalHeight = document.querySelector(".navLinks").offsetHeight;
+            const scrollRatio = currentScroll/totalHeight; 
+
+            if(scrollRatio <0.5){
+                document.querySelector(".cookieModalContent").scrollIntoView({ 
+                    behavior: "smooth", 
+                    block: "start"
+                });
+            }
+            else{
+                document.querySelector(".cookieModalContent").scrollIntoView({ 
+                    behavior: "smooth", 
+                    block: "end"
+                });
+            }
+            
+        }
+        else{error.log("incorrect use of scrollArrow()");}   
+    }
+    export function handleModalScroll(){
+        const currentScroll = document.querySelector(".navLinks").scrollTop;
+        const totalHeight = document.querySelector(".navLinks").offsetHeight;
+        const scrollRatio = currentScroll/totalHeight; 
+        console.log("handleScroll", currentScroll, totalHeight, scrollRatio)
+
+        const downArrow = document.querySelector(".downArrow")
+        const upArrow = document.querySelector(".upArrow")
+        if(scrollRatio>0.3 && scrollRatio<1.3){
+            console.log("middle")
+            upArrow.classList.remove("hidden")
+            downArrow.classList.remove("hidden")
+        }
+        else if(scrollRatio<0.2){
+            console.log("small")
+            upArrow.classList.add("hidden")
+            downArrow.classList.remove("hidden")
+        }
+        else if(scrollRatio>1.5){
+            console.log("large")
+            upArrow.classList.remove("hidden")
+            downArrow.classList.add("hidden")
+        }
+        
+    }
 
 </script>
 
@@ -47,7 +109,13 @@
 <div class={` cookieModalContent`}  style="display: {modalVisibility};">    
     <div class={`${$cssDarkmodeModal} cookieModal`}></div>
     {#if !$isMobile}
+    
         <button aria-label="Close Modal Window" class="exitCookieConsent" on:click={handleToggle}>X</button>
+        
+    <!-- Jump up down arrows to section on mobile-->
+    {:else}
+    <button class="upArrow arrow" on:click={()=>scrollArrow("up")}>⬆</button>
+    <button class="downArrow arrow" on:click={()=>scrollArrow("down")}>⬇</button>
     {/if}
     <div class="cookieModalText">
         <h3>Save preferences with Cookies</h3>
@@ -66,8 +134,9 @@
 
         <div>
             <button class="btnAccept" on:click={consentToCookie}>Accept & Enable Cookies</button> <button on:click={handleToggle}>Close</button><br><br>
-            By clicking Accept Your browser will remember your current settings, language and darkmode-lightmode styling.
         </div>
+        <p>By clicking Accept Your browser will remember your current settings, language and darkmode-lightmode styling.</p>
+        <br><br><br>
     </div>
 </div>
 
@@ -76,16 +145,17 @@
 <style>
 .cookieModalText{
     position:fixed; 
-    height:100vh;
-    top:50px;
+    /* height:100vh; */
+    /* top:50px; */
     left:0;
     font-size: larger;
     padding:20px;
     margin:20px;
+    /* overflow-y: auto; */
 }
 
 .exitCookieConsent{
-    font-size:x-large;
+     font-size:x-large;
     position:fixed;
     right:0;
     margin: 5px;
@@ -107,6 +177,33 @@ button{
     z-index:3;
     padding: 10px 20px;
 }
+.upArrow{
+    top:0;
+}
+.downArrow{
+    bottom:0;
+}
+.arrow{
+    right:50%;
+    transform: translateX(50%);
+    width:5px;
+    height:5px;
+    padding:20px;
+    z-index:3;
+    position:fixed;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    font-size:xx-large;
+    border-radius: 50%;
+    opacity:80%;
+    background-color: white;
+    border-color: black;
+}
+.arrow:active{
+    border-color: grey;
+    opacity:50%;
+}
 .btnDelete{background-color:red;}
 .btnAccept{background-color:lightgreen;}
 
@@ -122,5 +219,10 @@ button{
     .cookieModalText{
         position:static;
     }
+}
+
+/*toggling class for style visibility, used for arrows*/
+.hidden{
+    visibility: hidden;
 }
 </style>

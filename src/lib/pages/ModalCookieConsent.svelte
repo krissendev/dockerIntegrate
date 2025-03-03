@@ -81,7 +81,6 @@
         const currentScroll = document.querySelector(".navLinks").scrollTop;
         const totalHeight = document.querySelector(".navLinks").offsetHeight;
         const scrollRatio = currentScroll/totalHeight; 
-        console.log("handleScroll", currentScroll, totalHeight, scrollRatio)
 
         const downArrow = document.querySelector(".downArrow")
         const upArrow = document.querySelector(".upArrow")

@@ -200,13 +200,13 @@
     }
     
     .en {
-        background-image: url('../flags/flag_en.svg');
+        background-image: url('/flags/flag_en.svg');
     }
     .no {
-        background-image: url('../flags/flag_no.svg');
+        background-image: url('/flags/flag_no.svg');
     }
     .de {
-        background-image: url('../flags/flag_de.svg');
+        background-image: url('/flags/flag_de.svg');
     }
     
     #languageList {

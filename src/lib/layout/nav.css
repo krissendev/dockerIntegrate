@@ -111,12 +111,11 @@ body {
         flex-direction: column; 
         font-size:x-large;
         align-items:center; 
-        padding:10%;
+        margin:10%;
     }
-    /* .navMenu{
+    .navMenu{
          height:100vh; 
-         max-height:100vh; 
-    }  */
+    } 
     .navLinks a, .navLinks button{
         padding:10%;
     } 

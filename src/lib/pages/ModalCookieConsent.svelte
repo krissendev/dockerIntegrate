@@ -60,6 +60,7 @@
             const totalHeight = document.querySelector(".navLinks").offsetHeight;
             const scrollRatio = currentScroll/totalHeight; 
 
+            //Cookie modal content height is beyond 100vh, thus "down" arrow covers two sections
             if(scrollRatio <0.5){
                 document.querySelector(".cookieModalContent").scrollIntoView({ 
                     behavior: "smooth", 
@@ -85,17 +86,14 @@
         const downArrow = document.querySelector(".downArrow")
         const upArrow = document.querySelector(".upArrow")
         if(scrollRatio>0.3 && scrollRatio<1.3){
-            console.log("middle")
             upArrow.classList.remove("hidden")
             downArrow.classList.remove("hidden")
         }
         else if(scrollRatio<0.2){
-            console.log("small")
             upArrow.classList.add("hidden")
             downArrow.classList.remove("hidden")
         }
         else if(scrollRatio>1.5){
-            console.log("large")
             upArrow.classList.remove("hidden")
             downArrow.classList.add("hidden")
         }

@@ -37,10 +37,18 @@
     <!--class={`${$cssDarkmodeModal} navLinks`}-->
     <div class={`${$cssDarkmodeModal} navLinks`} bind:this={elLinks}>
         <div class="navMenu" bind:this={elNavMenu}>
-            <a href="#home">Home</a>
-            <a href="#projects">Projects</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>          
+            <a href="#home">
+                <span class="nav_icon navHome"></span>Home
+            </a>
+            <a href="#projects">
+                <span class="nav_icon navProjects"></span>Projects
+            </a>
+            <a href="#about">
+                <span class="nav_icon navAbout"></span>About
+            </a>
+            <a href="#contact">
+                <span class="nav_icon navContact"></span>Contact
+            </a>          
             <!-->Some divider-->
             <div class="navDividerLine" bind:this={elDivider}></div>
             <div class="navSettings" bind:this={elSettings}>

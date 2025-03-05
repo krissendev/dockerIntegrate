@@ -35,6 +35,7 @@ body {
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    height: max-content;
     width:100vw;
     /* align-self:center; */
 }
@@ -117,14 +118,24 @@ body {
         flex-direction: column; 
         font-size:x-large;
         align-items:center; 
-        margin:10%;
+        margin:3px;
     }
     .navMenu{
          height:100vh; 
+         justify-content: space-between;
     } 
     .navLinks a, .navLinks button{
-        padding:10%;
+        display:flex;
+        flex-direction:row;
+        align-items: center;
+        padding:3px; 
     } 
+
+    .nav_icon{
+        height:50px;
+        width:50px;
+        margin:3px;
+    }
 
     /* .navLinks button{
         background-color: transparent;
@@ -169,3 +180,43 @@ body {
     }
 }
 
+
+/*Navigation icons*/
+.nav_icon{
+    display:inline-block;
+    height:30px;
+    width:30px;
+    margin:3px;
+
+    /*svg styling*/
+    background-color:cornflowerblue;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+ }
+
+.navHome {
+    -webkit-mask-image: url('/icons/icon_home.svg');
+    mask-image: url('/icons/icon_home.svg');
+}
+
+.navProjects {
+    -webkit-mask-image: url('/icons/icon_sourcecode.svg');
+    mask-image: url('/icons/icon_sourcecode.svg');
+}
+.navAbout {
+    -webkit-mask-image: url('/icons/icon_about.svg');
+    mask-image: url('/icons/icon_about.svg');
+}
+.navContact {
+    -webkit-mask-image: url('/icons/icon_contact.svg');
+    mask-image: url('/icons/icon_contact.svg');
+}
+/*
+<a class="navHome" href="#home">Home</a>
+<a class="navProject" href="#projects">Projects</a>
+<a class="navAbout" href="#about">About</a>
+<a class="navContact" href="#contact">Contact</a>          */

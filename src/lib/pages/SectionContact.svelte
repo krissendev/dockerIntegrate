@@ -2,6 +2,7 @@
         import {langdataContact }           from '$store/store.js';
 </script>
 <div class="pageSection contactSvelte">
+    <br>
     <h3 id="contact">This is Contact</h3>    
     <p>{$langdataContact}</p>
     <form>

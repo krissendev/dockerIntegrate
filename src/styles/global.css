@@ -27,12 +27,14 @@ body {
       margin-bottom: 2em; /* Spacing after paragraphs is 200% of the font size */
   }
   .pageSection{
+    margin:0px;
+    padding:0px;
+    border:0px;
     width:100vw;
     height:100vh;
     
   }
   .homeSvelte{background-color: rgba(255,0,0, 0.5);}
-  .projectSvelte{background-color: rgba(0,0,255,0.5);}
   .aboutSvelte{background-color: rgba(0,255,0,0.5);}
   .contactSvelte{background-color: rgba(255,255,0,0.5);}
   .whiteModal,.whiteModal a,.whiteModal button{

@@ -1,16 +1,46 @@
+/* html::before, html::after, 
+body::before, body::after {
+    content: none !important;
+    display: none !important;
+} */
+html {
+    font-size: 0; 
+    line-height: 0; 
+    scroll-padding-top: 80px; /*correct for sticky navbar on desktop*/
+}
+
+
+/* html, body {
+    position:static;
+    top:0px;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+} */
 body {
-    background-color: white;
+    /* font-size: initial; 
+    line-height: initial;  */
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    /* background-color: blue;
     margin:0px;
-    padding:0px;
+    padding:0px; */
     overflow: visible;
     
+}
+p, div, a{
+        font-size: initial; 
+    line-height: initial; 
 }
 /*Containers mainly for desktop*/
 .topNav {
     display: flex;
     position:sticky; 
     top:0px;
-    background-color: rgba(255, 255, 255, 0.90);
+    /* background-color: rgba(255, 255, 255, 0.90); */
+    background-color: green;
     z-index: 1;
     max-height:5vh;
 }

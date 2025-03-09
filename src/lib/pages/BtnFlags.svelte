@@ -168,11 +168,7 @@
         display: flex;
         align-items: center;
         cursor: pointer;
-        /* padding: 5px 10px; */
-        /* border: 1px solid #000000; */
-        /* border-radius: 5px; */
         background-color: #a0a0a0;
-        /* font-size: 14px; */
     }
     #language_selected:hover{
         background-color: #c1c1c1;
@@ -231,7 +227,7 @@
         align-items: center;
         padding: 5px 10px;
         cursor: pointer;
-        font-size: 14px;
+        font-size: 1rem;
     }
     #languageList li:hover {
         background-color: #f4f4f4;

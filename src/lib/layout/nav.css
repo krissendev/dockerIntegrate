@@ -4,8 +4,6 @@ body::before, body::after {
     display: none !important;
 } */
 html {
-    font-size: 0; 
-    line-height: 0; 
     scroll-padding-top: 80px; /*correct for sticky navbar on desktop*/
 }
 

@@ -55,7 +55,6 @@ p, div, a{
 }
 .navSettings button, .navSettings a {
     border:none;
-    background-color:red;
 }
 
 .navLinks, .logo{z-index: 2;}  /*navLinks = elLinks*/
@@ -100,13 +99,13 @@ p, div, a{
 }
 .navDividerLine{
     display:flex;
-    height: 15px;
+    height: auto;
     margin-top:0px;
     margin-bottom:0px;
     margin-right:10px;
     margin-left:10px;
     /* border-top:10px solid blue; */
-    border-left: 5px solid blue;
+    border-left: 10px solid cornflowerblue;    
 }
 
 /* disable scrolling on body & html, used for webkit mobil scroll exits from modal*/
@@ -175,10 +174,11 @@ p, div, a{
     .navDividerLine{
         margin-top:10px;
         height:2px;
+        width:auto;
         margin-bottom:10px;
         margin-right:0px;
         margin-left:0px;
-        border-left: 200px solid blue;
+        border-left: 200px solid cornflowerblue;
     }
 }
 

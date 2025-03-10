@@ -48,7 +48,9 @@
         selectedLanguageBtn.value = "false";
 
         languageClass = `flag_icon ${language}`
-        selectedLanguageText.innerHTML = `${language}`
+        
+        let langText = language.slice(0,1).toUpperCase()+language.slice(1) //Capitalize 1st letter
+        selectedLanguageText.innerHTML = `${langText}`
 
 
         selectedLanguageBtn.addEventListener('click', ()=>{
@@ -84,7 +86,9 @@
 
         function toggleLanguage(lang){
             languageClass = `flag_icon ${lang}`;
-            selectedLanguageText.innerHTML = lang;
+            let langText = lang.slice(0,1).toUpperCase()+lang.slice(1) //Capitalize 1st letter
+            selectedLanguageText.innerHTML = langText;
+            console.log("lang:",lang,typeof(lang))
 
             //deselect dropdown
             selectedLanguageBtn.value = false;
@@ -133,15 +137,15 @@
     <ul id="languageList" style="visibility:hidden" bind:this={languageList}>
         <li data-value="en" bind:this={languageLinkEn}>
             <span class="flag_icon en"></span>
-            <span class="language-name">en</span>
+            <span class="language-name">En</span>
         </li>
         <li data-value="no" bind:this={languageLinkNo}>
             <span class="flag_icon no"></span>
-            <span class="language-name">no</span>
+            <span class="language-name">No</span>
         </li>
         <li data-value="no" bind:this={languageLinkDe}>
             <span class="flag_icon de"></span>
-            <span class="language-name">de</span>
+            <span class="language-name">De</span>
         </li>
     </ul>
 </div>
@@ -159,7 +163,7 @@
     /*Language picker container*/
     #language_selector {
         position: relative;
-        display: inline-block;
+        display: flex;
         margin:0px;
         padding:0px;
         border:0px;
@@ -168,7 +172,7 @@
         display: flex;
         align-items: center;
         cursor: pointer;
-        background-color: #a0a0a0;
+        background-color:cornflowerblue;
     }
     #language_selected:hover{
         background-color: #c1c1c1;

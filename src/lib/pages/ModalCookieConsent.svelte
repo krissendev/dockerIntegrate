@@ -115,7 +115,7 @@
     <button class="downArrow arrow" on:click={()=>scrollArrow("down")}>⬇</button>
     {/if}
     <div class="cookieModalText">
-        <h3>Save preferences with Cookies</h3>
+        <h3>Save preferences with Cookies</h3> <div class="iconCookie icon"></div>
         <p>We respect your data and right to privacy. Our website does not collect nor track your personal data and has no cookies enabled by default.<br>
             All cookies, if enabled by you, are stored on your local device only and are used solely to remember settings of your choosing, enhancing your user experience.<br>
             This website does not track your cookies, nor do any third parties.<br>
@@ -140,6 +140,23 @@
 
 
 <style>
+.icon{
+    display:block;
+    height:30px;
+    width:30px;
+    margin:3px;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+.iconCookie{
+    background-color:cornflowerblue;
+    -webkit-mask-image: url('/icons/icon_cookie.svg');
+    mask-image: url('/icons/icon_cookie.svg');
+  }
 .cookieModalText{
     position:fixed; 
     /* height:100vh; */

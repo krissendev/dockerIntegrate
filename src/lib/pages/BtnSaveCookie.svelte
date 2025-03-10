@@ -36,15 +36,61 @@
 
 </script>
 <!--Modal for cookie conscent-->
-<div style="display:inline-block;">
+
+<!-- 
+<div class="iconSave icon"></div>
+<div class="iconCookie icon"></div>
+<div class="iconCookieOFF icon"></div>
+<div class="iconTrue icon"></div>
+<div class="iconFalse icon"></div> 
+-->
+<button aria-label="save preferences in cookie"class="iconSave icon"on:click={handleToggle}></button>
+<div class="iconTrue icon"></div>
+<!-- <div style="display:inline-block;">
   <div class="switch-container">
     <label class="switch">
       <input type="checkbox" class="sliderChecked" checked={$cookieConsent} on:click={handleToggle}>
       <span class="slider"></span>
     </label>
   </div>
-</div>
+</div> -->
 <style>
+  .icon{
+    display:flex;
+    align-self: center;
+    height:30px;
+    width:30px;
+    margin:3px;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+  }
+  .iconSave{
+    background-color:cornflowerblue;
+    -webkit-mask-image: url('/icons/icon_save.svg');
+    mask-image: url('/icons/icon_save.svg');
+  }
+  .iconCookieOFF{
+    background-color:red;
+    -webkit-mask-image: url('/icons/icon_stop.svg');
+    mask-image: url('/icons/icon_stop.svg');
+  }
+
+.iconTrue{
+  transform: translate(-60%, -40%) scale(0.5);
+  background-color:green;
+    -webkit-mask-image: url('/icons/icon_true.svg');
+    mask-image: url('/icons/icon_true.svg');
+}
+.iconFalse{
+  background-color:red;
+    -webkit-mask-image: url('/icons/icon_false.svg');
+    mask-image: url('/icons/icon_false.svg');
+}
+
   .switch-container {
       flex-direction: column; /* Stacks flex items vertically */
       display: flex;

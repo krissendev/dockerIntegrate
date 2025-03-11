@@ -3,7 +3,8 @@
 // I don't need to use onMount in javascript, since its a loaded function this makes it simpler
     import {onMount}                        from 'svelte';
     import {isMobile,cssDarkmodeModal,
-            cookieModalOverflow}            from '$store/store.js';
+            cookieModalOverflow,
+            langdataNav        }            from '$store/store.js';
     import {updateStorePrimitive, storeMap} from '$lib/routing/storeHandler.js'
     import {toggleBurger, initOnMount}      from '$lib/layout/nav.js'
     import BtnDarkmode                      from './BtnDarkmode.svelte'
@@ -31,6 +32,12 @@
         toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu);
     }
     
+
+
+
+    //Dynamic UI
+    //JSON
+    $: navdata = $langdataNav;
 </script>
 
 <div class="topNav"><!--Top Nav-->
@@ -38,16 +45,17 @@
     <div class={`${$cssDarkmodeModal} navLinks`} bind:this={elLinks}>
         <div class="navMenu" bind:this={elNavMenu}>
             <a href="#home">
-                <span class="nav_icon navHome"></span>Home
+                <!-- {navdata.home.label} -->
+                <span class="nav_icon navHome"></span>{#if navdata?.home}{navdata.home.label}{/if}
             </a>
             <a href="#projects">
-                <span class="nav_icon navProjects"></span>Projects
+                <span class="nav_icon navProjects"></span>{#if navdata?.project}{navdata.project.label}{/if}
             </a>
             <a href="#about">
-                <span class="nav_icon navAbout"></span>About
+                <span class="nav_icon navAbout"></span>{#if navdata?.about}{navdata.about.label}{/if}
             </a>
             <a href="#contact">
-                <span class="nav_icon navContact"></span>Contact
+                <span class="nav_icon navContact"></span>{#if navdata?.contact}{navdata.contact.label}{/if}
             </a>          
             <!-->Some divider-->
             <div class="navDividerLine" bind:this={elDivider}></div>

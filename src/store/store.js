@@ -22,3 +22,5 @@ export const langdataHome =writable('')
 export const langdataAbout =writable('')
 export const langdataProject =writable('')
 export const langdataContact =writable('')
+
+export const langdataNav =writable('')

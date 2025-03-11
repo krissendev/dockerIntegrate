@@ -1,6 +1,14 @@
 {
     "":{"content":"something went wrong..."},
     "no":{
+        "ui":{
+            "nav":{
+                "home":{"label":"Heim"},
+                "project":{"label":"Prosjekt"},
+                "about":{"label":"Om meg"},
+                "contact":{"label":"Kontakt"}
+            }
+        },
         "content":"NORSK Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas sapien turpis, eget egestas arcu finibus vel. Nunc blandit, odio interdum bibendum porta, augue nisl lacinia urna, non pharetra nisi ante quis enim. Donec interdum semper dignissim. Aliquam erat volutpat. Fusce porttitor lacus sed massa sagittis, ut eleifend leo pulvinar. Etiam in posuere nunc. Praesent non ipsum finibus, accumsan odio in, laoreet tellus.",
         "home":"Hjem innhold",
         "about":"Om innhold",
@@ -8,6 +16,14 @@
         "contact":"Kontakt innhold"
     },
     "en":{
+        "ui":{
+            "nav":{
+                "home":{"label":"Home"},
+                "project":{"label":"Project"},
+                "about":{"label":"About Me"},
+                "contact":{"label":"Contact"}
+            }
+        },
         "content":"ENGLISH Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas sapien turpis, eget egestas arcu finibus vel. Nunc blandit, odio interdum bibendum porta, augue nisl lacinia urna, non pharetra nisi ante quis enim. Donec interdum semper dignissim. Aliquam erat volutpat. Fusce porttitor lacus sed massa sagittis, ut eleifend leo pulvinar. Etiam in posuere nunc. Praesent non ipsum finibus, accumsan odio in, laoreet tellus.",
         "home":"Home content",
         "about":"About content",
@@ -15,6 +31,14 @@
         "contact":"Contact content"
     },
     "de":{
+        "ui":{
+            "nav":{
+                "home":{"label":"Zuhause"},
+                "project":{"label":"Projekt"},
+                "about":{"label":"Über mich"},
+                "contact":{"label":"Kontakt"}
+            }
+        },
         "content":"ENGLISH Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas sapien turpis, eget egestas arcu finibus vel. Nunc blandit, odio interdum bibendum porta, augue nisl lacinia urna, non pharetra nisi ante quis enim. Donec interdum semper dignissim. Aliquam erat volutpat. Fusce porttitor lacus sed massa sagittis, ut eleifend leo pulvinar. Etiam in posuere nunc. Praesent non ipsum finibus, accumsan odio in, laoreet tellus.",
         "home":"Zuhause inhalt",
         "about":"Über mich inhalt",

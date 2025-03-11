@@ -50,6 +50,9 @@ export async function loadLanguage(){
         updateStorePrimitive(storeMap.langdataProject, langContentProject)
         updateStorePrimitive(storeMap.langdataContact, langContentContact)
 
+        //UI navbar language
+        const langContentNavMenu = await jsonfile[language].ui.nav;
+        updateStorePrimitive(storeMap.langdataNav, langContentNavMenu)
     }
 }
 

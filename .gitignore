@@ -11,7 +11,7 @@ todolist.txt
 .wrangler
 /.svelte-kit
 /build
-
+/notes
 # OS
 .DS_Store
 Thumbs.db

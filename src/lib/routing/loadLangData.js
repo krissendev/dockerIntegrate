@@ -68,22 +68,28 @@ const browserLangMap={
             
 }
 const urlRouteLangMap = new Set(["no", "en", "de"]);
-const urlRoutePathMap = new Set(["home", "about", "contact"]);
+const urlRoutePathMap = new Set(["#home", "#projects", "#about", "#contact"]);
     
 
 export function parseLangAndPath(url){
+    console.log("entire url?", url)
     const urlSegments = url.split("/");
     let lang=undefined
     let path=undefined
     
-    for (const segment of urlSegments){
+    for (let segment of urlSegments){
+        segment = segment.toLowerCase();
+        console.log("segment;", segment)
+        console.log("segment has path?", urlRoutePathMap.has(segment))
         if(urlRoutePathMap.has(segment)){
+            
             path=segment;
         }
         
         else if(urlRouteLangMap.has(segment)){
             lang=segment;
         }
+        
 
     }
     return[lang, path]

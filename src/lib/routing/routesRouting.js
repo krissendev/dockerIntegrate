@@ -5,6 +5,7 @@ import {sessionPreferences}                 from '$store/store.js';
 //url handling similar to /routes/[...slug]/+page.js
 export function routing({params, cookies}){
     const url = params.slug ? params.slug:params.lang; //set to [...slug] or [lang]
+    console.log("what is params?", params)
     console.log("what is url?", url)
     console.log(params)
     let lang=undefined; 
@@ -14,6 +15,7 @@ export function routing({params, cookies}){
     if(url){
         
         [lang, path]=parseLangAndPath(url);
+        console.log("after parse...", lang, path)
     }
     //if URL does not cointain lang, check for cookie
 
@@ -30,6 +32,7 @@ export function routing({params, cookies}){
         
         return{lang:cookieLang, path:path}
     }
+    console.log("has url lang pre check;", lang, " path:", path)
 
     path = path?path:"home";
     //Should sessionPreference or document.cookie dictate ? 

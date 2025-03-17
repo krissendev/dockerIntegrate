@@ -114,8 +114,10 @@
 
         //placeholder /en /no , get url and map #, /[...slug], /[lang] etc afterwards
         console.log("Flags onMount url calling goto()", language)
+        const currentPath = window.location.pathname;
+        const currentHash = window.location.hash
         if(language){
-            goto(`/${language}`);
+            goto(`/${language}${currentHash}`);
         }
     }
 

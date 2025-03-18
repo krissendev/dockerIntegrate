@@ -68,7 +68,7 @@ const browserLangMap={
             
 }
 const urlRouteLangMap = new Set(["no", "en", "de"]);
-const urlRoutePathMap = new Set(["#home", "#projects", "#about", "#contact"]);
+const urlRoutePathMap = new Set(["#home", "#projects", "#about", "#contact", "app"]);
     
 
 export function parseLangAndPath(url){

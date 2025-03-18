@@ -112,12 +112,12 @@
         //update store data $lib/routing/loadLangData.js
         loadLanguage();
 
-        //placeholder /en /no , get url and map #, /[...slug], /[lang] etc afterwards
-        console.log("Flags onMount url calling goto()", language)
-        const currentPath = window.location.pathname;
-        const currentHash = window.location.hash
+        //language redirect while retaining rest of the url path
+        const currentPath = window.location.pathname + window.location.hash;
+        let pathSegments = currentPath.split(/(?=[#/])/);
+        const reconstructerPath = "".concat(...pathSegments.slice(1));//removes 1 entry which is for language
         if(language){
-            goto(`/${language}${currentHash}`);
+            goto(`/${language}`+ reconstructerPath);
         }
     }
 

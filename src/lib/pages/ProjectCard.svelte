@@ -33,17 +33,23 @@
     export let projectName;
 
 </script>
-<div class="projectCardsEntry" class:active={expanded}>
-    <h3>{projectName}</h3>
-    <p>Some info</p>
-    {#if expanded}
-    <div class="expandedCard"> 
-        More projectinfo
-        More projectinfo
+{#if projectName}
+    <div class="projectCardsEntry" class:active={expanded}>
+        <h3>{projectName}</h3>
+        <p>Some info</p>
+        {#if expanded}
+        <div class="expandedCard"> 
+            More projectinfo
+            More projectinfo
+        </div>
+        {/if}
+        <button class="toggleExpand" on:click={toggleCardExpandContent}>More/Less</button>
     </div>
-    {/if}
-    <button class="toggleExpand" on:click={toggleCardExpandContent}>More/Less</button>
-</div>
+    {:else}
+    <div class="projectCardsEntry" class:active={expanded}>
+    </div>
+
+{/if}
 
 <style>
     /* .projectCardsEntry{

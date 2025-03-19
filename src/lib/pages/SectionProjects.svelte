@@ -12,10 +12,13 @@
     <h3 id="projects" style="paddig:0px; margin:0px; border:0px;">This is Projects</h3>
     <!-- <p>{$langdataProject}</p> -->
     <div class="projectCardsContainer">
-        <Card ontoggleCardExpandContent={toggleCardRespone} projectName="Project1"/>
-        <Card ontoggleCardExpandContent={toggleCardRespone} projectName="Project2"/>
-        <Card ontoggleCardExpandContent={toggleCardRespone} projectName="Project3"/>
-        <Card ontoggleCardExpandContent={toggleCardRespone} projectName="Project4"/>
+        <Card ontoggleCardExpandContent={toggleCardRespone} projectName="2D Physics"/>
+        <Card ontoggleCardExpandContent={toggleCardRespone} projectName={false}/>
+        <Card ontoggleCardExpandContent={toggleCardRespone} projectName={false}/>
+        <Card ontoggleCardExpandContent={toggleCardRespone} projectName={false}/>
+        
+        <!-- Placeholder, fix for dynamic language-->
+        <a href="/en/app">See more</a>
 
         
     </div>

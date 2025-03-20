@@ -12,7 +12,12 @@
         "content":"NORSK Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas sapien turpis, eget egestas arcu finibus vel. Nunc blandit, odio interdum bibendum porta, augue nisl lacinia urna, non pharetra nisi ante quis enim. Donec interdum semper dignissim. Aliquam erat volutpat. Fusce porttitor lacus sed massa sagittis, ut eleifend leo pulvinar. Etiam in posuere nunc. Praesent non ipsum finibus, accumsan odio in, laoreet tellus.",
         "home":"Hjem innhold",
         "about":"Om innhold",
-        "project": "Prosjekt innhold",
+        "project": {"header":"Prosjekt innhold","cards":{
+            "quadtree":{"header":"2D Physics",
+                "contentMinimized":"2D Physics, er eit kollisjonssystem som bruker Quadtree for å auke ytelsen på 2D kollisjon.",
+                "contentMaximized":"Quadtree er ein datastruktur som deler deler kordinatsystem, i vårt tilfelle skjermen inn i 4 kvadranter og som derpå brukes for å sjekke om element innanfor kvar kvadrant og deira posisjona overlapper for så å justere kvar posisjon om det er tilfellet.",
+                "link":"/app/quadtree"}}
+        },
         "contact":"Kontakt innhold"
     },
     "en":{
@@ -27,7 +32,12 @@
         "content":"ENGLISH Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas sapien turpis, eget egestas arcu finibus vel. Nunc blandit, odio interdum bibendum porta, augue nisl lacinia urna, non pharetra nisi ante quis enim. Donec interdum semper dignissim. Aliquam erat volutpat. Fusce porttitor lacus sed massa sagittis, ut eleifend leo pulvinar. Etiam in posuere nunc. Praesent non ipsum finibus, accumsan odio in, laoreet tellus.",
         "home":"Home content",
         "about":"About content",
-        "project": "Project content",
+        "project": {"header":"Project content","cards":{
+            "quadtree":{"header":"2D Physics",
+                "contentMinimized":"2D Physics, is a collision system  that uses a Quadtree to increase performance for 2D collisions.",
+                "contentMaximized":"Quadtree is a data structure that divides a coordinate system, in our case the screenspace into 4 quadrants and thereafter is used to check if elements within each quadrant and their positions overlap and then adjust the positions when that is the case.",
+                "link":"/app/quadtree"}}
+        },
         "contact":"Contact content"
     },
     "de":{
@@ -42,7 +52,12 @@
         "content":"ENGLISH Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur egestas sapien turpis, eget egestas arcu finibus vel. Nunc blandit, odio interdum bibendum porta, augue nisl lacinia urna, non pharetra nisi ante quis enim. Donec interdum semper dignissim. Aliquam erat volutpat. Fusce porttitor lacus sed massa sagittis, ut eleifend leo pulvinar. Etiam in posuere nunc. Praesent non ipsum finibus, accumsan odio in, laoreet tellus.",
         "home":"Zuhause inhalt",
         "about":"Über mich inhalt",
-        "project": " Projekt inhalt",
+        "project": {"header":"Projekt inhalt","cards":{
+            "quadtree":{"header":"2D Physics",
+                "contentMinimized":"2D Physics, er eit kollisjonssystem som bruker Quadtree for å auke ytelsen på 2D kollisjon.",
+                "contentMaximized":"Quadtree er ein datastruktur som deler deler kordinatsystem, i vårt tilfelle skjermen inn i 4 kvadranter og som derpå brukes for å sjekke om element innanfor kvar kvadrant og deira posisjona overlapper for så å justere kvar posisjon om det er tilfellet.",
+                "link":"/app/quadtree"}}
+        },
         "contact":"Kontakt inhalt"
     }
     

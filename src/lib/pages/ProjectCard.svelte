@@ -1,14 +1,51 @@
 <script>
     import {onMount} from 'svelte'
+    import {langdataProject, cssDarkmodeModal }               from '$store/store.js';
+    import { storeMap, getStoreValue }      from '$lib/routing/storeHandler';
+
     let projectCards =[];
     let expanded = false;
     export let ontoggleCardExpandContent;
 
+
+    //Prop from parent SectionProjects.svelte
+    export let projectName;
+
+    let intervalLoadStoredata;
+
+    $: projectCardData=undefined;
     onMount(()=>{
         projectCards = document.querySelectorAll(".expandedCard");
 
+        if(projectName){
+            getProjectCardData()
+        }
     })
+    function getProjectCardData(){
+        intervalLoadStoredata = setTimeout(async ()=>{
+                const projectDataJSON = getStoreValue(langdataProject);
+                try{
+                    console.log("inside interval getting data...")
+                    console.log(projectDataJSON.cards[projectName])
+                    projectCardData = projectDataJSON.cards[projectName];
+                }
+                catch(error){console.log(error)}
+            }, 100)
+    }    
 
+    $: cardHeader ="";
+    $: cardContentMin="";
+    $: cardContentMax="";
+    $: cardDemoLink="";
+    $:{if(projectCardData && projectName){
+        cardHeader = projectCardData.header;
+        cardContentMin = projectCardData.contentMinimized;
+        cardContentMax = projectCardData.contentMaximized;
+        cardDemoLink = projectCardData.link;
+        console.log("cardHeader")
+        console.log(cardContentMax)
+    }}
+    
 
     function toggleCardExpandContent(event){
         expanded=!expanded;
@@ -29,20 +66,21 @@
         
     }
 
-    //Prop from parent SectionProjects.svelte
-    export let projectName;
+
 
 </script>
-{#if projectName}
+{#if projectName && $langdataProject}
     <div class="projectCardsEntry" class:active={expanded}>
-        <h3>{projectName}</h3>
-        <p>Some info</p>
+        <!-- <h3>{$langdataProject.cards}</h3>  -->
+        <h3>{cardHeader}</h3> 
+        <p>{cardContentMin}</p>
+        <a href={`${cardDemoLink}`}>Live demo</a>
         {#if expanded}
         <div class="expandedCard"> 
-            More projectinfo
-            More projectinfo
+            <p>{cardContentMax}</p>
         </div>
         {/if}
+        <br>
         <button class="toggleExpand" on:click={toggleCardExpandContent}>More/Less</button>
     </div>
     {:else}

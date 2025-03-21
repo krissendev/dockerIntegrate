@@ -1,4 +1,6 @@
 <script>
+    //tick is used for waiting for DOM updated to prevent raceconditions between html state and scripted element queries
+    // import {tick} from 'svelte'
     import {onMount} from 'svelte'
     import {langdataProject, cssDarkmodeModal }               from '$store/store.js';
     import { storeMap, getStoreValue }      from '$lib/routing/storeHandler';
@@ -53,16 +55,20 @@
         //Delete this later, manual DOM conflicts with Svelte DOM, meaning updates in styling 
         // might not be applied with the following method:
 
-        // const parentDiv = event.target.parentNode;
-        // const expandedContentDiv = parentDiv.querySelector(".expandedCard");
-        // if(expandedContentDiv.style.display ==="block"){
-        //     expandedContentDiv.style.display = "none"
-        //     parentDiv.classList.remove('active');
-        // }
-        // else{
-        //     parentDiv.classList.add('active');
-        //     expandedContentDiv.style.display ="block"
-        // }
+        //awaiting expanded to update in DOM
+        // tick().then(() => {
+        //     const parentDiv = event.target.parentNode;
+        //     const expandedContentDiv = parentDiv.querySelector(".expandedCard");
+        //     console.log("toggleCardExpandContent",event)
+        //     console.log("toggleCardExpandContent",parentDiv)
+        //     console.log("toggleCardExpandContent",expandedContentDiv)
+        //     if(expandedContentDiv.style.display ==="block"){
+        //         expandedContentDiv.style.display = "none"
+        //     }
+        //     else{
+        //         expandedContentDiv.style.display ="block"
+        //     }
+        // })
         
     }
 
@@ -74,12 +80,12 @@
         <!-- <h3>{$langdataProject.cards}</h3>  -->
         <h3>{cardHeader}</h3> 
         <p>{cardContentMin}</p>
-        <a href={`${cardDemoLink}`}>Live demo</a>
         {#if expanded}
         <div class="expandedCard"> 
             <p>{cardContentMax}</p>
         </div>
         {/if}
+        <a href={`${cardDemoLink}`}>Live demo</a>
         <br>
         <button class="toggleExpand" on:click={toggleCardExpandContent}>More/Less</button>
     </div>
@@ -101,7 +107,7 @@
         background-color: aquamarine;
     } */
     .expandedCard{
-        display:none;
+        display:block;
     }
     /* .projectCardsEntry.active{
         display:block;

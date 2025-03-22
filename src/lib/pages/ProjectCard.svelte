@@ -85,7 +85,7 @@
             <p>{cardContentMax}</p>
         </div>
         {/if}
-        <a href={`${cardDemoLink}`}>Live demo</a>
+        <a href={`${cardDemoLink}`} data-sveltekit-reload>Live demo</a>
         <br>
         <button class="toggleExpand" on:click={toggleCardExpandContent}>More/Less</button>
     </div>

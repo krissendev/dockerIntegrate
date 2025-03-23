@@ -29,9 +29,11 @@
 
     //Burger toggle on mobile only
     function handleToggle(){
-        toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu);
+        toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, undefined);
     }
-    
+    function closeBurger(){
+        toggleBurger(elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, true);
+    }
 
 
 
@@ -44,17 +46,16 @@
     <!--class={`${$cssDarkmodeModal} navLinks`}-->
     <div class={`${$cssDarkmodeModal} navLinks`} bind:this={elLinks}>
         <div class="navMenu" bind:this={elNavMenu}>
-            <a href="./#home">
-                <!-- {navdata.home.label} -->
+            <a href="./#home" on:click={closeBurger}>
                 <span class="nav_icon navHome"></span>{#if navdata?.home}{navdata.home.label}{/if}
             </a>
-            <a href="./#projects">
+            <a href="./#projects" on:click={closeBurger}>
                 <span class="nav_icon navProjects"></span>{#if navdata?.project}{navdata.project.label}{/if}
             </a>
-            <a href="./#about">
+            <a href="./#about" on:click={closeBurger}>
                 <span class="nav_icon navAbout"></span>{#if navdata?.about}{navdata.about.label}{/if}
             </a>
-            <a href="./#contact">
+            <a href="./#contact" on:click={closeBurger}>
                 <span class="nav_icon navContact"></span>{#if navdata?.contact}{navdata.contact.label}{/if}
             </a>          
             <!-->Some divider-->

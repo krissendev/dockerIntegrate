@@ -25,7 +25,8 @@ export function initOnMount(elLinks, elNavMenu, elDivider, elSettings,elMobileMe
     }
 }
 
-export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu) {
+export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, burgerStateTrue) {
+    toggled = burgerStateTrue?burgerStateTrue:toggled;
     if(toggled){
         toggled=false;
         elLinks.style.display  = "none";
@@ -37,7 +38,6 @@ export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobile
 
         /* re-enable scrolling on body & html after burger modal turned off*/
         docBody.classList.remove("disabledScroll")
-        docHtml.classList.remove("disabledScroll")
     }
     else if(!toggled){
         toggled=true;
@@ -54,7 +54,6 @@ export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobile
 
         /* disable scrolling on body & html, used for webkit mobil scroll exits from modal*/
         docBody.classList.add("disabledScroll")
-        docHtml.classList.add("disabledScroll")
     }
 }
 
@@ -67,7 +66,6 @@ function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobi
         updateStorePrimitive(storeMap.isMobile, false)        
         updateStorePrimitive(storeMap.cookieModalOverflow, "none")        
         updateStorePrimitive(storeMap.cookieConsentVisible, false)        
-        document.body.style.overflow = 'visible'
         elNavMenu.style.display='flex'
         elMobileMenu.classList.remove('active')
         elLinks.style.display  = "flex";
@@ -80,9 +78,6 @@ function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobi
         updateStorePrimitive(storeMap.isMobile, true)        
         updateStorePrimitive(storeMap.cookieModalOverflow, "none")        
         updateStorePrimitive(storeMap.cookieConsentVisible, false)    
-
-        document.body.style.overflow = 'visible'
-
         elMobileMenu.classList.remove('active')
         elLinks.style.display  = "none";
         elNavMenu.style.display  = "none"; 

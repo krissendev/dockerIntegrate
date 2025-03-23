@@ -148,7 +148,7 @@
 
 @media (max-width: 540px) {
   .projectCardsEntry {
-    width: 100%; 
+    width: auto; 
   }
 }
 .projectCardsEntry.hidden {

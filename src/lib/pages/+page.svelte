@@ -5,6 +5,7 @@
     import SectionProjects                  from './SectionProjects.svelte'
     import SectionAbout                     from './SectionAbout.svelte'
     import SectionContact                   from './SectionContact.svelte'
+    import SectionFooter                   from './SectionFooter.svelte'
     import { page }                         from '$app/state';
     import {updateStoreObject, storeMap}    from '$lib/routing/storeHandler.js'
 
@@ -20,5 +21,6 @@
 <SectionProjects id="projects"/>
 <SectionAbout id="about"/>
 <SectionContact id="contact"/>
+<SectionFooter />
 
 

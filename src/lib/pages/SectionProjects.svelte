@@ -8,7 +8,7 @@
     
 </script>
 <div class="pageSection projectSvelte">
-    <br>
+    <div><br><br></div>
     <h3 id="projects" style="paddig:0px; margin:0px; border:0px;">This is Projects</h3>
     <p>{$langdataProject.header}</p>
     <div class="projectCardsContainer">

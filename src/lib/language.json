@@ -16,7 +16,13 @@
             "quadtree":{"header":"2D Physics",
                 "contentMinimized":"2D Physics, er eit kollisjonssystem som bruker Quadtree for å auke ytelsen på 2D kollisjon.",
                 "contentMaximized":"Quadtree er ein datastruktur som deler deler kordinatsystem, i vårt tilfelle skjermen inn i 4 kvadranter og som derpå brukes for å sjekke om element innanfor kvar kvadrant og deira posisjona overlapper for så å justere kvar posisjon om det er tilfellet.",
-                "link":"/app/quadtree"}}
+                "link":"/app/quadtree"},
+            "krissendev":{"header":"krissen.dev",
+            "contentMinimized":"krissen.dev er portfolio og blogg nettsida mi. Den er laga med sveltekit i ein docker container som via github-actions kjører på google cloud. Vedlagt ligg lenke til figma-fil for mokkupen bak designet.",
+            "contentMaximized":"",
+            "link":"https://www.figma.com/proto/3WlKBAUhhcKOxctpTvxNtO/krissendev?node-id=1-6&t=xQX1n2F1OSr9K9w7-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A6"}
+            }
+
         },
         "contact":"Kontakt innhold"
     },
@@ -36,7 +42,12 @@
             "quadtree":{"header":"2D Physics",
                 "contentMinimized":"2D Physics, is a collision system  that uses a Quadtree to increase performance for 2D collisions.",
                 "contentMaximized":"Quadtree is a data structure that divides a coordinate system, in our case the screenspace into 4 quadrants and thereafter is used to check if elements within each quadrant and their positions overlap and then adjust the positions when that is the case.",
-                "link":"/app/quadtree"}}
+                "link":"/app/quadtree"},
+                "krissendev":{"header":"krissen.dev",
+                "contentMinimized":"krissen.dev is my portfolio and blogg website. It's made of a sveltekit docker container deployed with github-actions on google cloud. It's figma mokup design can be found by clicking the link below.",
+                "contentMaximized":"",
+                "link":"https://www.figma.com/proto/3WlKBAUhhcKOxctpTvxNtO/krissendev?node-id=1-6&t=xQX1n2F1OSr9K9w7-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A6"}
+            }
         },
         "contact":"Contact content"
     },
@@ -56,7 +67,12 @@
             "quadtree":{"header":"2D Physics",
                 "contentMinimized":"2D Physics, er eit kollisjonssystem som bruker Quadtree for å auke ytelsen på 2D kollisjon.",
                 "contentMaximized":"Quadtree er ein datastruktur som deler deler kordinatsystem, i vårt tilfelle skjermen inn i 4 kvadranter og som derpå brukes for å sjekke om element innanfor kvar kvadrant og deira posisjona overlapper for så å justere kvar posisjon om det er tilfellet.",
-                "link":"/app/quadtree"}}
+                "link":"/app/quadtree"},
+                "krissendev":{"header":"krissen.dev",
+                "contentMinimized":"krissen.dev er portfolio og blogg nettsida mi. Den er laga med sveltekit i ein docker container som via github-actions kjører på google cloud. Vedlagt ligg lenke til figma-fil for mokkupen bak designet.",
+                "contentMaximized":"",
+                "link":"https://www.figma.com/proto/3WlKBAUhhcKOxctpTvxNtO/krissendev?node-id=1-6&t=xQX1n2F1OSr9K9w7-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A6"}
+            }
         },
         "contact":"Kontakt inhalt"
     }

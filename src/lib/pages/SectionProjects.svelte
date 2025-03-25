@@ -13,7 +13,7 @@
     <p>{$langdataProject.header}</p>
     <div class="projectCardsContainer">
         <Card ontoggleCardExpandContent={toggleCardRespone} projectName={"quadtree"}/>
-        <Card ontoggleCardExpandContent={toggleCardRespone} projectName={false}/>
+        <Card ontoggleCardExpandContent={toggleCardRespone} projectName={"krissendev"}/>
         <Card ontoggleCardExpandContent={toggleCardRespone} projectName={false}/>
         <Card ontoggleCardExpandContent={toggleCardRespone} projectName={false}/>
         

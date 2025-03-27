@@ -13,19 +13,19 @@ let docHtml;
 
 // Add resize event listener only in the browser, DOM reference, after SvelteOnMount makes "browser" available
 
-export function initOnMount(elLinks, elNavMenu, elDivider, elSettings,elMobileMenu, elMobileModal){
+export function initOnMount(elLinks, elNavMenu, elDivider, elSettings,elMobileMenu, elMobileModal,topNav){
     if(browser) {
         docBody = document.body;
         docHtml = document.documentElement;
         window.addEventListener('resize', () => {
             if (browser) {
-                resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobileModal);
+                resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobileModal, topNav);
             }
         });
     }
 }
 
-export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, burgerStateTrue) {
+export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, burgerStateTrue, topNav) {
     toggled = burgerStateTrue?burgerStateTrue:toggled;
     if(toggled){
         toggled=false;
@@ -34,7 +34,7 @@ export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobile
         elMobileMenu.classList.remove('active')
         elMobileModal.style.display  = "none";
         docBody.style.overflow = "visible"
-
+        topNav.style.position = "fixed";
 
         /* re-enable scrolling on body & html after burger modal turned off*/
         docBody.classList.remove("disabledScroll")
@@ -54,11 +54,12 @@ export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobile
 
         /* disable scrolling on body & html, used for webkit mobil scroll exits from modal*/
         docBody.classList.add("disabledScroll")
+        topNav.style.position = "sticky";
     }
 }
 
 let counter = 0;
-function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobileModal){
+function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobileModal, topNav){
     counter++;
     // console.log(`resize ${counter}`)
     toggled = false;
@@ -66,11 +67,13 @@ function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobi
         updateStorePrimitive(storeMap.isMobile, false)        
         updateStorePrimitive(storeMap.cookieModalOverflow, "none")        
         updateStorePrimitive(storeMap.cookieConsentVisible, false)        
-        elNavMenu.style.display='flex'
-        elMobileMenu.classList.remove('active')
+        elNavMenu.style.display='flex';
+        elMobileMenu.classList.remove('active');
         elLinks.style.display  = "flex";
         elMobileModal.style.display  = "none";
-        docBody.style.overflow = "visible"
+        docBody.style.overflow = "visible";
+        topNav.style.position = "sticky";
+        docHtml.style.scroll_padding_top = "80px";
 
         
     }
@@ -78,12 +81,14 @@ function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobi
         updateStorePrimitive(storeMap.isMobile, true)        
         updateStorePrimitive(storeMap.cookieModalOverflow, "none")        
         updateStorePrimitive(storeMap.cookieConsentVisible, false)    
-        elMobileMenu.classList.remove('active')
+        elMobileMenu.classList.remove('active');
         elLinks.style.display  = "none";
         elNavMenu.style.display  = "none"; 
-        elMobileMenu.classList.remove('active')
+        elMobileMenu.classList.remove('active');
         elMobileModal.style.display  = "none";
-        docBody.style.overflow = "visible"
+        docBody.style.overflow = "visible";
+        topNav.style.position = "fixed";
+        docHtml.style.scroll_padding_top = "0px";
         
         
     }     

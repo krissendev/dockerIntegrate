@@ -19,20 +19,21 @@
 
     let elMobileMenu  ; //BurgerMenu
     let elMobileModal;  //Modal overlay when burger menu toggled
+    let topNav;         //Outer Menu container for consistent display across mobile and desktop
 
     //nav resize depends on 'browser', which only is available after mount
     onMount(()=>{
         updateStorePrimitive(storeMap.isMobile, window.screen.width < 540)
         //window.screen.width;
-        initOnMount(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobileModal);
+        initOnMount(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobileModal, topNav);
     })
 
     //Burger toggle on mobile only
     function handleToggle(){
-        toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, undefined);
+        toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, undefined, topNav);
     }
     function closeBurger(){
-        toggleBurger(elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, true);
+        toggleBurger(elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, true, topNav);
     }
 
 
@@ -42,7 +43,7 @@
     $: navdata = $langdataNav;
 </script>
 
-<div class="topNav"><!--Top Nav-->
+<div class="topNav" bind:this={topNav}><!--Top Nav-->
     <!--class={`${$cssDarkmodeModal} navLinks`}-->
     <div class={`${$cssDarkmodeModal} navLinks`} bind:this={elLinks}>
         <div class="navMenu" bind:this={elNavMenu}>
@@ -57,7 +58,7 @@
             </a>
             <a href="./#contact" on:click={closeBurger}>
                 <span class="nav_icon navContact"></span>{#if navdata?.contact}{navdata.contact.label}{/if}
-            </a>          
+            </a>
             <!-->Some divider-->
             <div class="navDividerLine" bind:this={elDivider}></div>
             <div class="navSettings" bind:this={elSettings}>

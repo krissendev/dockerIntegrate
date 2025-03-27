@@ -3,8 +3,9 @@ body::before, body::after {
     content: none !important;
     display: none !important;
 } */
+ 
 html {
-    scroll-padding-top: 80px; /*correct for sticky navbar on desktop*/
+    scroll-padding-top: 80px; /* correct for sticky navbar on desktop */
 }
 
 
@@ -35,7 +36,7 @@ p, div, a{
 /*Containers mainly for desktop*/
 .topNav {
     display: flex;
-    position:sticky; 
+    position:sticky;    
     top:0px;
     /* background-color: rgba(255, 255, 255, 0.90); */
     /* background-color: green; */
@@ -116,8 +117,14 @@ p, div, a{
 }
 
 @media screen and (max-width: 540px) {
+    html {
+        scroll-padding-top: 0px; /* revoke for sticky navbar on desktop for mobile */
+    }
     .topNav{
+        position:fixed;
         height:10vh;
+        top:5px;
+        right:5px;
     }     
     .burger{
         display:block;        

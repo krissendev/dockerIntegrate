@@ -36,10 +36,19 @@ export function updateStoreObject(storeMapEntry, key, newValue){
 export function updateStorePrimitive(storeMapEntry, newValue){
     storeMapEntry.set(newValue)
 } 
-export function updateStoreBoolToggle(storeMapEntry){
-    storeMapEntry.update(value=>{
-        return !value
-    })
+export function updateStoreBoolToggle(storeMapEntry, hardBoolSet){
+    //set to specific bool
+    if(hardBoolSet===true || hardBoolSet===false){
+        storeMapEntry.update(value=>{
+            return hardBoolSet
+        })
+    }
+    //simply toggle bool to opposite
+    else{
+        storeMapEntry.update(value=>{
+            return !value
+        })
+    }
 }
 
 export function getStoreValue(storeMapEntry){

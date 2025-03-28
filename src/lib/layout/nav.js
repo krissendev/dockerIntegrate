@@ -1,7 +1,8 @@
 import { browser }                          from '$app/environment';
 import { isMobile, cookieModalOverflow, 
-    cookieConsentVisible }                  from '$store/store';
-import {updateStorePrimitive, storeMap}     from '$lib/routing/storeHandler.js'
+    cookieConsentVisible, cookieConsent }   from '$store/store';
+import {updateStorePrimitive, storeMap, 
+        updateStoreBoolToggle}               from '$lib/routing/storeHandler.js'
 // let elLinks;
 // let toggleBurger;
 // let elMobileMenu;
@@ -38,6 +39,9 @@ export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobile
 
         /* re-enable scrolling on body & html after burger modal turned off*/
         docBody.classList.remove("disabledScroll")
+
+        //close cookie modal inside burger menu
+        updateStoreBoolToggle(storeMap.cookieConsent, false)
     }
     else if(!toggled){
         toggled=true;

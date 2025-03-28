@@ -78,23 +78,25 @@
         else{error.log("incorrect use of scrollArrow()");}   
     }
     export function handleModalScroll(){
-        const currentScroll = document.querySelector(".navLinks").scrollTop;
-        const totalHeight = document.querySelector(".navLinks").offsetHeight;
-        const scrollRatio = currentScroll/totalHeight; 
-
-        const downArrow = document.querySelector(".downArrow")
-        const upArrow = document.querySelector(".upArrow")
-        if(scrollRatio>0.3 && scrollRatio<1.3){
-            upArrow.classList.remove("hidden")
-            downArrow.classList.remove("hidden")
-        }
-        else if(scrollRatio<0.2){
-            upArrow.classList.add("hidden")
-            downArrow.classList.remove("hidden")
-        }
-        else if(scrollRatio>1.5){
-            upArrow.classList.remove("hidden")
-            downArrow.classList.add("hidden")
+        if($isMobile){
+            const currentScroll = document.querySelector(".navLinks").scrollTop;
+            const totalHeight = document.querySelector(".navLinks").offsetHeight;
+            const scrollRatio = currentScroll/totalHeight; 
+    
+            const downArrow = document.querySelector(".downArrow")
+            const upArrow = document.querySelector(".upArrow")
+            if(scrollRatio>0.3 && scrollRatio<1.3){
+                upArrow.classList.remove("hidden")
+                downArrow.classList.remove("hidden")
+            }
+            else if(scrollRatio<0.2){
+                upArrow.classList.add("hidden")
+                downArrow.classList.remove("hidden")
+            }
+            else if(scrollRatio>1.5){
+                upArrow.classList.remove("hidden")
+                downArrow.classList.add("hidden")
+            }
         }
         
     }
@@ -110,12 +112,15 @@
         <button aria-label="Close Modal Window" class="exitCookieConsent" on:click={handleToggle}>X</button>
         
     <!-- Jump up down arrows to section on mobile-->
-    {:else}
-    <button class="upArrow arrow" on:click={()=>scrollArrow("up")}>⬆</button>
-    <button class="downArrow arrow" on:click={()=>scrollArrow("down")}>⬇</button>
+    {:else if $isMobile}
+        <button class="upArrow arrow" on:click={()=>scrollArrow("up")}>⬆</button>
+        <button class="downArrow arrow" on:click={()=>scrollArrow("down")}>⬇</button>
     {/if}
+
     <div class="cookieModalText">
-        <h3>Save preferences with Cookies</h3> <div class="iconCookie icon"></div>
+        <div style="display:flex">
+            <div class="iconCookie icon"></div><h3>Save preferences with Cookies</h3> 
+        </div>
         <p>We respect your data and right to privacy. Our website does not collect nor track your personal data and has no cookies enabled by default.<br>
             All cookies, if enabled by you, are stored on your local device only and are used solely to remember settings of your choosing, enhancing your user experience.<br>
             This website does not track your cookies, nor do any third parties.<br>
@@ -141,9 +146,8 @@
 
 <style>
 .icon{
-    display:block;
-    height:30px;
-    width:30px;
+    display:flex;
+    width:50px;
     margin:3px;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
@@ -157,20 +161,21 @@
     -webkit-mask-image: url('/icons/icon_cookie.svg');
     mask-image: url('/icons/icon_cookie.svg');
   }
+
 .cookieModalText{
     position:fixed; 
-    /* height:100vh; */
-    /* top:50px; */
-    left:0;
+    height:100vh;
+    top:50px; 
     font-size: larger;
     padding:20px;
     margin:20px;
-    /* overflow-y: auto; */
+    overflow-y: auto;
 }
 
 .exitCookieConsent{
-     font-size:x-large;
+    font-size:x-large;
     position:fixed;
+    top:50px; 
     right:0;
     margin: 5px;
     z-index:3;
@@ -211,11 +216,12 @@ button{
     font-size:xx-large;
     border-radius: 50%;
     opacity:80%;
-    background-color: white;
-    border-color: black;
+    background-color:cornflowerblue;
+    border-color:darkblue;
 }
 .arrow:active{
-    border-color: grey;
+    background-color: aliceblue;
+    border-color: cornflowerblue;
     opacity:50%;
 }
 .btnDelete{background-color:red;}
@@ -223,6 +229,10 @@ button{
 
 
 @media screen and (max-width: 540px) {
+    .cookieModalText, .cookieModalContent, .cookieModal{
+    width:100vw;
+    overflow-x: hidden;
+  }
     .cookieModalContent{
         display:flex;
         background-color: none;
@@ -232,6 +242,7 @@ button{
     }
     .cookieModalText{
         position:static;
+        height:auto;    
     }
 }
 

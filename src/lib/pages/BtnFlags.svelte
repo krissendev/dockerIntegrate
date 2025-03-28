@@ -62,12 +62,12 @@
             //toggling language "optionsContainer"
             if(languageSelectorToggle == true){
                 //selected styling on the "language_selected"
-                selectedLanguageBtn.style.backgroundColor  = "#d3d3d3";
+                // selectedLanguageBtn.style.backgroundColor  = "#d3d3d3";
                 languageList.style.visibility = "visible";
             }
             else if (languageSelectorToggle == false){
                 //selected styling on the "language_selected"
-                selectedLanguageBtn.style.backgroundColor = null;
+                // selectedLanguageBtn.style.backgroundColor = null;
                 languageList.style.visibility = "hidden";
             }
         })
@@ -174,10 +174,12 @@
         display: flex;
         align-items: center;
         cursor: pointer;
-        background-color:cornflowerblue;
+        /* background-color: aliceblue; */
+        border: 4px solid cornflowerblue;
     }
+
     #language_selected:hover{
-        background-color: #c1c1c1;
+        background-color: aliceblue;
     }
     .arrow-icon {
         display: inline-block;
@@ -220,11 +222,11 @@
         padding: 0;
         margin: 0;
         list-style: none;
-        background-color: #fff;
-        border: 1px solid #ccc;
+        background-color: aliceblue;
+        border: 4px solid cornflowerblue;
         border-top: none;
         border-radius: 5px;
-        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+        /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); */
         max-height: 150px;
         overflow-y: auto;
     }
@@ -236,7 +238,7 @@
         font-size: 1rem;
     }
     #languageList li:hover {
-        background-color: #f4f4f4;
+        background-color: aliceblue;
     }
 
 </style>

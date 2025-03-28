@@ -47,16 +47,16 @@
     <!--class={`${$cssDarkmodeModal} navLinks`}-->
     <div class={`${$cssDarkmodeModal} navLinks`} bind:this={elLinks}>
         <div class="navMenu" bind:this={elNavMenu}>
-            <a href="./#home" on:click={closeBurger}>
+            <a href="./#home" on:click={closeBurger} rel="external">
                 <span class="nav_icon navHome"></span>{#if navdata?.home}{navdata.home.label}{/if}
             </a>
-            <a href="./#projects" on:click={closeBurger}>
+            <a href="./#projects" on:click={closeBurger} rel="external">
                 <span class="nav_icon navProjects"></span>{#if navdata?.project}{navdata.project.label}{/if}
             </a>
-            <a href="./#about" on:click={closeBurger}>
+            <a href="./#about" on:click={closeBurger} rel="external">
                 <span class="nav_icon navAbout"></span>{#if navdata?.about}{navdata.about.label}{/if}
             </a>
-            <a href="./#contact" on:click={closeBurger}>
+            <a href="./#contact" on:click={closeBurger} rel="external">
                 <span class="nav_icon navContact"></span>{#if navdata?.contact}{navdata.contact.label}{/if}
             </a>
             <!-->Some divider-->

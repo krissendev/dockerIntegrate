@@ -45,7 +45,11 @@
 <div class="iconFalse icon"></div> 
 -->
 <button aria-label="save preferences in cookie"class="iconSave icon"on:click={handleToggle}></button>
-<div class="iconTrue icon"></div>
+{#if $cookieConsent}
+  <div class="iconTrue icon"></div>
+{:else}
+  <div class="iconFalse icon"></div>
+{/if}
 <!-- <div style="display:inline-block;">
   <div class="switch-container">
     <label class="switch">
@@ -86,6 +90,7 @@
     mask-image: url('/icons/icon_true.svg');
 }
 .iconFalse{
+  transform: translate(-60%, -40%) scale(0.5);
   background-color:red;
     -webkit-mask-image: url('/icons/icon_false.svg');
     mask-image: url('/icons/icon_false.svg');
@@ -126,6 +131,11 @@
   transition: .4s;
   }
 
+  @media screen and (max-width: 540px) {
+    .iconTrue, .iconFalse{
+      transform: translate(63%, -160%) scale(0.5);
+  }
+  }
   .slider:before {
   position: absolute;
   content: "";

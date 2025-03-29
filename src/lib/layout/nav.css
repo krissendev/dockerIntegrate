@@ -233,6 +233,8 @@ p, div, a{
     mask-position: center;
  }
 
+.navMenu a:hover .nav_icon{background-color: white;}
+.navMenu a:hover{color:white}
 .navHome {
     -webkit-mask-image: url('/icons/icon_home.svg');
     mask-image: url('/icons/icon_home.svg');

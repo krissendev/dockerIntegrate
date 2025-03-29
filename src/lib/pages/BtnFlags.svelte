@@ -238,7 +238,7 @@
         font-size: 1rem;
     }
     #languageList li:hover {
-        background-color: aliceblue;
+        background-color: cornflowerblue;
     }
 
 </style>

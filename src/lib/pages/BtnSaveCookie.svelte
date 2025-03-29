@@ -77,6 +77,9 @@
     -webkit-mask-image: url('/icons/icon_save.svg');
     mask-image: url('/icons/icon_save.svg');
   }
+  .iconSave:hover{
+    background-color:white;
+  }
   .iconCookieOFF{
     background-color:red;
     -webkit-mask-image: url('/icons/icon_stop.svg');

@@ -85,7 +85,7 @@
             <p>{cardContentMax}</p>
         </div>
         {/if}
-        <a href={`${cardDemoLink}`} data-sveltekit-reload>Live demo</a>
+        <a href={`${cardDemoLink}`} data-sveltekit-reload target="_blank">Live demo<div class="outgoingLink">a</div></a>
         <br>
         <button class="toggleExpand" on:click={toggleCardExpandContent}>More/Less</button>
     </div>
@@ -153,5 +153,19 @@
 }
 .projectCardsEntry.hidden {
     display:none;
+}
+.outgoingLink{
+    display:inline-block;
+    /* width:max-content; */
+    height:fit-content;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    background-color:cornflowerblue;
+    -webkit-mask-image: url('/icons/icon_link.svg');
+    mask-image: url('/icons/icon_link.svg');
 }
 </style>

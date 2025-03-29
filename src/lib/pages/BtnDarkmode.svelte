@@ -20,7 +20,7 @@
 <button aria-label="dark mode" class="navLinkBtn" on:click={darkModeSwitch}> 
     <div class="darkMode {darkMode?"dark":"light"}"></div></button>
 <style>
-
+    .navLinkBtn:hover .darkMode{background-color: white;}
     .darkMode{
         display:inline-block;
         height:30px;

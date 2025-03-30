@@ -1,6 +1,7 @@
 import {parseLangAndPath}                   from '$lib/routing/loadLangData.js'
 import { redirect }                         from '@sveltejs/kit';
 import {sessionPreferences}                 from '$store/store.js';
+import {browserLangMap}                     from '$lib/routing/loadLangData.js'
 
 //url handling similar to /routes/[...slug]/+page.js
 export function routing({params, cookies}){
@@ -24,7 +25,8 @@ export function routing({params, cookies}){
         
         let cookieLang = cookies.get("lang");
         console.log("serverside cookie?", cookieLang)
-        
+
+        cookieLang = browserLangMap[cookieLang] //verifying valid lang property
         cookieLang = cookieLang?cookieLang:"en"; //check if truthy value else en
         path = path?path:"home";                   //check if truthy value else home
         

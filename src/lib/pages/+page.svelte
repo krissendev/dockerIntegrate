@@ -17,9 +17,8 @@
     //Debugging environment variables
     console.log("checking for environment values...")
     console.log(JSON.stringify(serverdataLangPath))
-    console.log("dynamicEnv:",serverdataLangPath.dynamicEnv)
-    console.log("staticEnv:",serverdataLangPath.staticEnv)
-    
+    console.log("dynamicOrigin:",serverdataLangPath.dynamicOrigin)
+
 </script>
 <Navigation/>
 <UtilLangLoad />

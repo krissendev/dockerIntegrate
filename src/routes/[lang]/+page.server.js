@@ -2,9 +2,7 @@ import {routing}                            from '$lib/routing/routesRouting.js'
 
 //Debugging environment variables
 import { env as dynamicEnv} from '$env/dynamic/private';
-//import { env as staticEnv } from '$env/static/private';
 const dynamicOrigin = dynamicEnv.ORIGIN || undefined;
-const staticOrigin = undefined;
 
 
 export function load({params, cookies}){
@@ -15,7 +13,6 @@ export function load({params, cookies}){
     const result= routing({params, cookies});
     return {...result,
         "dynamicOrigin":dynamicOrigin,
-        "staticOrigin":staticOrigin
     };
 }
 

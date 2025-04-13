@@ -2,7 +2,7 @@
     import {langdataContact }           from '$store/store.js';
 
     let result;
-
+	let enhanceToggle = $state(false);
     ////TEMP Code /routes/api/redirectmail/+server.js - DELETE THIS LATER, only used for testing/learning purposes
     async function fetchData() {
         const response = await fetch('/api/redirectmail');

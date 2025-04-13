@@ -11,10 +11,7 @@ const config = {
 			$store: path.resolve('./src/store'), 
 			$styles: path.resolve('./src/styles'),
 			$pages: path.resolve('./src/lib/pages')
-		},
-		csrf: {
-			checkOrigin: false
-		  }
+		}
 	}
 };
 

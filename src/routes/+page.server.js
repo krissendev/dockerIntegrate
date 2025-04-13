@@ -1,12 +1,22 @@
 import {routing}                            from '$lib/routing/routesRouting.js'
 
+//Debugging environment variables
+import { env as dynamicEnv } from '$env/dynamic/private';
+import { env as staticEnv } from '$env/static/private';
+const dynamicOrigin = dynamicEnv.ORIGIN || undefined;
+const staticOrigin = staticEnv.ORIGIN || undefined;
+
+
 export function load({params, cookies}){
     const cookie = cookies.getAll();
     console.log("loadfunction cookies:", cookie)
     console.log("loadfunction params:", params)
     console.trace("tracing param /routes/+page.server.js")
     const result= routing({params, cookies});
-    return result;
+    return {...result,
+        "dynamicOrigin":dynamicOrigin,
+        "staticOrigin":staticOrigin
+    };
 }
 
 //POST request

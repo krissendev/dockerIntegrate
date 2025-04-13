@@ -13,7 +13,13 @@
     export let serverdataLangPath;
     updateStoreObject(storeMap.sessionPreferences, "lang", serverdataLangPath.lang)
     updateStoreObject(storeMap.sessionPreferences, "path", serverdataLangPath.path)
-
+    
+    //Debugging environment variables
+    console.log("checking for environment values...")
+    console.log(JSON.stringify(serverdataLangPath))
+    console.log("dynamicEnv:",serverdataLangPath.dynamicEnv)
+    console.log("staticEnv:",serverdataLangPath.staticEnv)
+    
 </script>
 <Navigation/>
 <UtilLangLoad />

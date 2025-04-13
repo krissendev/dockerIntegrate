@@ -1,9 +1,9 @@
 import {routing}                            from '$lib/routing/routesRouting.js'
 
 //Debugging environment variables
-import { env } from '$env/dynamic/private';
+import { env as dynamicEnv} from '$env/dynamic/private';
 //import { env as staticEnv } from '$env/static/private';
-const dynamicOrigin = env.ORIGIN || undefined;
+const dynamicOrigin = dynamicEnv.ORIGIN || undefined;
 const staticOrigin = undefined;
 
 
@@ -36,35 +36,12 @@ export const actions = {
         console.log("sendData...", JSON.stringify(sendData));
         console.log(`form - email:${email}, name:${name}, message:${message}`)
 
-        try{
-            //Internal API KEY "MAIL_API" for mail redirect
-            const apikey = process.env.MAIL_API;
-            if (!apikey || typeof apikey !== 'string') {
-                throw new Error('MAIL_API environment variable is not set or is not a string');
-            }
-            try{
-                const response = await fetch(apikey,
-                    {
-                        method:'POST', 
-                        headers:{"Content-Type":"application/json"},
-                        body:JSON.stringify(sendData)
-                    });
-                    if(response.ok){
-                        console.log("Email sent successfully");
-                        return { success: true };
-                    } 
-                    else {
-                        console.log("Error sending email");
-                        return { success: false };
-                    }
-                }
-                catch(error){
-                    console.error("Error making request:", error);
-                    return { success: false, error: error.message };
-                }
-            }
-            catch(error){
-                console.error('Error fetching from MAIL_API:', error);
-            }        
-	}
+        await new Promise((resolve) => {
+            setTimeout(() => {
+              console.log("Delayed for 3 seconds.");
+              resolve();
+            }, 3000);
+          });
+          
+    }
 };

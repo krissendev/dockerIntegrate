@@ -1,9 +1,9 @@
 import {routing}                            from '$lib/routing/routesRouting.js'
 
 //Debugging environment variables
-import { env } from '$env/dynamic/private';
+import { env as dynamicEnv} from '$env/dynamic/private';
 //import { env as staticEnv } from '$env/static/private';
-const dynamicOrigin = env.ORIGIN || undefined;
+const dynamicOrigin = dynamicEnv.ORIGIN || undefined;
 const staticOrigin = undefined;
 
 

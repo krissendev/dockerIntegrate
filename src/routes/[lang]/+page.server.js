@@ -33,12 +33,14 @@ export const actions = {
         console.log("sendData...", JSON.stringify(sendData));
         console.log(`form - email:${email}, name:${name}, message:${message}`)
 
-        await new Promise((resolve) => {
-            setTimeout(() => {
-              console.log("Delayed for 3 seconds.");
-              resolve();
-            }, 3000);
-          });
-          
+        // await new Promise((resolve) => {
+        //     setTimeout(() => {
+        //       console.log("Delayed for 3 seconds.");
+        //       resolve();
+        //     }, 3000);
+        //     return { success: true };
+        //   });
+        return { success: true };
+
     }
 };

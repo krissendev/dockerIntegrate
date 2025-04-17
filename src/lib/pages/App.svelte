@@ -6,9 +6,10 @@
     import {updateStoreObject, storeMap}    from '$lib/routing/storeHandler.js'
 
     //From routing +page.server.js load function into & from /lib/routesRouting.js
-    export let serverdataLangPath;
-    updateStoreObject(storeMap.sessionPreferences, "lang", serverdataLangPath.lang)
-    updateStoreObject(storeMap.sessionPreferences, "path", serverdataLangPath.path)
+    let { data,form } = $props();
+
+    updateStoreObject(storeMap.sessionPreferences, "lang", data.lang)
+    updateStoreObject(storeMap.sessionPreferences, "path", data.path)
 
 </script>
 <Navigation/>

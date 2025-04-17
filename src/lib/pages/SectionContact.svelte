@@ -1,14 +1,19 @@
 <script>
     import {langdataContact }           from '$store/store.js';
 
-    let result;
+    // let result;
 	// let enhanceToggle = $state(false);
-    
+    let { data,form } = $props();
+
     ////TEMP Code /routes/api/redirectmail/+server.js - DELETE THIS LATER, only used for testing/learning purposes
-    async function fetchData() {
-        const response = await fetch('/api/redirectmail');
-        result = await response.text();
-    }
+    // async function fetchData() {
+    //     const response = await fetch('/api/redirectmail');
+    //     result = await response.text();
+    // }
+    
+    // $effect(() => {
+    //     console.log('Form state in +page.svelte:', form);
+    // });
 </script>
 <div class="pageSection contactSvelte">
     <br>
@@ -30,15 +35,15 @@
         <textarea name="message"type="text" required></textarea>
         <button formaction="?/email">Send</button>
     </form>
-    
+    {#if form?.success}
+        <p>Successfully logged in! Welcome back {JSON.stringify(form)} - {typeof(form)} - {typeof(form?.success)}</p>
+    {/if}
     <!-- {#if enhanceToggle}
 	<span class="saving">"sending email"...</span>
     {/if} -->
 
 
     <!-- //TEMP CODE /routes/api/redirectmail/+server.js - DELETE THIS LATER, only used for testing/learning purposes -->
-    <button on:click={fetchData}>Fetch Data</button>
-    {#if result}
-        <pre>{result}</pre>
-    {/if}
+    <!-- <button on:click={fetchData}>Fetch Data</button> -->
+ 
 </div>

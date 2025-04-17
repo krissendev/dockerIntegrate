@@ -10,14 +10,15 @@
     import {updateStoreObject, storeMap}    from '$lib/routing/storeHandler.js'
 
     //From routing +page.server.js load function into & from /lib/routesRouting.js
-    export let serverdataLangPath;
-    updateStoreObject(storeMap.sessionPreferences, "lang", serverdataLangPath.lang)
-    updateStoreObject(storeMap.sessionPreferences, "path", serverdataLangPath.path)
+    let { data,form } = $props();
+
+    updateStoreObject(storeMap.sessionPreferences, "lang", data.lang)
+    updateStoreObject(storeMap.sessionPreferences, "path", data.path)
     
     //Debugging environment variables
     console.log("checking for environment values...")
-    console.log(JSON.stringify(serverdataLangPath))
-    console.log("dynamicOrigin:",serverdataLangPath.dynamicOrigin)
+    console.log(JSON.stringify(data))
+    console.log("dynamicOrigin:",data.dynamicOrigin)
 
 </script>
 <Navigation/>
@@ -25,7 +26,7 @@
 <SectionHome id="home"/>
 <SectionProjects id="projects"/>
 <SectionAbout id="about"/>
-<SectionContact id="contact"/>
+<SectionContact id="contact" data={data} form={form}/>
 <SectionFooter />
 
 

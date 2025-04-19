@@ -5,13 +5,11 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"devview": "vite preview",
 		"build": "vite build",
-		"dotenv": "node -r dotenv/config build",
-		"preview": "node build"
+		"preview": "vite preview"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-node": "^4.0.0",
+		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.20.5",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
 		"dotenv": "^16.5.0",

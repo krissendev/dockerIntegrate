@@ -1,6 +1,7 @@
 <footer>
+    <h5>Disclaimer:All opinions expressed herein are my own personal opinions.</h5>
     <h3>Links</h3>
-    <h3>© 2005 Kristian Lothe. All Rights Reserved.</h3>
+    <h3>© 2025 Kristian Lothe. All Rights Reserved.</h3>
 </footer>
 
 <style>

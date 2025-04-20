@@ -21,14 +21,19 @@ body {
 
     color:black;
     background-color:white;
+    margin:0px;
+    padding:0px;
+    border:0px;
+    box-sizing: border-box;
 }
 
   p{
       margin-bottom: 2em; /* Spacing after paragraphs is 200% of the font size */
   }
   .pageSection{
+    box-sizing: border-box;
     margin:0px;
-    padding:0px;
+    padding:10px;
     border:0px;
     width:100vw;
     height:100vh;

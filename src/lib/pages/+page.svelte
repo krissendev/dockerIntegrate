@@ -15,10 +15,6 @@
     updateStoreObject(storeMap.sessionPreferences, "lang", data.lang)
     updateStoreObject(storeMap.sessionPreferences, "path", data.path)
     
-    //Debugging environment variables
-    console.log("checking for environment values...")
-    console.log(JSON.stringify(data))
-    console.log("dynamicOrigin:",data.dynamicOrigin)
 
 </script>
 <Navigation/>

@@ -28,6 +28,19 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
         with:
           project_id: ${{ secrets.PROJECT_ID }}
+
+
+#Debugging start                
+      - name: Debug OIDC auth
+        run: |
+          set -euo pipefail
+          gcloud --version
+          echo "Active account:"
+          gcloud auth list --filter=status:ACTIVE
+          echo "--- config account ---"
+          gcloud config list account
+#Debugging end
+
           
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker ${{ vars.REGISTRY_HOST }} --quiet

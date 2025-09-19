@@ -4,9 +4,10 @@ body::before, body::after {
     display: none !important;
 } */
  
-html {
-    scroll-padding-top: 80px; /* correct for sticky navbar on desktop */
-}
+/* correct for sticky navbar on desktop */
+/* :global(html)  {
+    scroll-padding-block-start: 0;
+} */
 
 
 /* html, body {
@@ -38,6 +39,7 @@ p, div, a{
     display: flex;
     position:sticky;    
     top:0px;
+    width:100vw;
     /* background-color: rgba(255, 255, 255, 0.90); */
     /* background-color: green; */
     z-index: 1;
@@ -117,12 +119,9 @@ p, div, a{
 }
 
 @media screen and (max-width: 540px) {
-    html {
-        scroll-padding-top: 0px; /* revoke for sticky navbar on desktop for mobile */
-    }
     .topNav{
         position:fixed;
-        height:10vh;
+        height:0px;
         top:5px;
         right:5px;
     }     

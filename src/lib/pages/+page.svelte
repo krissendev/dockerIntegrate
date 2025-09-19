@@ -20,9 +20,18 @@
 <Navigation/>
 <UtilLangLoad />
 <SectionHome id="home"/>
-<SectionProjects id="projects"/>
-<SectionAbout id="about"/>
+<SectionProjects id="projects" />
+<SectionAbout id="about" />
 <SectionContact id="contact" data={data} form={form}/>
 <SectionFooter />
-
+<style>
+    :global(html) {
+         scroll-padding-top: 10vh; 
+        }
+    @media screen and (max-width: 540px) {
+        :global(html) { 
+            scroll-padding-top: 0vh; 
+        }
+}
+</style>
 

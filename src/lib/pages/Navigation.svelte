@@ -5,7 +5,8 @@
     import {isMobile,cssDarkmodeModal,
             cookieModalOverflow,
             langdataNav        }            from '$store/store.js';
-    import {updateStorePrimitive, storeMap} from '$lib/routing/storeHandler.js'
+    import {updateStorePrimitive, storeMap,
+            getStoreValue}                  from '$lib/routing/storeHandler.js'
     import {toggleBurger, initOnMount}      from '$lib/layout/nav.js'
     import BtnDarkmode                      from './BtnDarkmode.svelte'
     import BtnSaveCookie                    from './BtnSaveCookie.svelte'
@@ -33,7 +34,8 @@
         toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, undefined, topNav);
     }
     function closeBurger(){
-        toggleBurger(elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, true, topNav);
+        let mobile= getStoreValue(isMobile)
+        if(mobile){toggleBurger(elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, true, topNav);}
     }
 
 
@@ -47,19 +49,19 @@
     <!--class={`${$cssDarkmodeModal} navLinks`}-->
     <div class={`${$cssDarkmodeModal} navLinks`} bind:this={elLinks}>
         <div class="navMenu" bind:this={elNavMenu}>
-            <a href="./#home" on:click={closeBurger} rel="external">
+            <a href="#home" on:click={closeBurger}>
                 <span class="nav_icon navHome"></span>{#if navdata?.home}{navdata.home.label}{/if}
             </a>
-            <a href="./#projects" on:click={closeBurger} rel="external">
+            <a href="#projects" on:click={closeBurger} >
                 <span class="nav_icon navProjects"></span>{#if navdata?.project}{navdata.project.label}{/if}
             </a>
-            <a href="./#about" on:click={closeBurger} rel="external">
+            <a href="#about" on:click={closeBurger} >
                 <span class="nav_icon navAbout"></span>{#if navdata?.about}{navdata.about.label}{/if}
             </a>
-            <a href="./#contact" on:click={closeBurger} rel="external">
+            <a href="#contact" on:click={closeBurger} >
                 <span class="nav_icon navContact"></span>{#if navdata?.contact}{navdata.contact.label}{/if}
             </a>
-            <!-->Some divider-->
+            <!--Some divider-->
             <div class="navDividerLine" bind:this={elDivider}></div>
             <div class="navSettings" bind:this={elSettings}>
                 <BtnDarkmode/>
@@ -86,4 +88,9 @@
 
 <style>
     @import '$lib/layout/nav.css';
+
+/* :global(.pageSection){
+    scroll-margin-top: -5vh;
+    opacity:0.5;
+} */
 </style>

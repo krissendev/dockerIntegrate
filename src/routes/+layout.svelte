@@ -1,5 +1,5 @@
 <script>
-  import '$styles/global.css';
+  import '$lib/layout/global.css';
 </script>
 <style>
 

@@ -87,10 +87,5 @@
  </div> 
 
 <style>
-    @import '$lib/layout/nav.css';
-
-/* :global(.pageSection){
-    scroll-margin-top: -5vh;
-    opacity:0.5;
-} */
+    @import '$lib/layout/navigation.css';
 </style>

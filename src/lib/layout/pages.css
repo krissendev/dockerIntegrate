@@ -1,0 +1,23 @@
+/*
+SectionHome.svelte
+SectionProjects.svelte
+SectionAbout.svelte
+SectionContact.svelte
+*/
+.pageSection{
+    width:100vw;
+    height:100vh;
+}
+
+.pageSection{
+    box-sizing: border-box;
+    margin:0px;
+    padding:10px;
+    border:0px;
+    width:100vw;
+    height:100vh;
+    
+  }
+  .homeSvelte{background-color: rgba(255,0,0, 0.5);}
+  .aboutSvelte{background-color: rgba(0,255,0,0.5);}
+  .contactSvelte{background-color: rgba(255,255,0,0.5);}

@@ -21,6 +21,7 @@
 </div>
 
 <style>
+    @import '$lib/layout/pages.css';
     .contactSvelte{
         display:inline-block;
 

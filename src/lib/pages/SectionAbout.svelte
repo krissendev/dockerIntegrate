@@ -6,3 +6,6 @@
     <h3 id="about">This is About</h3>
     <p>{$langdataAbout}</p>
 </div>
+<style>
+    @import '$lib/layout/pages.css';
+</style>

@@ -27,26 +27,16 @@ body {
     box-sizing: border-box;
 }
 
-  p{
-      margin-bottom: 2em; /* Spacing after paragraphs is 200% of the font size */
-  }
-  .pageSection{
-    box-sizing: border-box;
-    margin:0px;
-    padding:10px;
-    border:0px;
-    width:100vw;
-    height:100vh;
-    
-  }
-  .homeSvelte{background-color: rgba(255,0,0, 0.5);}
-  .aboutSvelte{background-color: rgba(0,255,0,0.5);}
-  .contactSvelte{background-color: rgba(255,255,0,0.5);}
-  .whiteModal,.whiteModal a,.whiteModal button{
-    color:black;
-    background-color: rgba(192, 216, 255, 0.95);
-  }
-  .darkModal,.darkModal a,.darkModal button{
-    color:white;
-    background-color: rgba(33, 58, 98, 0.95);
-    }
+p {
+    margin-bottom: 2em; /* Spacing after paragraphs is 200% of the font size */
+}
+
+/*src/lib/layout/darkmode.js*/
+.whiteModal,.whiteModal a,.whiteModal button{
+  color:black;
+  background-color: rgba(192, 216, 255, 0.95);
+}
+.darkModal,.darkModal a,.darkModal button{
+  color:white;
+  background-color: rgba(33, 58, 98, 0.95);
+}

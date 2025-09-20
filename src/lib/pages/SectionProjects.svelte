@@ -24,6 +24,7 @@
     </div>
 </div>
 <style>
+    @import '$lib/layout/pages.css';
     .projectSvelte{
         display:flex;
         flex-direction:column;

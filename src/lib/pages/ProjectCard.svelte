@@ -96,28 +96,9 @@
 {/if}
 
 <style>
-    /* .projectCardsEntry{
-        display:flex;
-        width:300px;
-        flex-direction:column; 
-        margin: 0;
-        padding: 0;
-        gap: var(--gap);
-        position: relative;
-        background-color: aquamarine;
-    } */
     .expandedCard{
         display:block;
     }
-    /* .projectCardsEntry.active{
-        display:block;
-        position:absolute;
-        height:80%;
-        margin:0;
-        padding:0;
-        border:0;
-        background-color: blueviolet;
-    } */
 
     .projectCardsEntry {
         /* flex: 1; */

@@ -10,3 +10,6 @@
     <p>{$langdataHome}</p>
 </div>
 
+<style>
+    @import '$lib/layout/pages.css';
+</style>

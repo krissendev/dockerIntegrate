@@ -7,6 +7,7 @@
 </script>
 <div class="pageSection contactSvelte">
     <br>
+    <div class="pageIcon" id="iconContact"></div>
     <h3 id="contact">This is Contact</h3>    
     <p>{$langdataContact}</p>
     <form method="POST" action="?/email" use:enhance>

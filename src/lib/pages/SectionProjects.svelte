@@ -8,8 +8,12 @@
     
 </script>
 <div class="pageSection projectSvelte">
-    <div><br><br></div>
-    <h3 id="projects" style="paddig:0px; margin:0px; border:0px;">This is Projects</h3>
+    <!--Oneline 'block-hack' for icon and h3, since inside flex column-->
+    <div style="display=block">
+        <br>
+        <div class="pageIcon" id="iconProject"></div>
+        <h3 id="projects" >This is Projects</h3>
+    </div>
     <p>{$langdataProject.header}</p>
     <div class="projectCardsContainer">
         <Card ontoggleCardExpandContent={toggleCardRespone} projectName={"quadtree"}/>

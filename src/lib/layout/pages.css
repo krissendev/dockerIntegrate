@@ -4,10 +4,6 @@ SectionProjects.svelte
 SectionAbout.svelte
 SectionContact.svelte
 */
-.pageSection{
-    width:100vw;
-    height:100vh;
-}
 
 .pageSection{
     box-sizing: border-box;
@@ -17,7 +13,46 @@ SectionContact.svelte
     width:100vw;
     height:100vh;
     
-  }
+}
   .homeSvelte{background-color: rgba(255,0,0, 0.5);}
   .aboutSvelte{background-color: rgba(0,255,0,0.5);}
   .contactSvelte{background-color: rgba(255,255,0,0.5);}
+
+h3{
+    display: inline-block;
+}
+.pageIcon{
+    display:inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height:20px;
+    width:20px;
+    margin:3px;
+
+    /*svg styling*/
+    background-color:rgba(255, 255, 255, 0.5);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+#iconHome {
+    -webkit-mask-image: url('/icons/icon_home.svg');
+    mask-image: url('/icons/icon_home.svg');
+}
+#iconProject {
+    -webkit-mask-image: url('/icons/icon_sourcecode.svg');
+    mask-image: url('/icons/icon_sourcecode.svg');
+}
+#iconAbout {
+    -webkit-mask-image: url('/icons/icon_about.svg');
+    mask-image: url('/icons/icon_about.svg');
+}
+#iconContact {
+    -webkit-mask-image: url('/icons/icon_contact.svg');
+    mask-image: url('/icons/icon_contact.svg');
+}

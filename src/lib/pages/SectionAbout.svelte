@@ -3,6 +3,7 @@
 </script>
 <div class="pageSection aboutSvelte">
     <br>
+    <div class="pageIcon" id="iconAbout"></div>
     <h3 id="about">This is About</h3>
     <p>{$langdataAbout}</p>
 </div>

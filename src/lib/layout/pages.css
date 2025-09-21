@@ -14,9 +14,9 @@ SectionContact.svelte
     height:100vh;
     
 }
-  .homeSvelte{background-color: rgba(255,0,0, 0.5);}
+  /* .homeSvelte{background-color: rgba(255,0,0, 0.5);}
   .aboutSvelte{background-color: rgba(0,255,0,0.5);}
-  .contactSvelte{background-color: rgba(255,255,0,0.5);}
+  .contactSvelte{background-color: rgba(255,255,0,0.5);} */
 
 h3{
     display: inline-block;
@@ -31,7 +31,7 @@ h3{
     margin:3px;
 
     /*svg styling*/
-    background-color:rgba(255, 255, 255, 0.5);
+    /* background-color:rgba(255, 255, 255, 0.5); */
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-size: contain;

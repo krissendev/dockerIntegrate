@@ -1,5 +1,6 @@
 <script>
-    import {langdataProject }               from '$store/store.js';
+    import {langdataProject, 
+        cssDarkmodeModal }                  from '$store/store.js';
     import Card from './ProjectCard.svelte'
 
     function toggleCardRespone() {
@@ -11,7 +12,7 @@
     <!--Oneline 'block-hack' for icon and h3, since inside flex column-->
     <div style="display=block">
         <br>
-        <div class="pageIcon" id="iconProject"></div>
+        <div class={`${$cssDarkmodeModal} pageIcon `} id="iconProject"></div>
         <h3 id="projects" >This is Projects</h3>
     </div>
     <p>{$langdataProject.header}</p>

@@ -1,5 +1,6 @@
 <script>
-    import {langdataContact }           from '$store/store.js';
+    import {langdataContact, 
+        cssDarkmodeModal }              from '$store/store.js';
 	import { enhance }                  from '$app/forms';
     let { data,form } = $props();
 
@@ -7,7 +8,7 @@
 </script>
 <div class="pageSection contactSvelte">
     <br>
-    <div class="pageIcon" id="iconContact"></div>
+    <div class={`${$cssDarkmodeModal} pageIcon `} id="iconContact"></div>
     <h3 id="contact">This is Contact</h3>    
     <p>{$langdataContact}</p>
     <form method="POST" action="?/email" use:enhance>

@@ -40,3 +40,11 @@ p {
   color:white;
   background-color: rgba(33, 58, 98, 0.95);
 }
+
+/*due to icons using background-color and not color, they need their own class*/
+.whiteModal.pageIcon{
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.darkModal.pageIcon{
+  background-color: rgba(255, 255, 255, 0.3);
+}

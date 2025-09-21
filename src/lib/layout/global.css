@@ -25,6 +25,7 @@ body {
     padding:0px;
     border:0px;
     box-sizing: border-box;
+    overflow-x: hidden
 }
 
 p {

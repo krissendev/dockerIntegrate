@@ -33,7 +33,7 @@
     .projectSvelte{
         display:flex;
         flex-direction:column;
-        background-color: rgba(0,0,255,0.5);
+        border:4px solid black;
     }
     /* .projectCardsContainer{   
         display:flex;
@@ -52,7 +52,7 @@
         margin: 0;
         padding: 5px;
         position: relative;
-        background-color: pink;
+        background-color: #F8C7AC;
     }
     @media (max-width: 540px) {
     .projectCardsContainer {

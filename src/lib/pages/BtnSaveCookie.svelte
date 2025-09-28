@@ -73,12 +73,14 @@
     mask-position: center;
   }
   .iconSave{
-    background-color:cornflowerblue;
-    -webkit-mask-image: url('/icons/icon_save.svg');
-    mask-image: url('/icons/icon_save.svg');
+    border: 4px solid #FF5900;
+    background-color:#FF5900;
+    -webkit-mask-image: url('/icon_cookie.svg');
+    mask-image: url('/icons/icon_cookie.svg');
   }
   .iconSave:hover{
-    background-color:white;
+    background-color:aliceblue;
+    border-color:aliceblue;
   }
   .iconCookieOFF{
     background-color:red;

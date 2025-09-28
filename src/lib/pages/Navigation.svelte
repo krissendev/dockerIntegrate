@@ -4,7 +4,8 @@
     import {onMount}                        from 'svelte';
     import {isMobile,cssDarkmodeModal,
             cookieModalOverflow,
-            langdataNav        }            from '$store/store.js';
+            langdataNav,
+            sessionPreferences}             from '$store/store.js';
     import {updateStorePrimitive, storeMap,
             getStoreValue}                  from '$lib/routing/storeHandler.js'
     import {toggleBurger, initOnMount}      from '$lib/layout/nav.js'
@@ -21,6 +22,8 @@
     let elMobileMenu  ; //BurgerMenu
     let elMobileModal;  //Modal overlay when burger menu toggled
     let topNav;         //Outer Menu container for consistent display across mobile and desktop
+
+    $: darkMode = $sessionPreferences["darkMode"];
 
     //nav resize depends on 'browser', which only is available after mount
     onMount(()=>{
@@ -49,6 +52,7 @@
     <!--class={`${$cssDarkmodeModal} navLinks`}-->
     <div class={`${$cssDarkmodeModal} navLinks`} bind:this={elLinks}>
         <div class="navMenu" bind:this={elNavMenu}>
+            <a href="#home" on:click={closeBurger} style="text-decoration: none;"><div class=" {darkMode?"dark":"light"}">{"<krissen.dev/>"}</div></a>            
             <a href="#home" on:click={closeBurger}>
                 <span class="nav_icon navHome"></span>{#if navdata?.home}{navdata.home.label}{/if}
             </a>

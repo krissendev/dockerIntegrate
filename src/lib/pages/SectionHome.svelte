@@ -1,8 +1,16 @@
 <script>
-    import {langdataHome, cssDarkmodeModal }from '$store/store.js';
-
+    import {langdataHome, cssDarkmodeModal, 
+        isMobile }                          from '$store/store.js';
+        
+        import { onMount }                      from 'svelte';
+        onMount(()=>{
+            console.log($isMobile)
+        })
+        
+        // let mobile= getStoreValue(isMobile)
 </script>
 <div class="pageSection homeSvelte">
+    {#if $isMobile}<div class="websitelogo" style="text-align:unset;">{"<krissen.dev/>"}</div>{/if}
     <br>
     <div class={`${$cssDarkmodeModal} pageIcon `} id="iconHome"></div>
     <h3 id="home">This is home/hero section</h3>
@@ -13,4 +21,6 @@
 
 <style>
     @import '$lib/layout/pages.css';
+    button{background-color: #FF5900;}
+    button:hover{background-color: aliceblue;}
 </style>

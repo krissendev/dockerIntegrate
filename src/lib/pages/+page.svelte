@@ -25,6 +25,7 @@
 <SectionContact id="contact" data={data} form={form}/>
 <SectionFooter />
 <style>
+    /*jump to section for links on desktop and mobile*/
     :global(html) {
          scroll-padding-top: 10vh; 
         }

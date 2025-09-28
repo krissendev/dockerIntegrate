@@ -175,11 +175,13 @@
         align-items: center;
         cursor: pointer;
         /* background-color: aliceblue; */
-        border: 4px solid cornflowerblue;
+        border: 4px solid #FF5900;
     }
 
     #language_selected:hover{
-        background-color: aliceblue;
+        background-color: rgba(240, 248, 255, 0.2);
+        color:aliceblue;
+        border-color:aliceblue;
     }
     .arrow-icon {
         display: inline-block;
@@ -223,7 +225,7 @@
         margin: 0;
         list-style: none;
         background-color: aliceblue;
-        border: 4px solid cornflowerblue;
+        border: 4px solid #FF5900;
         border-top: none;
         border-radius: 5px;
         /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); */
@@ -236,9 +238,10 @@
         padding: 5px 10px;
         cursor: pointer;
         font-size: 1rem;
+        color:black;
     }
     #languageList li:hover {
-        background-color: cornflowerblue;
+        background-color: #FF5900;
     }
 
 </style>

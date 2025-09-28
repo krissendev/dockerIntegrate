@@ -20,13 +20,24 @@
 <button aria-label="dark mode" class="navLinkBtn" on:click={darkModeSwitch}> 
     <div class="darkMode {darkMode?"dark":"light"}"></div></button>
 <style>
-    .navLinkBtn:hover .darkMode{background-color: white;}
+    .navLinkBtn:hover .darkMode{
+        background-color: aliceblue;
+        border-color: aliceblue;
+    }
+    .navLinkBtn:hover{
+        background-color: rgba(240, 248, 255, 0.2);
+        border-color: aliceblue;
+    }
+    /*hack to add border around button parent element of .darkMode*/
+    button:has(.darkMode){
+        border: 4px solid #FF5900;
+    }
     .darkMode{
         display:inline-block;
         height:30px;
         width:30px;
         margin:3px;
-        background-color:cornflowerblue;
+        background-color:#FF5900;
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: contain;

@@ -24,10 +24,8 @@
 
 <style>
     @import '$lib/layout/pages.css';
-    .contactSvelte{
-        display:inline-block;
-
-    }
+    button{background-color: #FF5900;}
+    button:hover{background-color: aliceblue;}
     form{
         display:flex;
         flex-direction:column;

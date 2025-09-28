@@ -216,12 +216,12 @@ button{
     font-size:xx-large;
     border-radius: 50%;
     opacity:80%;
-    background-color:cornflowerblue;
-    border-color:darkblue;
+    background-color:#FEAE83;
+    border-color:#FF5900;
 }
 .arrow:active{
-    background-color: aliceblue;
-    border-color: cornflowerblue;
+    background-color: #FF5900;
+    border-color: #FEAE83;
     opacity:50%;
 }
 .btnDelete{background-color:red;}

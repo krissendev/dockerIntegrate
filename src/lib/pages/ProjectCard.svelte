@@ -104,10 +104,10 @@
         /* flex: 1; */
         width:45%;
         min-width: 100px;
-        background-color: aquamarine;
+        background-color: #FF5900;
         padding: 10px;
         text-align: center;
-        border: 1px solid black;
+        border: 2px solid black;
         transition: all 0.3s ease;
     }
 
@@ -118,12 +118,12 @@
   left: 0;
   width: 100vw;
   height: 100%;
-  background-color: purple;
+  background-color: #FF5900;
   padding: 20px;
   margin: 0;  
   gap: 0;  
   box-sizing: border-box;
-  border: 1px solid red;  
+  border: 1px solid black;  
 }
 
 

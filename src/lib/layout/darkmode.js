@@ -36,8 +36,8 @@ function setSessiontDarkMode(bool){
 
 function setCanvas(darkmodeValue){
     if(darkmodeValue){
-        document.body.style.backgroundColor = 'black';
-        document.body.style.color = 'white'; 
+        document.body.style.backgroundColor = '#272727';
+        document.body.style.color = '#DBDBDB'; 
         //cssDarkmodeModal.update(current => current === 'whiteModal' ? 'darkModal' : 'whiteModal');
         updateStorePrimitive(storeMap.cssDarkmodeModal, "darkModal");
     }

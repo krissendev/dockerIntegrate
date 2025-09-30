@@ -3,6 +3,9 @@
     // import {tick} from 'svelte'
     import {onMount} from 'svelte'
     import {langdataProject, cssDarkmodeModal }               from '$store/store.js';
+
+    
+
     import { storeMap, getStoreValue }      from '$lib/routing/storeHandler';
 
     let projectCards =[];
@@ -76,13 +79,17 @@
 
 </script>
 {#if projectName && $langdataProject}
-    <div class="projectCardsEntry" class:active={expanded}>
+    <div class={`${$cssDarkmodeModal} projectCardsEntry`} class:active={expanded}>
         <!-- <h3>{$langdataProject.cards}</h3>  -->
         <h3>{cardHeader}</h3> 
         <p>{cardContentMin}</p>
         {#if expanded}
         <div class="expandedCard"> 
             <p>{cardContentMax}</p>
+                <div id="carouselArrows">
+                    <button class="buttonArrow">←</button>
+                    <button class="buttonArrow">→</button>
+                </div>
         </div>
         {/if}
         <a href={`${cardDemoLink}`} data-sveltekit-reload target="_blank">Live demo<div class="outgoingLink">a</div></a>
@@ -96,34 +103,73 @@
 {/if}
 
 <style>
+    @import '$lib/layout/pages.css';
+    
+    button{background-color: rgb(255, 89, 0);}
+    /*#f37a39*/
+    button:hover{background-color: rgb(240, 120, 10);}
+    button:active{background-color: aliceblue;}
     .expandedCard{
-        display:block;
+        display:flex;
+        flex-flow:column;
+    }
+    .toggleExpand{
+        display:flex;
+        margin-top: auto;
+        padding:10px;
+        align-self:center;
     }
 
     .projectCardsEntry {
-        /* flex: 1; */
+        display:flex;
+        flex-flow:column;
         width:45%;
         min-width: 100px;
-        background-color: #FF5900;
-        padding: 10px;
+        padding: 5px;
+        margin:10px;
         text-align: center;
         border: 2px solid black;
         transition: all 0.3s ease;
     }
+    .projectCardsEntry a{
+        padding:5px;
+        align-self:center;
+    }
+    .carouselArrows button{
+        padding:5px;
+        margin:5px;
+        align-self:center;
+    }
 
+    /*Darkmode*/
+    .darkModal.projectCardsEntry{background-color: #5F2202;}
+    .darkModal.projectCardsEntry a{color:cyan;}
 
+    /*Whitemode*/
+    .whiteModal.projectCardsEntry{background-color: #FEE4D7;}
+    .whiteModal.projectCardsEntry a{color:blue;}
 .projectCardsEntry.active {
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100%;
-  background-color: #FF5900;
   padding: 20px;
   margin: 0;  
   gap: 0;  
   box-sizing: border-box;
   border: 1px solid black;  
+  z-index: 1;
+}
+#carouselArrows{
+    display:flex;
+    align-self:center;
+}
+.buttonArrow{
+    margin:10px;
+    width:80px;
+    height:40px;
+    font-size: large;
 }
 
 
@@ -131,9 +177,14 @@
   .projectCardsEntry {
     width: auto; 
   }
-}
-.projectCardsEntry.hidden {
-    display:none;
+  .projectCardsEntry.hidden {
+      display:none;
+  }
+  .projectCardsEntry.active {
+      position: fixed;
+      height: 100vh;
+  }
+
 }
 .outgoingLink{
     display:inline-block;

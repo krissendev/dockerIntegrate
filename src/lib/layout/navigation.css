@@ -55,11 +55,8 @@ p, div, a{
     display:flex;
     justify-content:flex-end;
 }
-.navMenu a, .navSettings a, .navSettings button{
-    margin:5px;
-}
-.navSettings button, .navSettings a {
-    border:none;
+.navMenu a{
+    margin-left:15px;
 }
 
 .navLinks, .logo{z-index: 2;}  /*navLinks = elLinks*/
@@ -69,6 +66,7 @@ p, div, a{
     justify-content: space-between;
     height: max-content;
     width:100vw;
+    padding:1px;
     /* align-self:center; */
 }
 
@@ -83,7 +81,7 @@ p, div, a{
     height: 50px;
     width:50px;
     /* background:url(../burger_white.png) no-repeat center; */
-    background-color: #FF5900;
+    background-color: #E65000;
     background-size: 30px 30px;
 
 }  
@@ -121,14 +119,16 @@ p, div, a{
 }
 
 @media screen and (max-width: 540px) {
+    button, a{font-weight: bold;}
     .topNav{
         position:fixed;
         height:0px;
-        top:5px;
+        top:0px;
         right:5px;
     }     
     .burger{
-        display:block;        
+        display:block;
+        margin:10px;      
     }
     .burger.active div:nth-child(1){
         animation: transitionBurgerTopDown 0.05s linear 1 normal forwards;
@@ -148,6 +148,7 @@ p, div, a{
         justify-content: center;
         align-items:center;   
     }
+    .navLinks a{margin:0px}
     .navMenu{display:none;}
     .navSettings, .navDividerLine, .navMenu{
         flex-direction: column; 
@@ -160,12 +161,6 @@ p, div, a{
         justify-content: space-between;
         align-items: center;
     } 
-    .navLinks a, .navLinks button{
-        display:flex;
-        flex-direction:row;
-        align-items: center;
-        padding:3px; 
-    } 
 
     .nav_icon{
         height:50px;
@@ -173,10 +168,6 @@ p, div, a{
         margin:3px;
     }
 
-    /* .navLinks button{
-        background-color: transparent;
-        border:none
-    } */
     .modal{
         display:none;
     }
@@ -226,7 +217,7 @@ p, div, a{
     margin:3px;
 
     /*svg styling*/
-    background-color:#FF5900;
+    background-color:#E65000;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-size: contain;
@@ -236,7 +227,7 @@ p, div, a{
  }
 
 .navMenu a:hover .nav_icon{background-color: white;}
-.navMenu a:hover{color:white}
+.navMenu a:hover{color:white;}
 .navHome {
     -webkit-mask-image: url('/icons/icon_home.svg');
     mask-image: url('/icons/icon_home.svg');

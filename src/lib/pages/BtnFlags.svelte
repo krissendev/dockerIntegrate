@@ -166,7 +166,7 @@
     #language_selector {
         position: relative;
         display: flex;
-        margin:0px;
+        margin:5px;
         padding:0px;
         border:0px;
     }
@@ -175,7 +175,7 @@
         align-items: center;
         cursor: pointer;
         /* background-color: aliceblue; */
-        border: 4px solid #FF5900;
+        border: 4px none #E65000;
     }
 
     #language_selected:hover{
@@ -197,8 +197,7 @@
     /*Language Options*/
     .flag_icon {
         display: inline-block;
-        width: 20px;
-        height: 20px;
+        width: 50px;
         margin-right: 10px;
         background-size: contain;
         background-position: center;
@@ -225,7 +224,7 @@
         margin: 0;
         list-style: none;
         background-color: aliceblue;
-        border: 4px solid #FF5900;
+        border: 4px solid #E65000;
         border-top: none;
         border-radius: 5px;
         /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); */
@@ -241,7 +240,7 @@
         color:black;
     }
     #languageList li:hover {
-        background-color: #FF5900;
+        background-color: #E65000;
     }
 
 </style>

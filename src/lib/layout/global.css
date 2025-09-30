@@ -10,10 +10,13 @@
     font-style: normal;
   }
 /*Color-palette
+https://webaim.org/resources/contrastchecker/
+
 :hover      aliceblue
-Primary:    #FF5900   rgba(255, 89, 0, 1);
-Secondary:  #FEAE83   rgba(254, 174, 131, 1);
-DSecondary: #662502   rgba(102, 37, 2,1);
+Primary:    #E65000   rgba(255, 89, 0, 1);
+Hover-P     #F37a39 
+Secondary:  #FEE4D7   rgba(254, 174, 131, 1);
+DSecondary: #5F2202   rgba(102, 37, 2,1);
 Tertiary:   #F8C7AC   rgba(248, 199, 172, 1);
 
 DarkGrey:   #272727   rgba(39, 39, 39, 0.95);
@@ -48,18 +51,18 @@ p {
   line-height: 100%;
   font-size:large;
   font-weight: bold;
-  color:#FF5900;
+  color:#E65000;
   white-space: nowrap;
 }
 
 /*src/lib/layout/darkmode.js*/
 .whiteModal,.whiteModal a,.whiteModal button{
   color:black;
-  background-color: rgba(254, 174, 131, 0.95);
+  background-color: rgba(254, 228, 215, 0.95);
 }
 .darkModal,.darkModal a,.darkModal button{
   color:white;
-  background-color: rgba(102, 37, 2, 0.95);
+  background-color: rgba(95, 34, 2, 0.95);
 }
 
 /*due to icons using background-color and not color, they need their own class*/

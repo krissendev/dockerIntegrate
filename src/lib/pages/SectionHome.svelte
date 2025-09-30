@@ -21,6 +21,6 @@
 
 <style>
     @import '$lib/layout/pages.css';
-    button{background-color: #FF5900;}
+    button{background-color: #E65000;}
     button:hover{background-color: aliceblue;}
 </style>

@@ -9,7 +9,7 @@
         width:100vw;
         display: inline-block;
         text-align: center;
-        background-color: #FEAE83;
-        color:black;
+        background-color: #757575;
+        
     }
 </style>

@@ -73,8 +73,8 @@
     mask-position: center;
   }
   .iconSave{
-    border: 4px solid #FF5900;
-    background-color:#FF5900;
+    border: 4px solid #E65000;
+    background-color:#E65000;
     -webkit-mask-image: url('/icon_cookie.svg');
     mask-image: url('/icons/icon_cookie.svg');
   }

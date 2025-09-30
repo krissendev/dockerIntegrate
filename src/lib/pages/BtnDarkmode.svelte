@@ -30,14 +30,14 @@
     }
     /*hack to add border around button parent element of .darkMode*/
     button:has(.darkMode){
-        border: 4px solid #FF5900;
+        border: 4px none #E65000;
     }
     .darkMode{
         display:inline-block;
         height:30px;
         width:30px;
         margin:3px;
-        background-color:#FF5900;
+        background-color:#E65000;
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: contain;

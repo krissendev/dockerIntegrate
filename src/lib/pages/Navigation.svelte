@@ -50,7 +50,7 @@
 
 <div class="topNav" bind:this={topNav}><!--Top Nav-->
     <!--class={`${$cssDarkmodeModal} navLinks`}-->
-    <div class={`${$cssDarkmodeModal} navLinks`} bind:this={elLinks}>
+    <nav class={`${$cssDarkmodeModal} navLinks`} bind:this={elLinks}>
         <div class="navMenu" bind:this={elNavMenu}>
             <a href="#home" on:click={closeBurger} style="text-decoration: none;"><div class=" {darkMode?"dark":"light"}">{"<krissen.dev/>"}</div></a>            
             <a href="#home" on:click={closeBurger}>
@@ -75,7 +75,7 @@
         </div>
         <!--Cookie Modal-->
         <ModalCookieConsent/>
-    </div>
+    </nav>
 
     <!--class={`${$cssDarkmodeModal} modal`}-->
     <!--Mobile Modal-->
@@ -88,8 +88,7 @@
         <div></div>
     </button><!--Burger Menu -->
  
- </div> 
-
+</div>
 <style>
     @import '$lib/layout/navigation.css';
 </style>

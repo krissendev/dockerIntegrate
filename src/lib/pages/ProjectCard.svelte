@@ -105,10 +105,12 @@
 <style>
     @import '$lib/layout/pages.css';
     
-    button{background-color: rgb(255, 89, 0);}
-    /*#f37a39*/
-    button:hover{background-color: rgb(240, 120, 10);}
-    button:active{background-color: aliceblue;}
+    button{
+        font-weight: bold;
+        background-color: #ff5900;
+    }
+    button:hover{background-color: #F4953E;}
+    button:active{background-color: #F4953E;}
     .expandedCard{
         display:flex;
         flex-flow:column;

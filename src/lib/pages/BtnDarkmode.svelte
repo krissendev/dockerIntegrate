@@ -17,27 +17,23 @@
     })
 
 </script>
-<button aria-label="dark mode" class="navLinkBtn" on:click={darkModeSwitch}> 
-    <div class="darkMode {darkMode?"dark":"light"}"></div></button>
+<button aria-label="dark mode" class="darkMode {darkMode?"dark":"light"}" on:click={darkModeSwitch}> </button>
 <style>
-    .navLinkBtn:hover .darkMode{
-        background-color: aliceblue;
-        border-color: aliceblue;
+    .darkMode:hover{
+        background-color:#F4953E;
+        border:4px solid #F4953E;
     }
-    .navLinkBtn:hover{
-        background-color: rgba(240, 248, 255, 0.2);
-        border-color: aliceblue;
-    }
-    /*hack to add border around button parent element of .darkMode*/
-    button:has(.darkMode){
-        border: 4px none #E65000;
+    .darkMode:active{
+        background-color:#F4953E;
+        border:4px solid #F4953E;
     }
     .darkMode{
         display:inline-block;
         height:30px;
         width:30px;
         margin:3px;
-        background-color:#E65000;
+        background-color:#FF5900;
+        border:4px solid #FF5900;
         -webkit-mask-repeat: no-repeat;
         mask-repeat: no-repeat;
         -webkit-mask-size: contain;

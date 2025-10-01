@@ -12,9 +12,21 @@
 /*Color-palette
 https://webaim.org/resources/contrastchecker/
 
-:hover      aliceblue
-Primary:    #E65000   rgba(255, 89, 0, 1);
-Hover-P     #F37a39 
+Primary:                #FF5900
+Primary-hover/active    #F4953E
+dark-bg1:               #272727
+light-bg1:              white
+dark-bg2:               #5F2202
+light-bg2:              #FEE4D7
+
+white-dark median-BG:   #F79A6B
+
+links-dark:             cyan
+links-light:            blue
+checker-red:            crimson
+checker-green:          lightgreen
+
+
 Secondary:  #FEE4D7   rgba(254, 174, 131, 1);
 DSecondary: #5F2202   rgba(102, 37, 2,1);
 Tertiary:   #F8C7AC   rgba(248, 199, 172, 1);
@@ -32,7 +44,6 @@ body {
     line-height: 1.5;    /* Line height is 150% of the font size */
     letter-spacing: 0.12em; /* Letter spacing is 0.12 times the font size */
     word-spacing: 0.16em; /* Word spacing is 0.16 times the font size */
-
     color:black;
     background-color:white;
     margin:0px;
@@ -51,7 +62,7 @@ p {
   line-height: 100%;
   font-size:large;
   font-weight: bold;
-  color:#E65000;
+  color:#FF5900;
   white-space: nowrap;
 }
 

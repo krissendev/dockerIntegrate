@@ -2,7 +2,8 @@
     import { onMount }                      from 'svelte';
     import { goto }                         from '$app/navigation';
     import {sessionPreferences, 
-        cookieConsent, cookieState}         from '$store/store.js';
+        cookieConsent, cookieState,
+     cssDarkmodeModal}                      from '$store/store.js';
     import {updateStoreObject, storeMap,
         updateStorePrimitive}               from '$lib/routing/storeHandler.js'
     import {getCookieValue, 
@@ -135,29 +136,30 @@
         <div class={languageClass} bind:this={selectedLanguageFlag}></div> 
         <span class="text_selected" bind:this={selectedLanguageText}></span> 
         <span class="arrow-icon"></span> 
-    </button>
-    <ul id="languageList" style="visibility:hidden" bind:this={languageList}>
+    </button>    
+    <ul id="languageList" class={`${$cssDarkmodeModal}`} style="visibility:hidden" bind:this={languageList}>
         <li data-value="en" bind:this={languageLinkEn}>
             <span class="flag_icon en"></span>
-            <span class="language-name">En</span>
+            <span class={`${$cssDarkmodeModal} language-name`}>En</span>
         </li>
         <li data-value="no" bind:this={languageLinkNo}>
             <span class="flag_icon no"></span>
-            <span class="language-name">No</span>
+            <span class={`${$cssDarkmodeModal} language-name`}>No</span>
         </li>
         <li data-value="no" bind:this={languageLinkDe}>
             <span class="flag_icon de"></span>
-            <span class="language-name">De</span>
+            <span class={`${$cssDarkmodeModal} language-name`}>De</span>
         </li>
     </ul>
 </div>
 
 <style>
+    /*Language Options*/
     .flag_icon {
         display: inline-block;
-        width: 20px;
-        height: 20px;
-        margin-right: 10px;
+        width: 30px;
+        height: 30px;
+        margin: 0px;
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
@@ -174,14 +176,13 @@
         display: flex;
         align-items: center;
         cursor: pointer;
-        /* background-color: aliceblue; */
-        border: 4px none #E65000;
+        /* background-color: #F4953E; */
+        border: 4px none #FF5900;
     }
 
     #language_selected:hover{
-        background-color: rgba(240, 248, 255, 0.2);
-        color:aliceblue;
-        border-color:aliceblue;
+        background-color: #F4953E;
+        border-color:#F4953E;
     }
     .arrow-icon {
         display: inline-block;
@@ -189,19 +190,9 @@
         height: 0;
         margin-left: auto;
         border-style: solid;
-        border-width: 5px 1px 2px 4px;
-        clip-path: polygon(100% 0, 50% 50%, 100% 100%);
-        border: 5px solid rgb(0, 0, 0);
-    }
-
-    /*Language Options*/
-    .flag_icon {
-        display: inline-block;
-        width: 50px;
-        margin-right: 10px;
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
+        /* border-width: 5px 1px 2px 4px; */
+        clip-path: polygon(100% 0, 10% 50%, 100% 100%);
+        border: 5px solid #FF5900;
     }
     
     .en {
@@ -223,8 +214,7 @@
         padding: 0;
         margin: 0;
         list-style: none;
-        background-color: aliceblue;
-        border: 4px solid #E65000;
+        border: 4px solid #FF5900;
         border-top: none;
         border-radius: 5px;
         /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); */
@@ -234,13 +224,13 @@
     #languageList li {
         display: flex;
         align-items: center;
-        padding: 5px 10px;
+        padding: 0px 3px 0px 3px;
         cursor: pointer;
         font-size: 1rem;
         color:black;
     }
     #languageList li:hover {
-        background-color: #E65000;
+        background-color: #FF5900;
     }
 
 </style>

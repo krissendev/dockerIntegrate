@@ -24,8 +24,12 @@
 
 <style>
     @import '$lib/layout/pages.css';
-    button{background-color: #E65000;}
-    button:hover{background-color: aliceblue;}
+    button{
+        font-weight: bold;
+        background-color: #FF5900;
+    }
+    button:hover{background-color: #F4953E;}
+    button:active{background-color: #F4953E;}
     form{
         display:flex;
         flex-direction:column;

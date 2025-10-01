@@ -81,7 +81,7 @@ p, div, a{
     height: 50px;
     width:50px;
     /* background:url(../burger_white.png) no-repeat center; */
-    background-color: #E65000;
+    background-color: #FF5900;
     background-size: 30px 30px;
 
 }  
@@ -217,7 +217,7 @@ p, div, a{
     margin:3px;
 
     /*svg styling*/
-    background-color:#E65000;
+    background-color:#FF5900;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-size: contain;
@@ -226,8 +226,10 @@ p, div, a{
     mask-position: center;
  }
 
-.navMenu a:hover .nav_icon{background-color: white;}
-.navMenu a:hover{color:white;}
+.navMenu a:hover .nav_icon{background-color: #F4953E ;}
+.navMenu a:hover{color:#F4953E;}
+.navMenu a:active .nav_icon{background-color: #F4953E ;}
+.navMenu a:active{color:#F4953E;}
 .navHome {
     -webkit-mask-image: url('/icons/icon_home.svg');
     mask-image: url('/icons/icon_home.svg');

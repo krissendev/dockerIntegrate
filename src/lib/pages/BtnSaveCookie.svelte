@@ -73,30 +73,34 @@
     mask-position: center;
   }
   .iconSave{
-    border: 4px solid #E65000;
-    background-color:#E65000;
+    border: 4px solid #FF5900;
+    background-color:#FF5900;
     -webkit-mask-image: url('/icon_cookie.svg');
     mask-image: url('/icons/icon_cookie.svg');
   }
   .iconSave:hover{
-    background-color:aliceblue;
-    border-color:aliceblue;
+    background-color:#F4953E;
+    border-color:#F4953E;
+  }
+  .iconSave:active{
+    background-color:#F4953E;
+    border-color:#F4953E;
   }
   .iconCookieOFF{
-    background-color:red;
+    background-color:crimson;
     -webkit-mask-image: url('/icons/icon_stop.svg');
     mask-image: url('/icons/icon_stop.svg');
   }
 
 .iconTrue{
   transform: translate(-60%, -40%) scale(0.5);
-  background-color:green;
+  background-color:limegreen;;
     -webkit-mask-image: url('/icons/icon_true.svg');
     mask-image: url('/icons/icon_true.svg');
 }
 .iconFalse{
   transform: translate(-60%, -40%) scale(0.5);
-  background-color:red;
+  background-color:crimson;
     -webkit-mask-image: url('/icons/icon_false.svg');
     mask-image: url('/icons/icon_false.svg');
 }

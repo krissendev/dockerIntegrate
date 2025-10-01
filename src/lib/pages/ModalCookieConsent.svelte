@@ -105,11 +105,11 @@
 
 
 <!--Mobile | Scroll inside navLinks on "second page"-->
-<div class={` cookieModalContent`}  style="display: {modalVisibility};">    
+<div class={`cookieModalContent`}  style="display: {modalVisibility};">    
     <div class={`${$cssDarkmodeModal} cookieModal`}></div>
     {#if !$isMobile}
     
-        <button aria-label="Close Modal Window" class="exitCookieConsent" on:click={handleToggle}>X</button>
+        <button aria-label="Close Modal Window" class="exitCookieConsent exitBtn" on:click={handleToggle}>X</button>
         
     <!-- Jump up down arrows to section on mobile-->
     {:else if $isMobile}
@@ -135,7 +135,7 @@
         <br>
 
         <div>
-            <button class="btnAccept" on:click={consentToCookie}>Accept & Enable Cookies</button> <button on:click={handleToggle}>Close</button><br><br>
+            <button class="btnAccept" on:click={consentToCookie}>Accept & Enable Cookies</button> <button class="exitBtn"on:click={handleToggle}>Close</button><br><br>
         </div>
         <p>By clicking Accept Your browser will remember your current settings, language and darkmode-lightmode styling.</p>
         <br><br><br>
@@ -157,7 +157,7 @@
     mask-position: center;
 }
 .iconCookie{
-    background-color:cornflowerblue;
+    background-color:#F79A6B;
     -webkit-mask-image: url('/icons/icon_cookie.svg');
     mask-image: url('/icons/icon_cookie.svg');
   }
@@ -171,13 +171,21 @@
     margin:20px;
     overflow-y: auto;
 }
-
+.exitBtn{
+        background-color: #FF5900;
+}
+.exitBtn:hover{
+        background-color: #F4953E;
+}
+.exitBtn:active{
+        background-color: #F4953E;
+}
 .exitCookieConsent{
     font-size:x-large;
     position:fixed;
     top:50px; 
     right:0;
-    margin: 5px;
+    margin: 20px;
     z-index:3;
 }
 .cookieModalContent{
@@ -193,6 +201,7 @@
     height:100vh;
 }
 button{
+    font-weight: bold;
     z-index:3;
     padding: 10px 20px;
 }
@@ -214,19 +223,24 @@ button{
     align-items: center; 
     justify-content: center;
     font-size:xx-large;
+    border:solid;
     border-radius: 50%;
     opacity:80%;
     background-color:#FEE4D7;
-    border-color:#E65000;
+    border-color:#FF5900;
+    color:#FF5900;
 }
 .arrow:active{
-    background-color: #E65000;
-    border-color: #FEE4D7;
-    opacity:50%;
+    background-color: #FF5900;
+    border-color: #F4953E;
+    opacity:70%;
 }
-.btnDelete{background-color:red;}
-.btnAccept{background-color:lightgreen;}
-
+.btnDelete{background-color:crimson;}
+.btnAccept{background-color:limegreen}
+.btnDelete:hover{background-color:indianred}
+.btnAccept:hover{background-color:lightgreen}
+.btnDelete:active{background-color:indianred}
+.btnAccept:active{background-color:lightgreen}
 
 @media screen and (max-width: 540px) {
     .cookieModalText, .cookieModalContent, .cookieModal{

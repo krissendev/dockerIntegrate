@@ -1,0 +1,99 @@
+<script>
+    // https://threejs.org/manual/#en/creating-a-scene
+    // https://threejs.org/docs/#examples/en/loaders/GLTFLoader
+    import {onMount} from 'svelte'
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+    let timestamp=0;
+    let mesh;
+    let meshY=0;
+    let mousePos={x:undefined, y:undefined}
+    let docMounted=false;
+    let canvas=undefined;
+    onMount(()=>{
+
+        document.addEventListener("mousemove", (e)=>{
+            mousePos.x=e.clientX;
+            mousePos.y=e.clientY;
+        })
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+        let canvas = document.querySelector("#portraitcanvas");
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas });
+        // renderer.setSize( window.innerWidth/2, window.innerHeight/2 );
+        renderer.setSize(150, 150);
+        // renderer.setClearColor( 0xffffff, 1 );
+        renderer.setClearColor( 0xF79A6B, 1 );
+        
+        // document.body.appendChild( renderer.domElement );
+
+        const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+        const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+
+        
+        const loader = new GLTFLoader();
+        
+        // loader.load( 'headmodel.glb', function ( gltf ) {
+
+        //     scene.add( gltf.scene );
+        //     mesh = gltf.scene; 
+        // }, undefined, function ( error ) {console.error( error );} );
+        
+        (async () => {
+            try{
+                const gltf = await new Promise((resolve, reject) => {
+                    loader.load('headmodel.glb',resolve, undefined, reject);
+                });
+                mesh=gltf.scene;
+                scene.add(mesh);
+                
+                camera.position.z = 1.9;
+                camera.position.y = 0.9;
+                const light = new THREE.AmbientLight( 0xffffff );
+                scene.add( light );
+                
+            
+            renderer.setAnimationLoop(() => {
+                if (mesh){
+                    meshY+= 0.02;
+                    mesh.rotation.y=meshY; 
+                    renderer.render(scene, camera);
+                } 
+                    
+            });                    
+            docMounted=true;
+            let boundingCanvas = document.querySelector("canvas").getBoundingClientRect();
+            canvas = {
+                left : Math.trunc(boundingCanvas.left),
+                top : Math.trunc(boundingCanvas.top),
+                right : Math.trunc(boundingCanvas.right),
+                bottom : Math.trunc(boundingCanvas.bottom),
+            }
+            console.log(canvas)
+            }
+            catch(err){console.error("Loading mesh data failed", err)}
+        })();
+
+        
+
+    function threejsInteract(){
+        if(docMounted){
+            if(mousePos.x>canvas.left && 
+            mousePos.x<canvas.right &&
+            mousePos.y>canvas.top && 
+            mousePos.y<canvas.bottom         
+            ){
+                //1,6 is value for facing forward, 360 rotation ~= 6
+                meshY = 1.6;
+            }
+        }
+        requestAnimationFrame(threejsInteract)
+    }
+    threejsInteract();
+        
+    })
+</script>
+<!-- <h3>Coords {#if mesh}{mesh.rotation.y}{:else}loading...{/if}</h3> -->

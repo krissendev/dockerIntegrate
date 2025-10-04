@@ -48,9 +48,16 @@
     $: navdata = $langdataNav;
 </script>
 
-<div class="topNav" bind:this={topNav}><!--Top Nav-->
+<div class={`${$cssDarkmodeModal} topNav`} bind:this={topNav}><!--Top Nav-->
     <!--class={`${$cssDarkmodeModal} navLinks`}-->
-    <nav class={`${$cssDarkmodeModal} navLinks`} bind:this={elLinks}>
+    <button title="Navigation menu" aria-hidden="true" class="burger" on:click={handleToggle} bind:this={elMobileMenu}>
+        <div></div>
+        <div></div>
+        <div></div>
+        <span class="visually-hidden">☰</span><!--Fallback when css disabled-->
+    </button><!--Burger Menu -->    
+    
+    <nav class={`${$cssDarkmodeModal} navLinks`} aria-label="Main" bind:this={elLinks}>
         <div class="navMenu" bind:this={elNavMenu}>
             <a href="#home" on:click={closeBurger} style="text-decoration: none;"><div class=" {darkMode?"dark":"light"}">{"<krissen.dev/>"}</div></a>            
             <a href="#home" on:click={closeBurger}>
@@ -66,7 +73,7 @@
                 <span class="nav_icon navContact"></span>{#if navdata?.contact}{navdata.contact.label}{/if}
             </a>
             <!--Some divider-->
-            <div class="navDividerLine" bind:this={elDivider}></div>
+            <!-- <div class="navDividerLine" bind:this={elDivider}></div> -->
             <div class="navSettings" bind:this={elSettings}>
                 <BtnDarkmode/>
                 <BtnFlags/>
@@ -82,13 +89,10 @@
     <div name="mobileModal" class={`${$cssDarkmodeModal} modal`} style={`display:${$cookieModalOverflow}`} bind:this={elMobileModal}></div> 
 
     
-    <button aria-hidden="true" class="burger" on:click={handleToggle} bind:this={elMobileMenu}>
-        <div></div>
-        <div></div>
-        <div></div>
-    </button><!--Burger Menu -->
+
  
 </div>
 <style>
     @import '$lib/layout/navigation.css';
+    @import '$lib/layout/nostylefallback.css';
 </style>

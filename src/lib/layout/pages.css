@@ -41,7 +41,15 @@ h3{
     -webkit-mask-position: center;
     mask-position: center;
 }
-
+button{
+    background-color: #FF5900;
+}
+button:hover{
+    background-color: #F4953E;
+}
+button:active{
+    background-color: #F4953E;
+}
 #iconHome {
     -webkit-mask-image: url('/icons/icon_home.svg');
     mask-image: url('/icons/icon_home.svg');

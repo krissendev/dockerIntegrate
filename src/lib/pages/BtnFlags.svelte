@@ -132,24 +132,37 @@
 <!-- <textarea bind:value={language}></textarea> -->
 
 <div id="language_selector">
-    <button aria-label="language dropdown menu button"id="language_selected" bind:this={selectedLanguageBtn} >
+    <!-- <img title="image"src="" alt="" style="width:100px;height:100px;"> -->
+    <button title="Change language"aria-label="language dropdown menu button"id="language_selected" bind:this={selectedLanguageBtn} >
         <div class={languageClass} bind:this={selectedLanguageFlag}></div> 
         <span class="text_selected" bind:this={selectedLanguageText}></span> 
         <span class="arrow-icon"></span> 
     </button>    
     <ul id="languageList" class={`${$cssDarkmodeModal}`} style="visibility:hidden" bind:this={languageList}>
-        <li data-value="en" bind:this={languageLinkEn}>
+        <button title="English" data-value="en" bind:this={languageLinkEn}>
             <span class="flag_icon en"></span>
             <span class={`${$cssDarkmodeModal} language-name`}>En</span>
-        </li>
-        <li data-value="no" bind:this={languageLinkNo}>
+        </button>
+        <button title="Norsk" data-value="no" bind:this={languageLinkNo}>
+            <span class="flag_icon no"></span>
+            <span class={`${$cssDarkmodeModal} language-name`}>No</span>
+        </button>
+        <button title="Deutsch" data-value="no" bind:this={languageLinkDe}>
+            <span class="flag_icon de"></span>
+            <span class={`${$cssDarkmodeModal} language-name`}>De</span>
+        </button>            
+        <!-- <li data-value="en" bind:this={languageLinkEn}>
+            <span class="flag_icon en"></span>
+            <span class={`${$cssDarkmodeModal} language-name`}>En</span>
+        </li> -->
+        <!-- <li data-value="no" bind:this={languageLinkNo}>
             <span class="flag_icon no"></span>
             <span class={`${$cssDarkmodeModal} language-name`}>No</span>
         </li>
         <li data-value="no" bind:this={languageLinkDe}>
             <span class="flag_icon de"></span>
             <span class={`${$cssDarkmodeModal} language-name`}>De</span>
-        </li>
+        </li> -->
     </ul>
 </div>
 
@@ -219,9 +232,10 @@
         border-radius: 5px;
         /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); */
         max-height: 150px;
+        overflow-x:hidden;
         overflow-y: auto;
     }
-    #languageList li {
+    #languageList button {
         display: flex;
         align-items: center;
         padding: 0px 3px 0px 3px;
@@ -229,7 +243,7 @@
         font-size: 1rem;
         color:black;
     }
-    #languageList li:hover {
+    #languageList button:hover {
         background-color: #FF5900;
     }
 

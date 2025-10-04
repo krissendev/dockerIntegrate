@@ -94,7 +94,9 @@
         {/if}
         <a href={`${cardDemoLink}`} data-sveltekit-reload target="_blank">Live demo<div class="outgoingLink">a</div></a>
         <br>
-        <button class="toggleExpand" on:click={toggleCardExpandContent}>More/Less</button>
+        <button title="Maximize or minimize content view" class="toggleExpand" on:click={toggleCardExpandContent}>
+            More/Less
+        </button>
     </div>
     {:else}
     <div class="projectCardsEntry" class:active={expanded}>

@@ -109,12 +109,15 @@
     <div class={`${$cssDarkmodeModal} cookieModal`}></div>
     {#if !$isMobile}
     
-        <button aria-label="Close Modal Window" class="exitCookieConsent exitBtn" on:click={handleToggle}>X</button>
+        <button aria-label="Close cookie modal window" class="exitCookieConsent exitBtn" on:click={handleToggle}>
+            X
+            <span class="visually-hidden">Close cookie window</span><!--Fallback when css disabled-->
+        </button>
         
     <!-- Jump up down arrows to section on mobile-->
     {:else if $isMobile}
-        <button class="upArrow arrow" on:click={()=>scrollArrow("up")}>⬆</button>
-        <button class="downArrow arrow" on:click={()=>scrollArrow("down")}>⬇</button>
+        <button title="Navigate up in cookie window" class="upArrow arrow" on:click={()=>scrollArrow("up")}>⬆</button>
+        <button title="Navigate down in cookie window" class="downArrow arrow" on:click={()=>scrollArrow("down")}>⬇</button>
     {/if}
 
     <div class="cookieModalText">
@@ -135,7 +138,11 @@
         <br>
 
         <div>
-            <button class="btnAccept" on:click={consentToCookie}>Accept & Enable Cookies</button> <button class="exitBtn"on:click={handleToggle}>Close</button><br><br>
+            <button class="btnAccept" on:click={consentToCookie}>Accept & Enable Cookies</button>
+            <button aria-label="Close cookie modal window" class="exitBtn"on:click={handleToggle}>
+                Close
+                <span class="visually-hidden">cookie window</span><!--Fallback when css disabled-->
+            </button><br><br>
         </div>
         <p>By clicking Accept Your browser will remember your current settings, language and darkmode-lightmode styling.</p>
         <br><br><br>
@@ -145,6 +152,7 @@
 
 
 <style>
+@import '$lib/layout/nostylefallback.css';
 .icon{
     display:flex;
     width:50px;

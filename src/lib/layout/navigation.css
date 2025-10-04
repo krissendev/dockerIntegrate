@@ -54,6 +54,8 @@ p, div, a{
 .navSettings{
     display:flex;
     justify-content:flex-end;
+    padding-left:20px;
+    padding-top:0px;
 }
 .navMenu a{
     margin-left:15px;
@@ -73,7 +75,7 @@ p, div, a{
 
 /*Mobile burger menu*/
 .burger {
-    z-index: 2;
+    z-index: 3;
     display: none;
     position:absolute;
     right: 0;
@@ -155,6 +157,10 @@ p, div, a{
         font-size:x-large;
         align-items:center; 
         margin:3px;
+    }
+    .navSettings{
+        padding-left:0px;
+        padding-top:10px;
     }
     .navMenu{
         height:100vh; 

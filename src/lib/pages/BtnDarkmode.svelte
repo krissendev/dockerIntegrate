@@ -17,8 +17,11 @@
     })
 
 </script>
-<button aria-label="dark mode" class="darkMode {darkMode?"dark":"light"}" on:click={darkModeSwitch}> </button>
+<button title="Toggle darkmode" aria-label="dark mode" class="darkMode {darkMode?"dark":"light"}" on:click={darkModeSwitch}> 
+    <span class="visually-hidden">Darkmode</span><!--Fallback when css disabled-->
+</button>
 <style>
+    @import '$lib/layout/nostylefallback.css';
     .darkMode:hover{
         background-color:#F4953E;
         border:4px solid #F4953E;

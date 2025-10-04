@@ -15,12 +15,10 @@
     <div class={`${$cssDarkmodeModal} pageIcon `} id="iconHome"></div>
     <h3 id="home">This is home/hero section</h3>
     <h4>Build Trust</h4>
-    <button>Call to Action</button>
+    <button title="call to action">Call to Action</button>
     <p>{$langdataHome}</p>
 </div>
 
 <style>
     @import '$lib/layout/pages.css';
-    button{background-color: #FF5900;}
-    button:hover{background-color: #F4953E;}
 </style>

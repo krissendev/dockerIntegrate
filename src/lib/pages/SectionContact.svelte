@@ -11,11 +11,11 @@
     <div class={`${$cssDarkmodeModal} pageIcon `} id="iconContact"></div>
     <h3 id="contact">This is Contact</h3>    
     <p>{$langdataContact}</p>
-    <form method="POST" action="?/email" use:enhance>
-        <input name="name" type="name" placeholder="name">
-        <input name="email" type="email"placeholder="email" required >
-        <textarea name="message"type="text" required maxlength="1000" size="1000" placeholder="Max character length 1000" rows="7"></textarea>
-        <button>Send</button>
+    <form aria-label="Email form" method="POST" action="?/email" use:enhance>
+        <input aria-label="Write your name" name="name" type="name" placeholder="name">
+        <input aria-label="Write your email" name="email" type="email"placeholder="email" required >
+        <textarea aria-label="Write your message" name="message"type="text" required maxlength="1000" size="1000" placeholder="Max character length 1000" rows="7"></textarea>
+        <button title="Send email" aria-label="Send email form">Send</button>
     </form>
     {#if form?.success}
         <p>Email successfully sent!</p>

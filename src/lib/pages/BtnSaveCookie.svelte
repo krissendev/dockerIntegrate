@@ -44,7 +44,9 @@
 <div class="iconTrue icon"></div>
 <div class="iconFalse icon"></div> 
 -->
-<button aria-label="save preferences in cookie"class="iconSave icon"on:click={handleToggle}></button>
+<button title="Cookie settings" aria-label="save preferences in cookie"class="iconSave icon"on:click={handleToggle}>
+  <span class="visually-hidden">Cookies</span><!--Fallback when css disabled-->
+</button>
 {#if $cookieConsent}
   <div class="iconTrue icon"></div>
 {:else}
@@ -59,6 +61,7 @@
   </div>
 </div> -->
 <style>
+  @import '$lib/layout/nostylefallback.css';
   .icon{
     display:flex;
     align-self: center;

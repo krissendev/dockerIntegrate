@@ -53,8 +53,16 @@
     
 
     function toggleCardExpandContent(event){
+        //this = button class=toggleExpand
+        let ariaExpanded = this.getAttribute('aria-expanded')=== 'true';
+        this.setAttribute('aria-expanded', String(!ariaExpanded));
+
         expanded=!expanded;
         ontoggleCardExpandContent();
+        if(expanded){this.style.order="4"}
+        else{this.style.order="2"}
+
+        
         //Delete this later, manual DOM conflicts with Svelte DOM, meaning updates in styling 
         // might not be applied with the following method:
 
@@ -81,10 +89,14 @@
 {#if projectName && $langdataProject}
     <div class={`${$cssDarkmodeModal} projectCardsEntry`} class:active={expanded}>
         <!-- <h3>{$langdataProject.cards}</h3>  -->
-        <h3>{cardHeader}</h3> 
-        <p>{cardContentMin}</p>
+         <!-->Grid layout: 1cardHeader, 2cardContentMin, 3BTNtoggleExpand, 4expandedCard, 5cardDemoLink --->
+        <h3 style="order:0;">{cardHeader}</h3> 
+        <p style="order:1;">{cardContentMin}</p>
+        <button style="order:2;" title="Maximize or minimize content view" aria-expanded="false" class="toggleExpand" on:click={toggleCardExpandContent}>
+            Show {#if expanded}Less{:else}More{/if}
+        </button>        
         {#if expanded}
-        <div class="expandedCard"> 
+        <div style="order:3;" class="expandedCard"> 
             <p>{cardContentMax}</p>
                 <div id="carouselArrows">
                     <button class="buttonArrow">←</button>
@@ -92,16 +104,12 @@
                 </div>
         </div>
         {/if}
-        <a href={`${cardDemoLink}`} data-sveltekit-reload target="_blank">Live demo<div class="outgoingLink">a</div></a>
+        <a style="order:5;" href={`${cardDemoLink}`} data-sveltekit-reload target="_blank">Live demo<div class="outgoingLink">a</div></a>
         <br>
-        <button title="Maximize or minimize content view" class="toggleExpand" on:click={toggleCardExpandContent}>
-            More/Less
-        </button>
     </div>
     {:else}
     <div class="projectCardsEntry" class:active={expanded}>
     </div>
-
 {/if}
 
 <style>
@@ -118,15 +126,27 @@
         flex-flow:column;
     }
     .toggleExpand{
-        display:flex;
-        margin-top: auto;
+        /* display:flex; */
+        /* margin-top: auto; */
         padding:10px;
         align-self:center;
     }
 
-    .projectCardsEntry {
+    /* .projectCardsEntry {
         display:flex;
         flex-flow:column;
+        width:45%;
+        min-width: 100px;
+        padding: 5px;
+        margin:10px;
+        text-align: center;
+        border: 2px solid black;
+        transition: all 0.3s ease;
+    } */
+        .projectCardsEntry {
+        display:grid;
+        grid-template-rows:auto, auto, auto, auto, auto;
+        /* flex-flow:column; */
         width:45%;
         min-width: 100px;
         padding: 5px;

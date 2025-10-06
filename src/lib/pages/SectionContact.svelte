@@ -9,7 +9,7 @@
 <div class="pageSection contactSvelte">
     <br>
     <div class={`${$cssDarkmodeModal} pageIcon `} id="iconContact"></div>
-    <h3 id="contact">This is Contact</h3>    
+    <h2 id="contact">This is Contact</h2>    
     <p>{$langdataContact}</p>
     <form aria-label="Email form" method="POST" action="?/email" use:enhance>
         <input aria-label="Write your name" name="name" type="name" placeholder="name">
@@ -45,7 +45,6 @@
     }
     form button{
         font-size: 1.25rem;
-        width:80px;
         height:30px;
         
     }

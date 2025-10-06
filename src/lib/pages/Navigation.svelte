@@ -50,7 +50,7 @@
 
 <div class={`${$cssDarkmodeModal} topNav`} bind:this={topNav}><!--Top Nav-->
     <!--class={`${$cssDarkmodeModal} navLinks`}-->
-    <button title="Navigation menu" aria-label="Navigation menu" class="burger" on:click={handleToggle} bind:this={elMobileMenu}>
+    <button title="Navigation menu" aria-label="Navigation menu" aria-expanded="false" class="burger" on:click={handleToggle} bind:this={elMobileMenu}>
         <div></div>
         <div></div>
         <div></div>

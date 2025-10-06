@@ -12,7 +12,7 @@
     <div style="display=block">
         <br>
         <div class={`${$cssDarkmodeModal} pageIcon `} id="iconProject"></div>
-        <h3 id="projects" >This is Projects</h3>
+        <h2 id="projects" >This is Projects</h2>
     </div>
     <p>{$langdataProject.header}</p>
     <div class="projectCardsContainer">

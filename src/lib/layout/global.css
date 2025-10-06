@@ -56,6 +56,8 @@ body {
 p {
     margin-bottom: 2em; /* Spacing after paragraphs is 200% of the font size */
 }
+
+h1{all: unset;} /*h1 designated for websitelogo */
 .websitelogo{
   width:auto;
   text-align: center;

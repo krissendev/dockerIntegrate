@@ -13,18 +13,13 @@
     let canvas=undefined;
     onMount(()=>{
 
-        document.addEventListener("mousemove", (e)=>{
-            mousePos.x=e.clientX;
-            mousePos.y=e.clientY;
-        })
 
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
-
-        let canvas = document.querySelector("#portraitcanvas");
+        const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+        canvas = document.querySelector("#portraitcanvas");
         const renderer = new THREE.WebGLRenderer({ canvas: canvas });
         // renderer.setSize( window.innerWidth/2, window.innerHeight/2 );
-        renderer.setSize(150, 150);
+        renderer.setSize(window.innerWidth/2, window.innerWidth/2);
         // renderer.setClearColor( 0xffffff, 1 );
         renderer.setClearColor( 0xF79A6B, 1 );
         
@@ -50,7 +45,7 @@
                 mesh=gltf.scene;
                 scene.add(mesh);
                 
-                camera.position.z = 1.9;
+                camera.position.z = 2.5;
                 camera.position.y = 0.9;
                 const light = new THREE.AmbientLight( 0xffffff );
                 scene.add( light );
@@ -58,14 +53,15 @@
             
             renderer.setAnimationLoop(() => {
                 if (mesh){
-                    meshY+= 0.02;
+                    // console.log("rotating: ", meshY)
+                    meshY+= 0.01;
                     mesh.rotation.y=meshY; 
                     renderer.render(scene, camera);
                 } 
                     
             });                    
             docMounted=true;
-            let boundingCanvas = document.querySelector("canvas").getBoundingClientRect();
+            let boundingCanvas = canvas.getBoundingClientRect();
             canvas = {
                 left : Math.trunc(boundingCanvas.left),
                 top : Math.trunc(boundingCanvas.top),
@@ -77,9 +73,32 @@
             catch(err){console.error("Loading mesh data failed", err)}
         })();
 
-        
+        document.addEventListener("mousemove", (e)=>{
+            mousePos.x=e.clientX;
+            mousePos.y=e.clientY;
+        })
+
+        //Mobile touch rotate
+        canvas.addEventListener("pointerdown",(e)=>{
+            console.log(e.pageY, canvas.top, canvas.bottom )
+            if(docMounted){
+                if(Math.trunc(e.pageX)>canvas.left && 
+                Math.trunc(e.pageX)<canvas.right &&
+                Math.trunc(e.pageY)>canvas.top && 
+                Math.trunc(e.pageY)<canvas.bottom         
+                ){
+                    console.log("pointercaputer")
+
+                    //1,6 is value for facing forward, 360 rotation ~= 6
+                    mesh.rotation.y = 1.6;                                      
+               
+                }
+            }
+        }); 
+
 
     function threejsInteract(){
+        console.log(mousePos.y, canvas.top)
         if(docMounted){
             if(mousePos.x>canvas.left && 
             mousePos.x<canvas.right &&

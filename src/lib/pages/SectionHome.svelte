@@ -10,11 +10,11 @@
         // let mobile= getStoreValue(isMobile)
 </script>
 <div class="pageSection homeSvelte">
-    {#if $isMobile}<div class="websitelogo" style="text-align:unset;">{"<krissen.dev/>"}</div>{/if}
+    {#if $isMobile}<div class="websitelogo" style="text-align:unset;"><h1>{"<krissen.dev/>"}</h1></div>{/if}
     <br>
     <div class={`${$cssDarkmodeModal} pageIcon `} id="iconHome"></div>
-    <h3 id="home">This is home/hero section</h3>
-    <h4>Build Trust</h4>
+    <h2 id="home">This is home/hero section</h2>
+    <h3>Build Trust</h3>
     <button title="call to action">Call to Action</button>
     <p>{$langdataHome}</p>
 </div>

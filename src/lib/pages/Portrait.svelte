@@ -11,6 +11,7 @@
     let mousePos={x:undefined, y:undefined}
     let docMounted=false;
     let canvas=undefined;
+    let canvasborder = undefined;
     onMount(()=>{
 
 
@@ -62,7 +63,7 @@
             });                    
             docMounted=true;
             let boundingCanvas = canvas.getBoundingClientRect();
-            canvas = {
+            canvasborder = {
                 left : Math.trunc(boundingCanvas.left),
                 top : Math.trunc(boundingCanvas.top),
                 right : Math.trunc(boundingCanvas.right),
@@ -78,41 +79,28 @@
             mousePos.y=e.clientY;
         })
 
-        //Mobile touch rotate
+        //Mobile touch ;rotate 3D portrait.
         canvas.addEventListener("pointerdown",(e)=>{
-            console.log(e.pageY, canvas.top, canvas.bottom )
-            if(docMounted){
-                if(Math.trunc(e.pageX)>canvas.left && 
-                Math.trunc(e.pageX)<canvas.right &&
-                Math.trunc(e.pageY)>canvas.top && 
-                Math.trunc(e.pageY)<canvas.bottom         
-                ){
-                    console.log("pointercaputer")
-
-                    //1,6 is value for facing forward, 360 rotation ~= 6
-                    mesh.rotation.y = 1.6;                                      
-               
-                }
-            }
+            pauseRotation()
+        }); 
+       //Mouse cursor hover; rotate 3D portrait.
+        canvas.addEventListener("mousemove",(e)=>{
+            pauseRotation()
         }); 
 
-
-    function threejsInteract(){
-        console.log(mousePos.y, canvas.top)
-        if(docMounted){
-            if(mousePos.x>canvas.left && 
-            mousePos.x<canvas.right &&
-            mousePos.y>canvas.top && 
-            mousePos.y<canvas.bottom         
-            ){
-                //1,6 is value for facing forward, 360 rotation ~= 6
-                meshY = 1.6;
-            }
+        function pauseRotation(){
+            // console.log("pauseRotation")
+            //temporary hack, setInterval ms countering THREE.WebGLRenderer.setAnimationLoop(AKA = requestAnimationFrame)
+            //Replace with Threejs pause animation ?
+            let milliseconds =10;
+            let paused = setInterval(function () {console.log("interval");meshY = 1.6;}, milliseconds); 
+            setTimeout(()=>{
+                clearInterval(paused)
+            },100)             
         }
-        requestAnimationFrame(threejsInteract)
-    }
-    threejsInteract();
-        
+
+ 
+
     })
 </script>
 <!-- <h3>Coords {#if mesh}{mesh.rotation.y}{:else}loading...{/if}</h3> -->

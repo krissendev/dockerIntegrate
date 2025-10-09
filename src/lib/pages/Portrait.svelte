@@ -12,13 +12,14 @@
     let docMounted=false;
     let canvas=undefined;
     let canvasborder = undefined;
+    let renderer = undefined;
     onMount(()=>{
 
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
         canvas = document.querySelector("#portraitcanvas");
-        const renderer = new THREE.WebGLRenderer({ canvas: canvas });
+        renderer = new THREE.WebGLRenderer({ canvas: canvas });
         // renderer.setSize( window.innerWidth/2, window.innerHeight/2 );
         renderer.setSize(window.innerWidth/2, window.innerWidth/2);
         // renderer.setClearColor( 0xffffff, 1 );
@@ -53,13 +54,7 @@
                 
             
             renderer.setAnimationLoop(() => {
-                if (mesh){
-                    // console.log("rotating: ", meshY)
-                    meshY+= 0.01;
-                    mesh.rotation.y=meshY; 
-                    renderer.render(scene, camera);
-                } 
-                    
+                animate();
             });                    
             docMounted=true;
             let boundingCanvas = canvas.getBoundingClientRect();
@@ -73,6 +68,14 @@
             }
             catch(err){console.error("Loading mesh data failed", err)}
         })();
+
+        function animate(){
+            if (mesh){
+                meshY+= 0.01;
+                mesh.rotation.y=meshY; 
+                renderer.render(scene, camera);
+            }                     
+        }
 
         document.addEventListener("mousemove", (e)=>{
             mousePos.x=e.clientX;
@@ -89,14 +92,11 @@
         }); 
 
         function pauseRotation(){
-            // console.log("pauseRotation")
-            //temporary hack, setInterval ms countering THREE.WebGLRenderer.setAnimationLoop(AKA = requestAnimationFrame)
-            //Replace with Threejs pause animation ?
-            let milliseconds =10;
-            let paused = setInterval(function () {console.log("interval");meshY = 1.6;}, milliseconds); 
+            meshY = 1.6;
+            renderer.setAnimationLoop(null)
             setTimeout(()=>{
-                clearInterval(paused)
-            },100)             
+                renderer.setAnimationLoop(()=>{animate();})
+            },2000)            
         }
 
  

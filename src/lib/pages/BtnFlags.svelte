@@ -22,7 +22,7 @@
     let selectedLanguageText;
 
     let languageClass=""
-    
+    let mobileActive=""
 
     const languageMap = {
     'en': 'en',
@@ -65,11 +65,18 @@
                 //selected styling on the "language_selected"
                 // selectedLanguageBtn.style.backgroundColor  = "#d3d3d3";
                 languageList.style.visibility = "visible";
+
+                if(window.outerWidth<540){
+                    mobileActive="active";
+                }
+                else{mobileActive="";}
+
             }
             else if (languageSelectorToggle == false){
                 //selected styling on the "language_selected"
                 // selectedLanguageBtn.style.backgroundColor = null;
                 languageList.style.visibility = "hidden";
+                mobileActive="";
             }
         })
 
@@ -95,7 +102,8 @@
             selectedLanguageBtn.value = false;
             selectedLanguageBtn.style.backgroundColor = null;
             languageList.style.visibility = "hidden";
-
+            
+            mobileActive="";
             //update content
             setLanguage(lang)
 
@@ -137,8 +145,8 @@
         <div class={languageClass} bind:this={selectedLanguageFlag}></div> 
         <span class="text_selected" bind:this={selectedLanguageText}></span> 
         <span class="arrow-icon"></span> 
-    </button>    
-    <ul id="languageList" class={`${$cssDarkmodeModal}`} style="visibility:hidden" bind:this={languageList}>
+    </button>
+    <ul id="languageList" class={`${$cssDarkmodeModal} ${mobileActive}`} style="visibility:hidden" bind:this={languageList}>
         <button title="English" data-value="en" bind:this={languageLinkEn}>
             <span class="flag_icon en"></span>
             <span class={`${$cssDarkmodeModal} language-name`}>En</span>
@@ -230,7 +238,6 @@
         border: 4px solid #FF5900;
         border-top: none;
         border-radius: 5px;
-        /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); */
         max-height: 150px;
         overflow-x:hidden;
         overflow-y: auto;
@@ -246,5 +253,15 @@
     #languageList button:hover {
         background-color: #FF5900;
     }
-
+@media screen and (max-width: 540px) {
+    #languageList{display:none;}
+    #languageList.active {
+        display:flex;
+        position:static;
+        overflow-x:auto;
+        overflow-y:hidden;
+        top:initial;
+        right:initial;
+    }
+}
 </style>

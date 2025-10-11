@@ -44,7 +44,7 @@
 <div class="iconTrue icon"></div>
 <div class="iconFalse icon"></div> 
 -->
-<button title="Cookie settings" aria-label="save preferences in cookie"class="iconSave icon"on:click={handleToggle}>
+<button title="Cookie settings" aria-label="save preferences in cookie" aria-expanded="{modalVisibility}" class="iconSave icon"on:click={handleToggle}>
   <span class="visually-hidden">Cookies</span><!--Fallback when css disabled-->
 </button>
 {#if $cookieConsent}

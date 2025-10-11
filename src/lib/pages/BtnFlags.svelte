@@ -20,7 +20,7 @@
     let languageLinkDe;
     let selectedLanguageFlag;
     let selectedLanguageText;
-
+    let languageSelectorToggle=false;
     let languageClass=""
     let mobileActive=""
 
@@ -56,7 +56,7 @@
 
         selectedLanguageBtn.addEventListener('click', ()=>{
             //Toggle, switch bool of the "language_selected" button
-            let languageSelectorToggle = JSON.parse(selectedLanguageBtn.value); //bool
+            languageSelectorToggle = JSON.parse(selectedLanguageBtn.value); //bool
             languageSelectorToggle = !languageSelectorToggle;
             selectedLanguageBtn.value = languageSelectorToggle;
     
@@ -141,7 +141,7 @@
 
 <div id="language_selector">
     <!-- <img title="image"src="" alt="" style="width:100px;height:100px;"> -->
-    <button title="Change language"aria-label="language dropdown menu button"id="language_selected" bind:this={selectedLanguageBtn} >
+    <button aria-haspopup="listbox" aria-expanded={`${languageSelectorToggle}`} title="Change language"aria-label="language dropdown menu button"id="language_selected" bind:this={selectedLanguageBtn} >
         <div class={languageClass} bind:this={selectedLanguageFlag}></div> 
         <span class="text_selected" bind:this={selectedLanguageText}></span> 
         <span class="arrow-icon"></span> 
@@ -159,19 +159,8 @@
             <span class="flag_icon de"></span>
             <span class={`${$cssDarkmodeModal} language-name`}>De</span>
         </button>            
-        <!-- <li data-value="en" bind:this={languageLinkEn}>
-            <span class="flag_icon en"></span>
-            <span class={`${$cssDarkmodeModal} language-name`}>En</span>
-        </li> -->
-        <!-- <li data-value="no" bind:this={languageLinkNo}>
-            <span class="flag_icon no"></span>
-            <span class={`${$cssDarkmodeModal} language-name`}>No</span>
-        </li>
-        <li data-value="no" bind:this={languageLinkDe}>
-            <span class="flag_icon de"></span>
-            <span class={`${$cssDarkmodeModal} language-name`}>De</span>
-        </li> -->
     </ul>
+
 </div>
 
 <style>
@@ -250,7 +239,7 @@
         font-size: 1rem;
         color:black;
     }
-    #languageList button:hover {
+    #languageList button:hover, #languageList button:hover > .language-name {
         background-color: #FF5900;
     }
 @media screen and (max-width: 540px) {

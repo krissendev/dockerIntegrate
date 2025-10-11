@@ -105,7 +105,7 @@
 
 
 <!--Mobile | Scroll inside navLinks on "second page"-->
-<div class={`cookieModalContent`}  style="display: {modalVisibility};">    
+<div class={`cookieModalContent`} style="display: {modalVisibility};">    
     <div class={`${$cssDarkmodeModal} cookieModal`}></div>
     {#if !$isMobile}
     

@@ -5,7 +5,8 @@
     import {isMobile,cssDarkmodeModal,
             cookieModalOverflow,
             langdataNav,
-            sessionPreferences}             from '$store/store.js';
+            sessionPreferences,
+            burgerToggled}             from '$store/store.js';
     import {updateStorePrimitive, storeMap,
             getStoreValue}                  from '$lib/routing/storeHandler.js'
     import {toggleBurger, initOnMount}      from '$lib/layout/nav.js'
@@ -20,11 +21,11 @@
     let elSettings;     // Aa, Darkmode, Language, cookies
 
     let elMobileMenu  ; //BurgerMenu
-    let elMobileModal;  //Modal overlay when burger menu toggled
+    let elMobileModal;  //Modal overlay when burger menu burgerToggled
     let topNav;         //Outer Menu container for consistent display across mobile and desktop
+    $: burgerState=$burgerToggled;  //Detect burger burgerToggled state from nav.js for aria-expanded
 
     $: darkMode = $sessionPreferences["darkMode"];
-
     //nav resize depends on 'browser', which only is available after mount
     onMount(()=>{
         updateStorePrimitive(storeMap.isMobile, window.screen.width < 540)
@@ -34,11 +35,11 @@
 
     //Burger toggle on mobile only
     function handleToggle(){
-        toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, undefined, topNav);
+        toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, topNav);
     }
     function closeBurger(){
         let mobile= getStoreValue(isMobile)
-        if(mobile){toggleBurger(elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, true, topNav);}
+        if(mobile){toggleBurger(elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, topNav);}
     }
 
 
@@ -49,8 +50,8 @@
 </script>
 
 <div class={`${$cssDarkmodeModal} topNav`} bind:this={topNav}><!--Top Nav-->
-    <!--class={`${$cssDarkmodeModal} navLinks`}-->
-    <button title="Navigation menu" aria-label="Navigation menu" aria-expanded="false" class="burger" on:click={handleToggle} bind:this={elMobileMenu}>
+    <!--burgerState/burgerToggled store value only for aria-expanded -->
+     <button title="Navigation menu" aria-label="Navigation menu" aria-expanded="{burgerState}" class="burger" on:click={handleToggle} bind:this={elMobileMenu}>
         <div></div>
         <div></div>
         <div></div>

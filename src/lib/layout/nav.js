@@ -1,6 +1,7 @@
-import { browser }                          from '$app/environment';
+import { browser }                           from '$app/environment';
 import { isMobile, cookieModalOverflow, 
-    cookieConsentVisible, cookieConsent }   from '$store/store';
+    cookieConsentVisible, cookieConsent,
+    burgerToggled}                           from '$store/store';
 import {updateStorePrimitive, storeMap, 
         updateStoreBoolToggle}               from '$lib/routing/storeHandler.js'
 // let elLinks;
@@ -8,10 +9,9 @@ import {updateStorePrimitive, storeMap,
 // let elMobileMenu;
 // let elMobileModal;
 
-let toggled = false;
 let docBody;
 let docHtml;
-
+let burgerToggle = false;
 // Add resize event listener only in the browser, DOM reference, after SvelteOnMount makes "browser" available
 
 export function initOnMount(elLinks, elNavMenu, elDivider, elSettings,elMobileMenu, elMobileModal,topNav){
@@ -26,10 +26,9 @@ export function initOnMount(elLinks, elNavMenu, elDivider, elSettings,elMobileMe
     }
 }
 
-export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, burgerStateTrue, topNav) {
-    toggled = burgerStateTrue?burgerStateTrue:toggled;
-    if(toggled){
-        toggled=false;
+export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobileModal, elMobileMenu, topNav) {
+    if(burgerToggle){
+        burgerToggle=false;
         elLinks.style.display  = "none";
         elNavMenu.style.display  = "none"; 
         elMobileMenu.classList.remove('active')
@@ -42,9 +41,10 @@ export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobile
 
         //close cookie modal inside burger menu
         updateStoreBoolToggle(storeMap.cookieConsent, false)
+        updateStoreBoolToggle(storeMap.burgerToggled, burgerToggle)
     }
-    else if(!toggled){
-        toggled=true;
+    else if(!burgerToggle){
+        burgerToggle=true;
         elLinks.style.display  = "block";
         
         elNavMenu.style.display  = "flex"; 
@@ -59,6 +59,8 @@ export function toggleBurger (elLinks,elNavMenu, elDivider, elSettings, elMobile
         /* disable scrolling on body & html, used for webkit mobil scroll exits from modal*/
         docBody.classList.add("disabledScroll")
         topNav.style.position = "sticky";
+
+        updateStoreBoolToggle(storeMap.burgerToggled, burgerToggle)
     }
 }
 
@@ -66,7 +68,7 @@ let counter = 0;
 function resetNav(elLinks,elNavMenu, elDivider, elSettings, elMobileMenu, elMobileModal, topNav){
     counter++;
     // console.log(`resize ${counter}`)
-    toggled = false;
+    burgerToggled = false;
     if(window.innerWidth> 540){
         updateStorePrimitive(storeMap.isMobile, false)        
         updateStorePrimitive(storeMap.cookieModalOverflow, "none")        

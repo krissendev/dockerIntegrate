@@ -24,3 +24,4 @@ export const langdataProject =writable('')
 export const langdataContact =writable('')
 
 export const langdataNav =writable('')
+export const burgerToggled = writable('')

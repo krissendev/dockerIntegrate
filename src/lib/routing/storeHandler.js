@@ -9,7 +9,7 @@ import {cookieConsentVisible,
     langdataHome,
     langdataAbout,
     langdataProject,langdataContact,
-    langdataNav}                            from '$store/store.js';
+    langdataNav, burgerToggled }      from '$store/store.js';
 
 
 export const storeMap = {
@@ -21,10 +21,12 @@ export const storeMap = {
         isMobile,
         cookieModalOverflow,
         langdataHome,
-         langdataAbout,
-          langdataProject,
-           langdataContact,
-           langdataNav}
+        langdataAbout,
+        langdataProject,
+        langdataContact,
+        langdataNav,
+        burgerToggled
+    }
 
 
 export function updateStoreObject(storeMapEntry, key, newValue){
